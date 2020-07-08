@@ -1,0 +1,25 @@
+<?php
+ $placa_veiculo1 = 'null';
+ "<br>";
+ $marca_veiculo1 = 'null';
+ "<br>";
+ $modelo_veiculo1 = 'null';
+ "<br>";
+ $seguro_veiculo1 = 'null';
+ "<hr>";
+ $placa_veiculo2 = 'null';
+ "<br>";
+ $marca_veiculo2 = 'null';
+ "<br>";
+ $modelo_veiculo2 = 'null';
+ "<br>";
+ $seguro_veiculo2 = 'null';
+ "<hr>";
+ $placa_veiculo3 = 'null';
+ "<br>";
+ $marca_veiculo3 = 'null';
+ "<br>";
+ $modelo_veiculo3 = 'null';
+ "<br>";
+ $seguro_veiculo3 = 'null';
+ "<hr>";

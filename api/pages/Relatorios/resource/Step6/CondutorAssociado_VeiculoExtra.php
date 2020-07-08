@@ -1,0 +1,25 @@
+<?php
+ $placa_veiculo1 = "";
+ "<br>";
+ $marca_veiculo1 = "";
+ "<br>";
+ $modelo_veiculo1 = "";
+ "<br>";
+ $seguro_veiculo1 = "";
+ "<hr>";
+ $placa_veiculo2 = "";
+ "<br>";
+ $marca_veiculo2 = "";
+ "<br>";
+ $modelo_veiculo2 = "";
+ "<br>";
+ $seguro_veiculo2 = "";
+ "<hr>";
+ $placa_veiculo3 = "";
+ "<br>";
+ $marca_veiculo3 = "";
+ "<br>";
+ $modelo_veiculo3 = "";
+ "<br>";
+ $seguro_veiculo3 = "";
+ "<hr>";
