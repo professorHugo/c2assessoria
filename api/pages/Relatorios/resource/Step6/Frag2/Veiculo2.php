@@ -11,13 +11,21 @@ if(isset($_POST['placa_veiculo2_condutor'])){
             INSERT INTO tb_veiculos
             (
                 segurado_veiculo,
+                protocolo_evento,
+                condutor_veiculo,
                 marca_veiculo,
                 modelo_veiculo,
                 placa_veiculo,
                 seguro_veiculo
             )
             VALUES(
-                '$CPFAssociado','$MarcaVeiculo2_condutor','$ModeloVeiculo2_condutor','$PlacaVeiculo2_condutor','$SeguroVeiculo2_condutor'
+                '$CPFAssociado',
+                '$Protocolo',
+                '$condutor',
+                '$MarcaVeiculo2_condutor',
+                '$ModeloVeiculo2_condutor',
+                '$PlacaVeiculo2_condutor',
+                '$SeguroVeiculo2_condutor'
             )
         ";
         echo "</pre>";

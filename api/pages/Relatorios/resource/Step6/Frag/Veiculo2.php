@@ -1,6 +1,6 @@
 <?php
 echo "Placa: " . $_POST['placa_veiculo2'];
-
+echo "<br> Condutor: " . $Condutor = $_SESSION['CondutorVeiculo'];
 if(isset($_POST['placa_veiculo2'])){
     $Query2VerificarPlaca = "SELECT * FROM tb_veiculos WHERE placa_veiculo = '$PlacaVeiculo2'";
     $ExeQr2VerificarPlaca = mysqli_query($connection, $Query2VerificarPlaca);
@@ -12,13 +12,20 @@ if(isset($_POST['placa_veiculo2'])){
             (
                 segurado_veiculo,
                 protocolo_evento,
+                condutor_veiculo,
                 marca_veiculo,
                 modelo_veiculo,
                 placa_veiculo,
                 seguro_veiculo
             )
             VALUES(
-                '$CPFAssociado','$Protocolo','$MarcaVeiculo2','$ModeloVeiculo2','$PlacaVeiculo2','$SeguroVeiculo2'
+                '$CPFAssociado',
+                '$Protocolo',
+                '$Condutor',
+                '$MarcaVeiculo2',
+                '$ModeloVeiculo2',
+                '$PlacaVeiculo2',
+                '$SeguroVeiculo2'
             )
         ";
         echo "</pre>";

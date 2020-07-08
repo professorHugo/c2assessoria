@@ -26,8 +26,7 @@
             if($RowQrBuscarProfissao >= 1){
                 while($ReturnProfissao = mysqli_fetch_assoc($ExeQrBuscarProfissao)){
                 ?>
-                <input type="hidden" name="profissao_associado" value="<?php echo $ReturnProfissao['profissao_associado']?>" required>
-                <input type="text" id="profissao_associado_exibir" value="<?php echo $ReturnProfissao['profissao_associado']?>" disabled class="form-control form-control-lg">
+                <input class="form-control form-control-lg" type="text" name="profissao_associado" value="<?php echo $ReturnProfissao['profissao_associado']?>" required>
                 <?php
                 }
             }

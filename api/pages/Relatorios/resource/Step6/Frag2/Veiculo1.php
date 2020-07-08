@@ -1,6 +1,8 @@
 <?php
 echo "<br>";
 "Placa 1: " . $_POST['placa_veiculo1_condutor'];
+echo "<br> Condutor: " . $Condutor = $_SESSION['CondutorVeiculo'];
+
 if(isset($_POST['placa_veiculo1_condutor'])){
     $Query1VerificarPlaca = "SELECT * FROM tb_veiculos WHERE placa_veiculo = '$PlacaVeiculo1_condutor'";
     $ExeQr1VerificarPlaca = mysqli_query($connection, $Query1VerificarPlaca);
@@ -12,6 +14,7 @@ if(isset($_POST['placa_veiculo1_condutor'])){
             (
                 segurado_veiculo,
                 protocolo_evento,
+                condutor_evento,
                 marca_veiculo,
                 modelo_veiculo,
                 placa_veiculo,
@@ -20,6 +23,7 @@ if(isset($_POST['placa_veiculo1_condutor'])){
             VALUES(
                 '$CPFAssociado',
                 '$Protocolo',
+                '$Condutor',
                 '$MarcaVeiculo1_condutor',
                 '$ModeloVeiculo1_condutor',
                 '$PlacaVeiculo1_condutor',

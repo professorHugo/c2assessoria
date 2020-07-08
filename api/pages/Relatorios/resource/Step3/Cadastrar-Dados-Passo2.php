@@ -1,5 +1,5 @@
 <?php
- "<br>Condutor do veículo: " . $CondutorVeiculo = $_POST['condutor_select'];
+echo "<br>Condutor do veículo: " . $CondutorVeiculo = $_POST['condutor_select'];
  "<br>Nome do contudor: " . $NomeCondutor = $_POST['nome_condutor'];
  "<br>Placa do Veículo: " . $PlacaVeiculo = $_POST['placa_veiculo'];
  "<br>Marca do Veículo: " . $MarcaVeiculo = $_POST['marca_veiculo'];
@@ -20,12 +20,13 @@ if($RowQrVerificarPlaca < 1){
         (
             segurado_veiculo,
             protocolo_evento,
+            condutor_veiculo,
             marca_veiculo,
             modelo_veiculo,
             placa_veiculo
         )
         VALUES(
-            '$CPFAssociado','$Protocolo','$MarcaVeiculo','$ModeloVeiculo','$PlacaVeiculo'
+            '$CPFAssociado','$Protocolo',$CondutorVeiculo,'$MarcaVeiculo','$ModeloVeiculo','$PlacaVeiculo'
         )
     ";
     echo "</pre>";
@@ -34,7 +35,7 @@ if($RowQrVerificarPlaca < 1){
     if($ExeQrCadastrarVeiculo){
         echo "Veículo Adicionado ao banco de dados <br>";
     }else{
-        echo "Erro: ".mysqli_error($connection);
+        echo "Erro ao inserir veículo: ".mysqli_error($connection);
     }
 }else{
     echo "Veículo já cadastrado";
@@ -60,7 +61,7 @@ if($RowQrBuscarCondutorCadastrado >= 1){
                 placa_veiculo_evento = '$PlacaVeiculo'
             WHERE protocolo_evento = '$Protocolo'
         ";
-        echo "<br>";
+        echo "</pre> <br>";
     }
 
 }else{

@@ -27,16 +27,10 @@ insert into tb_usuarios(email_usuario,nome_usuario,senha_usuario,permissao_usuar
 /*TB Proprietários*/
 create table tb_proprietarios(
     id_proprietario int not null PRIMARY KEY auto_increment,
-    nome_proprietario varchar(200) not null,
-    chn_proprietario varchar(200) not null
+    protocolo_evento varchar(50) DEFAULT NULL,
+    nome_proprietario varchar(200) DEFAULT NULL,
+    chn_proprietario varchar(200) DEFAULT NULL
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-insert into tb_proprietarios(
-    nome_proprietario,
-    chn_proprietario
-)values(
-    'Hugo Christian Pereira Gomes',
-    '1234567891011'
-);
 
 /*TB Sistemas Anti-Furto*/
 create table tb_sistemas_anti_furto(
@@ -75,32 +69,19 @@ insert into tb_clientes(nome_cliente)values
 /*TB Vistorias Realizadas*/
 create table tb_vistorias_realizadas(
     id_vistoria int not null auto_increment PRIMARY KEY,
-    tipo_vistoria int not null, /* FK */
-    data_vistoria varchar(20) not null,
+    tipo_vistoria int DEFAULT NULL, /* FK */
+    data_vistoria varchar(20) DEFAULT NULL,
     FOREIGN KEY(tipo_vistoria) REFERENCES tb_tipo_vistorias(id_tipo_vistoria)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-insert into tb_vistorias_realizadas(
-    tipo_vistoria,
-    data_vistoria
-)values(
-    1,
-    '01/07/2020'
-);
 
 /*TB Fotos*/
 create table tb_fotos(
     id_foto int not null auto_increment PRIMARY KEY,
-    proprietario_foto int not null, /* FK */
-    nome_foto varchar(200),
+    proprietario_foto int DEFAULT NULL, /* FK */
+    nome_foto varchar(200) DEFAULT NULL,
     FOREIGN KEY(proprietario_foto) REFERENCES tb_proprietarios(id_proprietario)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-insert into tb_fotos(
-    proprietario_foto,
-    nome_foto
-)values(
-    1,
-    'vistorias/Hugo%20Christian'
-);
+
 
 /*TB Veículos*/
 create table tb_veiculos(
@@ -108,6 +89,7 @@ create table tb_veiculos(
     segurado_veiculo varchar(11) null,
     proprietario_veiculo int null,
     protocolo_evento varchar(50) DEFAULT null,
+    condutor_veiculo int DEFAULT NULL, /* 1: Associado | 2: Terceiros*/
     marca_veiculo varchar(50) null,
     modelo_veiculo varchar(100) null,
     placa_veiculo varchar(8) null,
