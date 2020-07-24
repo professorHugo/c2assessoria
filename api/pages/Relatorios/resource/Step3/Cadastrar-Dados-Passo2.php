@@ -1,5 +1,5 @@
 <?php
-echo "<br>Condutor do veículo: " . $CondutorVeiculo = $_POST['condutor_select'];
+ "<br>Condutor do veículo: " . $CondutorVeiculo = $_POST['condutor_select'];
  "<br>Nome do contudor: " . $NomeCondutor = $_POST['nome_condutor'];
  "<br>Placa do Veículo: " . $PlacaVeiculo = $_POST['placa_veiculo'];
  "<br>Marca do Veículo: " . $MarcaVeiculo = $_POST['marca_veiculo'];
@@ -8,6 +8,72 @@ echo "<br>Condutor do veículo: " . $CondutorVeiculo = $_POST['condutor_select']
 //Dados para reutilização
 $Protocolo = $_SESSION['Protocolo']['pr'];
 $CPFAssociado = $_SESSION['Protocolo']['cpf'];
+$_SESSION['Condutor'] = $CondutorVeiculo;
+$_SESSION['Placa'] = $PlacaVeiculo;
+
+//Cadastrar Proprietario Temporário do Veículo Segurado
+// $QueryBuscarAssociado = "SELECT * FROM tb_associados WHERE cpf_associado = '$CPFAssociado'";
+// $ExeQrBuscarAssociado = mysqli_query($connection, $QueryBuscarAssociado);
+// $RowQrBuscarAssociado = mysqli_num_rows($ExeQrBuscarAssociado);
+// if($RowQrBuscarAssociado >= 1){
+//     //Buscar cadastro do proprietário do veículo
+//     $QueryBuscarProprietario = "SELECT * FROM tb_proprietarios WHERE protocolo_evento = '$Protocolo'";
+//     $ExeQrBuscarProprietario = mysqli_query($connection, $QueryBuscarProprietario);
+//     if(!$ExeQrBuscarProprietario){
+//         while($Associado = mysqli_fetch_assoc($ExeQrBuscarAssociado)){
+//             $CPF = $Associado['nome_associado'];
+//             echo "<pre>".
+//             $QueryCadastrarProprietario = "
+//                 INSERT INTO tb_proprietarios(
+//                     protocolo_evento,
+//                     nome_proprietario
+//                 )VALUES(
+//                     '$Protocolo',
+//                     '$CPF'
+//                 )
+//             ";
+//             echo "</pre>";
+//             $ExeQrCadastrarProprietario = mysqli_query($connection, $QueryCadastrarProprietario);
+//             if($ExeQrCadastrarProprietario){
+//                 echo "Proprietario do veículo segurado cadastrado";
+//             }else{
+//                 echo "erro: ". mysqli_error($connection);
+//             }
+//         }
+//     }else{
+//         echo "Proprietário já cadastrado";
+//     }
+// }
+
+//Verificar se já existe o proprietario antes de cadastrar
+$QueryBuscarProprietario = "SELECT * FROM tb_proprietarios WHERE protocolo_evento = '$Protocolo'";
+$ExeQrBuscarProprietario = mysqli_query($connection, $QueryBuscarProprietario);
+$RowQrBuscarProprietario = mysqli_num_rows($ExeQrBuscarProprietario);
+
+if($RowQrBuscarProprietario >= 1){
+    echo "<br>Proprietario já cadastrado";
+}else{
+    echo "<pre>".
+    $QueryCadastrarProprietario1 = "
+        INSERT INTO tb_proprietarios(
+            protocolo_evento,
+            nome_proprietario
+        )VALUES(
+            '$Protocolo',
+            '$NomeCondutor'
+        )
+    ";
+    echo "</pre>";
+    $ExeQrCadastrarProprietario1 = mysqli_query($connection, $QueryCadastrarProprietario1);
+
+    if($ExeQrCadastrarProprietario1){
+        echo "<br>Proprietario temporário $CondutorVeiculo cadastrado com sucesso";
+    }else{
+        echo "<br>Erro: ".mysqli_error($connection);
+    }
+
+    echo "<br>";
+}
 
 //Verificar se o veículo já está cadastrado no sistema
 $QueryVerificarPlaca = "SELECT * FROM tb_veiculos WHERE placa_veiculo = '$PlacaVeiculo'";
@@ -19,6 +85,7 @@ if($RowQrVerificarPlaca < 1){
         INSERT INTO tb_veiculos
         (
             segurado_veiculo,
+            proprietario_veiculo,
             protocolo_evento,
             condutor_veiculo,
             marca_veiculo,
@@ -26,7 +93,7 @@ if($RowQrVerificarPlaca < 1){
             placa_veiculo
         )
         VALUES(
-            '$CPFAssociado','$Protocolo',$CondutorVeiculo,'$MarcaVeiculo','$ModeloVeiculo','$PlacaVeiculo'
+            '$CPFAssociado',1,'$Protocolo',$CondutorVeiculo,'$MarcaVeiculo','$ModeloVeiculo','$PlacaVeiculo'
         )
     ";
     echo "</pre>";

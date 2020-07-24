@@ -65,21 +65,10 @@ if(isset($_GET['Cadastrar'])){
         include_once "Relatorios/Relatorios-Entregues.php";
     }
 }else{
-    include_once "Relatorios/Relatorios-Entregues.php";
-}
-
-for($i = 0 ; $i <=15; $i++){
-    if(isset($_SESSION["CadastroSindicancia$i"])){
-        // unset($_SESSION["CadastroSindicancia$i"]);
-        ?>
-        <div class="col-4 float-left">
-        Passo <?php echo $i?>: <br>
-            <pre>
-            <?php print_r($_SESSION["CadastroSindicancia$i"]); ?>
-            </pre>
-        </div>
-        
-        <?php
+    if(isset($_GET['Ver'])){
+        include_once "Relatorios/Visualizar-Relatorio.php";
+    }else{
+        include_once "Relatorios/Relatorios-Entregues.php";
     }
 }
 ?>

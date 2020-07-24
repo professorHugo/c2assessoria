@@ -55,33 +55,93 @@ insert into tb_tipo_vistorias(
 /*TB Clientes (Seguradoras)*/
 create table tb_clientes(
     id_cliente int not null auto_increment PRIMARY KEY,
-    nome_cliente VARCHAR(100)
+    nome_cliente VARCHAR(100),
+    data_cadastro TIMESTAMP null DEFAULT current_timestamp
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 insert into tb_clientes(nome_cliente)values
-('Universo AGV - Associação Gestão Veicular Universo'),
-('Auto-Truck - Associação de Autimóveis e Veículos Pesados'),
+('Universo AGV - AssociaÃ§Ã£o GestÃ£o Veicular Universo'),
+('Auto-Truck - AssociaÃ§Ã£o de AutimÃ³veis e VeÃ­culos Pesados'),
 ('APVS BRASIL - ASSOCIACAO PROTETORA VEICULAR E SERVICOS SOCIAIS'),
 ('NET CAR - NET CAR CLUBE DE BENEFICIOS'),
 ('PROAUTO - ASSOCIACAO PROTETORA DE VEICULOS AUTOMOTORES '),
-('SEJA UNNICA - ASSOCIAÇÃO DE BENEFICIOS UNNICA'),
-('TECX PARK - GESTÃO DE MÃO OBRA T. S. T. LTDA');
+('SEJA UNNICA - ASSOCIAÃ‡ÃƒO DE BENEFICIOS UNNICA'),
+('TECX PARK - GESTÃƒO DE MÃƒO OBRA T. S. T. LTDA');
 
 /*TB Vistorias Realizadas*/
 create table tb_vistorias_realizadas(
     id_vistoria int not null auto_increment PRIMARY KEY,
+    protocolo_vistoria VARCHAR(20) DEFAULT NULL,
     tipo_vistoria int DEFAULT NULL, /* FK */
-    data_vistoria varchar(20) DEFAULT NULL,
+    data_vistoria TIMESTAMP null DEFAULT current_timestamp,
     FOREIGN KEY(tipo_vistoria) REFERENCES tb_tipo_vistorias(id_tipo_vistoria)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*TB Fotos*/
 create table tb_fotos(
     id_foto int not null auto_increment PRIMARY KEY,
-    proprietario_foto int DEFAULT NULL, /* FK */
-    nome_foto varchar(200) DEFAULT NULL,
-    FOREIGN KEY(proprietario_foto) REFERENCES tb_proprietarios(id_proprietario)
+    categoria_foto VARCHAR(100) DEFAULT NULL,
+    protocolo_foto VARCHAR(100) DEFAULT NULL,
+    pasta_foto VARCHAR(100) DEFAULT NULL,
+    nome_foto varchar(200) DEFAULT NULL
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
+/*Tb Fotos Documentos Veículos Segurados*/
+create table tb_fotos_veiculos(
+    id_foto int not null PRIMARY KEY auto_increment,
+    local_foto VARCHAR(100) DEFAULT NULL,
+    nome_foto VARCHAR(100) DEFAULT NULL
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+/*tb tipos procedentes*/
+create table tb_tipos_procedentes(
+    id_procedente INT NOT NULL PRIMARY KEY auto_increment,
+    descricao_procedente VARCHAR(20) DEFAULT NULL
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_tipos_procedentes(
+    descricao_procedente
+)VALUES('Não Apresentado'),('Loja'),('Particular'),('Leilão');
+
+/*Tb Fotos procedentes*/
+create table tb_fotos_procedentes(
+    id_foto_procedente int not null PRIMARY KEY auto_increment,
+    placa_foto_procedente varchar(15) DEFAULT NULL,
+    tipo_procedente int DEFAULT NULL,
+    protocolo_foto_procedente varchar(100) DEFAULT NULL,
+    local_foto_procedente VARCHAR(100) DEFAULT NULL,
+    nome_foto_procedente VARCHAR(100) DEFAULT NULL,
+
+    FOREIGN KEY(tipo_procedente) REFERENCES tb_tipos_procedentes(id_procedente)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+create table tb_tipos_chaves(
+    id_tipo_chave INT NOT NULL PRIMARY KEY auto_increment,
+    descricao_chave VARCHAR(100) DEFAULT NULL
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_tipos_chaves(
+    descricao_chave
+)VALUES('De Uso'),('Reserva'),('Não Apresentou');
+
+/*tb fotos chaves apresentadas*/
+create table tb_chaves_apresentadas(
+    id_chave_apresentada int not NULL PRIMARY KEY auto_increment,
+    protocolo_chave_apresentada VARCHAR(100) DEFAULT null,
+    tipo_chave_apresentada INT DEFAULT NULL,
+    local_chave_apresentada VARCHAR(100) DEFAULT NULL,
+    nome_chave_apresentada VARCHAR(100) DEFAULT NULL,
+
+    FOREIGN KEY(tipo_chave_apresentada) REFERENCES tb_tipos_chaves(id_tipo_chave)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+/*Tb foto sistema anti-furto*/
+create table tb_foto_sistema_af(
+    id_foto_sistema INT NOT NULL PRIMARY KEY auto_increment,
+    protocolo_foto_sistema VARCHAR(100) DEFAULT NULL,
+    tipo_sistema INT DEFAULT NULL,
+    local_foto_sistema VARCHAR(100) DEFAULT NULL,
+    nome_foto_sistema VARCHAR(100) DEFAULT NULL,
+
+    FOREIGN KEY(tipo_sistema) REFERENCES tb_sistemas_anti_furto(id_sistema)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*TB Veículos*/
 create table tb_veiculos(
@@ -96,6 +156,8 @@ create table tb_veiculos(
     seguro_veiculo varchar(10) DEFAULT "Sim",
     dut_veiculo varchar(100) null,
     procedente_veiculo int(1) null, /*1: LOJA | 2: PARTICULAR | 3: LEILÃO*/
+    proprietario_anterior_veiculo varchar(100) DEFAULT null,
+    procedencia_apresentada int,
     chaves_apresentadas_veiculo int null, /*1:de uso | 2: reserva | 3: não apresentada*/
     sistema_anti_furto int null, /* FK */
     evento_multa_veiculo int null, /*0: não | 1: sim*/
@@ -118,12 +180,15 @@ create table tb_veiculos(
     INDEX(vistoria_veiculo),
     INDEX(data_vistoria_veiculo),
     INDEX(foto_nota_fiscal_veiculo),
+    INDEX(procedencia_apresentada),
+
 
     FOREIGN KEY(proprietario_veiculo) REFERENCES tb_proprietarios(id_proprietario),
     FOREIGN KEY(sistema_anti_furto) REFERENCES tb_sistemas_anti_furto(id_sistema),
     FOREIGN KEY(vistoria_veiculo) REFERENCES tb_tipo_vistorias(id_tipo_vistoria),
     FOREIGN KEY(data_vistoria_veiculo) REFERENCES tb_vistorias_realizadas(id_vistoria),
-    FOREIGN KEY(foto_nota_fiscal_veiculo) REFERENCES tb_fotos(id_foto)
+    FOREIGN KEY(foto_nota_fiscal_veiculo) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(procedencia_apresentada) REFERENCES tb_fotos_procedentes(id_foto_procedente)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 
@@ -131,18 +196,18 @@ create table tb_veiculos(
 /*TB Associados*/
 create table tb_associados(
     id_associado int not null PRIMARY KEY auto_increment,
-    cpf_associado bigint not null,
-    rg_associado bigint not null,
-    seguradora_associado int not null,
-    nome_associado varchar(200) not null,
-    cep_associado varchar(11) not null,
-    endereco_associado varchar(100) not null,
-    bairro_associado varchar(50) not null,
-    cidade_associado varchar(50) not null,
-    estado_associado varchar(50) not null,
-    nacionalidade_associado varchar(50) not null,
-    civil_associado varchar(50) not null,
-    profissao_associado varchar(50) not null,
+    cpf_associado bigint DEFAULT null,
+    rg_associado bigint DEFAULT null,
+    seguradora_associado int DEFAULT null,
+    nome_associado varchar(200) DEFAULT null,
+    cep_associado varchar(11) DEFAULT null,
+    endereco_associado varchar(100) DEFAULT null,
+    bairro_associado varchar(50) DEFAULT null,
+    cidade_associado varchar(50) DEFAULT null,
+    estado_associado varchar(50) DEFAULT null,
+    nacionalidade_associado varchar(50) DEFAULT null,
+    civil_associado varchar(50) DEFAULT null,
+    profissao_associado varchar(50) DEFAULT null,
     veiculo1_associado int DEFAULT null,
     veiculo2_associado int DEFAULT null,
     veiculo3_associado int DEFAULT null,
@@ -154,7 +219,7 @@ create table tb_associados(
     FOREIGN KEY(veiculo3_associado) REFERENCES tb_veiculos(id_veiculo),
     FOREIGN KEY(veiculo4_associado) REFERENCES tb_veiculos(id_veiculo)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-INSERT INTO `tb_associados` (`id_associado`, `cpf_associado`, `rg_associado`, `seguradora_associado`, `nome_associado`, `cep_associado`, `endereco_associado`, `bairro_associado`, `cidade_associado`, `estado_associado`, `nacionalidade_associado`, `civil_associado`, `profissao_associado`) VALUES ('1', '12345678910', '123456789', '1', 'Hugo Christian Pereira Gomes', '03977380', 'Rua Sargento Edésio Afonso de Carvalho, 128', 'Mascarenhas de Moraes', 'São Paulo', 'SP', 'Brasil', 'Solteiro', 'Programador');
+INSERT INTO `tb_associados` (`id_associado`, `cpf_associado`, `rg_associado`, `seguradora_associado`, `nome_associado`, `cep_associado`, `endereco_associado`, `bairro_associado`, `cidade_associado`, `estado_associado`, `nacionalidade_associado`, `civil_associado`, `profissao_associado`) VALUES ('1', '11111111111', '445556667', '1', 'Hugo Christian Pereira Gomes', '03977380', 'Rua Sargento Edésio Afonso de Carvalho, 128', 'Mascarenhas de Moraes', 'São Paulo', 'SP', 'Brasil', 'Solteiro', 'Programador');
 
 /*TB Intrevistados*/
 create table tb_entrevistados(
@@ -223,10 +288,11 @@ create table tb_relatorios(
     horario_evento VARCHAR(10) DEFAULT null,
     cep_evento VARCHAR(10) DEFAULT null,
     endereco_evento VARCHAR(255) DEFAULT null,
+    numero_evento VARCHAR(10) DEFAULT NULL,
     bairro_evento VARCHAR(255) DEFAULT null,
     cidade_evento VARCHAR(255) DEFAULT null,
     uf_evento VARCHAR(10) DEFAULT null,
-    
+    status_relatorio VARCHAR(10) DEFAULT NULL,
 
     midias_sociais_associado VARCHAR(10) DEFAULT null,
     print_midias_associado VARCHAR(100) DEFAULT null,
@@ -236,3 +302,159 @@ create table tb_relatorios(
     FOREIGN key(condutor_evento) REFERENCES tb_condutores(id_condutor)
     
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+
+create table tb_marcas_veiculos(
+    id_marca int not null PRIMARY KEY auto_increment,
+    nome_marca VARCHAR(100) DEFAULT NULL
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+insert into tb_marcas_veiculos(nome_marca)VALUES
+("ACURA") ,
+("ADAMO") ,
+("AGRALE") ,
+("ALFA ROMEO") ,
+("AM GEN") ,
+("AMERICAR") ,
+("ASIA") ,
+("ASTON MARTIN") ,
+("AUDI") ,
+("AUSTIN") ,
+("BAJA") ,
+("BEACH") ,
+("BENTLEY") ,
+("BIANCO") ,
+("BMW") ,
+("BRM") ,
+("BUGATTI") ,
+("BUGGY") ,
+("BUGRE") ,
+("BUGWAY") ,
+("BUICK "),
+("CADILLAC "),
+("CARVER "),
+("CBT "),
+("CHAMONIX "),
+("CHANA "),
+("CHEDA "),
+("CHERY "),
+("CHEVROLET "),
+("CHRYSLER "),
+("CITROËN "),
+("COYOTE "),
+("CROSS LANDER "),
+("DAEWOO "),
+("DAIHATSU DE SOTO "),
+("DKW-VEMAG "),
+("DODGE "),
+("DS "),
+("DUNNAS "),
+("EAGLE "),
+("EFFA "),
+("EMIS "),
+("ENGESA "),
+("ENVEMO "),
+("FARUS "),
+("FERCAR BUGGY "),
+("FERRARI "),
+("FIAT "),
+("FIBRAVAN "),
+("FNM "),
+("FORD "),
+("FYBER "),
+("GEELY "),
+("GEO "),
+("GMC "),
+("GRANCAR "),
+("GREAT WALL "),
+("GURGEL "),
+("HAFEI "),
+("HB "),
+("HITECH ELETRIC "),
+("HOFSTETTER") ,
+("HONDA") ,
+("HUMMER") ,
+("HYUNDAI") ,
+("INCOFER") ,
+("INFINITI") ,
+("INTERNATIONAL") ,
+("ISUZU") ,
+("IVECO") ,
+("JAC") ,
+("JAGUAR") ,
+("JEEP") ,
+("JINBEI") ,
+("JPX") ,
+("KIA") ,
+("KOENIGSEGG") ,
+("L AUTOMOBILE"),
+("L'AUTO CRAFT"),
+("LADA "),
+("LAMBORGHINI") ,
+("LANCIA") ,
+("LAND ROVER") ,
+("LEXUS") ,
+("LIFAN") ,
+("LINCOLN") ,
+("LOBINI") ,
+("LOTUS") ,
+("MAHINDRA") ,
+("MARCOPOLO") ,
+("MARINA´S") ,
+("MASERATI") ,
+("MATRA") ,
+("MAYBACH") ,
+("MAZDA") ,
+("MCLAREN") ,
+("MENON") ,
+("MERCEDES-BENZ") ,
+("MERCURY") ,
+("MG") ,
+("MINI") ,
+("MITSUBISHI") ,
+("MIURA") ,
+("MORRIS") ,
+("MP LAFER") ,
+("MPLM") ,
+("NISSAN") ,
+("NISSIN") ,
+("OLDSMOBILE") ,
+("OPEL") ,
+("PAG") ,
+("PAGANI") ,
+("PEUGEOT") ,
+("PLYMOUTH") ,
+("PONTIAC") ,
+("PORSCHE") ,
+("PUMA") ,
+("RELY") ,
+("RENAULT") ,
+("RENO") ,
+("ROLLS-ROYCE") ,
+("ROMI") ,
+("ROVER") ,
+("SAAB") ,
+("SANTA MATILDE "),
+("SATURN") ,
+("SEAT") ,
+("SHELBY") ,
+("SHINERAY") ,
+("SHORT") ,
+("SIMCA") ,
+("SMART") ,
+("SPYKER") ,
+("SSANGYONG") ,
+("STUDEBAKER") ,
+("SUBARU") ,
+("SUZUKI") ,
+("TAC") ,
+("TESLA") ,
+("TOYOTA") ,
+("TRIUMPH") ,
+("TROLLER") ,
+("UNIMOG") ,
+("VOLKSWAGEN") ,
+("VOLVO") ,
+("WAKE") ,
+("WALK") ,
+("WAY BRASIL") ,
+("WILLYS")

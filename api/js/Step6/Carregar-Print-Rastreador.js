@@ -13,6 +13,6 @@ function carregarPrintRastreador(){
             }
         }
     };
-    af_xhtml.open("GET", "js/Carregar-Sistema-Anti-Furto.php?T=" + sistema_anti_furto, true);
+    af_xhtml.open("GET", "js/Step6/Carregar-Sistema-Anti-Furto.php?T=" + sistema_anti_furto, true);
     af_xhtml.send(null);
 }

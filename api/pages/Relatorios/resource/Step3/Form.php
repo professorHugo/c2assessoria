@@ -21,9 +21,12 @@
             <i class="fa fa-search form-control-lg"></i>
         </div>
         <label for="endereco_evento" class="col-sm-12 col-md-2 col-form-label col-form-label-lg">Endereço:</label>
-        <div class="col-sm-12 col-md-5">
+        <div class="col-sm-10 col-md-4">
             <input type="hidden" name="endereco_evento" id="endereco_evento" value="" required>
             <input type="text" name="endereco_ev_exibir" placeholder="Aguardando CEP..." disabled id="endereco_ev_exibir" class="form-control form-control-lg" required>
+        </div>
+        <div class="col-sm-2 col-md-1">
+            <input type="text" name="numero_evento" placeholder="Nº" class="form-control form-control-lg">
         </div>
     </div>
     <div class="form-group row">

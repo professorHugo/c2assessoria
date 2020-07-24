@@ -16,8 +16,8 @@ if($connection){
 
 /* Deployed 
 $HOST   = 'localhost';
-$USER   = 'root';
-$PASS   = '';
+$USER   = 'n2yco435_c2';
+$PASS   = '8M6HJLM(md#EA+#k%{';
 $DBA    = 'c2assessoria';
 
 $connection = mysqli_connect($HOST, $USER, $PASS, $DBA);
@@ -28,4 +28,4 @@ if($connection){
 }else{
     echo "Erro";
 }
-*/
+/**/

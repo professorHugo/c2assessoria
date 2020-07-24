@@ -1,4 +1,22 @@
 <?php
+if($_SESSION['CondutorVeiculo'] == 1){
+    echo "<br>Associado é o condutor do veículo";
+    echo "<br><pre>";
+    echo $QueryUpdateCondutorAssociado = "
+        UPDATE tb_condutores SET
+            civil_condutor = '$EstadoCivilAssociado',
+            profissao_condutor = '$ProfissaoAssociado'
+        WHERE protocolo_evento = '$Protocolo'
+    ";
+    echo "</pre><br>";
+    $ExeQrUpdateCondutorAssociado = mysqli_query($connection, $QueryUpdateCondutorAssociado);
+    if($ExeQrUpdateCondutorAssociado){
+        echo "Condutor Associado atualizado";
+    }else{
+        echo "Erro: ". mysqli_error($connection);
+    }
+}
+
 $QueryBuscarVeiculosCondutor= "SELECT * FROM tb_veiculos WHERE segurado_veiculo = '$CPFAssociado'";
 $ExeQrBuscarVeiculosCondutor= mysqli_query($connection, $QueryBuscarVeiculosCondutor);
 $RowQrBuscarVeiculosCondutor= mysqli_num_rows($ExeQrBuscarVeiculosCondutor);

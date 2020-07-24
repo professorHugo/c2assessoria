@@ -10,9 +10,9 @@ if($_SESSION['CadastroSindicancia2'][0] == 1){
 }
 
 if($midiasSociais == "Sim"){
-    if(!is_dir("files/".$_SESSION['CadastroSindicancia1'][5]."/")){
+    if(!is_dir("files/".$_SESSION['PastaAssociado']."/")){
         //Criar Pasta do Associado
-         "Pasta do Cliente: ".$PastaAssociado = mkdir("files/".$_SESSION['CadastroSindicancia1'][5]."/", 777);
+         "Pasta do Cliente: ".$PastaAssociado = mkdir("files/".$_SESSION['PastaAssociado']."/", 777);
          "<br>";
          "<br>";
         //Fazer Upload-Midias-Sociais para a pasta do associado
@@ -24,7 +24,7 @@ if($midiasSociais == "Sim"){
     }else{
         //Fazer upload-Midias-Sociais para a pasta do cliente]
          "Já existe o diretório do cliente<br>";
-         "Diretorio Cliente: " . $PastaAssociado = "files/".$_SESSION['CadastroSindicancia1'][5]."/";
+         "Diretorio Cliente: " . $PastaAssociado = "files/".$_SESSION['PastaAssociado']."/";
          "<br>";
         include_once "./pages/Relatorios/resource/Upload-Midias-Sociais.php";
     }

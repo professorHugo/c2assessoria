@@ -1,9 +1,9 @@
 <?php
 if(isset($_GET['V'])){
     session_start();
-    require_once "../config/configuration.php";
+    require_once "../../config/configuration.php";
     $Vinculo = $_GET['V'];
-    if($Vinculo == "Associado"){
+    if($Vinculo == "1"){
         sleep(1);
         $CPFAssociado = $_SESSION['CadastroSindicancia1'][4];
         $QueryBuscarAssociado = "SELECT nome_associado FROM tb_associados WHERE cpf_associado = '$CPFAssociado'";

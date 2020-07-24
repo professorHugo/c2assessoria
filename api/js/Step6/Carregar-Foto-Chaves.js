@@ -13,6 +13,6 @@ function carregarFotoChave(){
             }
         }
     };
-    ac_xhtml.open("GET", "js/Carregar-Foto-Chaves.php?C=" + chaves_apresentadas, true);
+    ac_xhtml.open("GET", "js/Step6/Carregar-Foto-Chaves.php?C=" + chaves_apresentadas, true);
     ac_xhtml.send(null);
 }

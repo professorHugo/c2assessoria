@@ -1,7 +1,7 @@
-<script src="js/ProprietarioLegal.js"></script>
-<script src="js/Carregar-Procedente.js"></script>
-<script src="js/Carregar-Foto-Chaves.js"></script>
-<script src="js/Carregar-Print-Rastreador.js"></script>
+<script src="js/Step6/ProprietarioLegal.js"></script>
+<script src="js/Step6/Carregar-Procedente.js"></script>
+<script src="js/Step6/Carregar-Foto-Chaves.js"></script>
+<script src="js/Step6/Carregar-Print-Rastreador.js"></script>
 
 <style>
     input[type='file']{

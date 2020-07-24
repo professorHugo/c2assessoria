@@ -8,15 +8,16 @@ echo $Protocolo = $_SESSION['Protocolo']['pr'];
 echo "CPF: " . $CPFAssociado = $_SESSION['Protocolo']['cpf'];
 
 $Update =  date("Y/m/d H:i:s");
-"<br> Associado apontou em midias sociais: " . $MidiasSociaisAssociado = $_POST['midias_sociais_associado'];
-"<br> Print: " . $PrintMidiasSociais = $printMidiasSociais;
+echo "<br> Associado apontou em midias sociais: " . $MidiasSociaisAssociado = $_POST['midias_sociais_associado'];
+echo "<br> Print: " . $PrintMidiasSociais = $printMidiasSociais;
 
 //Dados de veículos Adicionais
 include_once "Frag/Veiculos-Extras-Associado.php";
 
 //Verificar se o veículo (mesmo extra) já está armazenado no banco de dados
 switch($QuantidadeVeiculosExtra){
-    case 1: include_once "Frag/Veiculo1.php";break;
+    case 1: include_once "Frag/Veiculo1.php";
+    break;
     case 2: 
         include_once "Frag/Veiculo1.php";
         include_once "Frag/Veiculo2.php";

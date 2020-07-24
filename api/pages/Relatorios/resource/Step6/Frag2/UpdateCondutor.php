@@ -1,4 +1,11 @@
 <?php
+if($VeiculoProprioCondutor == 1){
+    //Cadastrar Veículso do Condutor
+    
+}else{
+
+}
+
 $QueryBuscarVeiculosCondutor= "SELECT * FROM tb_veiculos WHERE segurado_veiculo = '$CPFAssociado'";
 $ExeQrBuscarVeiculosCondutor= mysqli_query($connection, $QueryBuscarVeiculosCondutor);
 $RowQrBuscarVeiculosCondutor= mysqli_num_rows($ExeQrBuscarVeiculosCondutor);
@@ -6,7 +13,6 @@ if($RowQrBuscarVeiculosCondutor>= 1){
     //Guardar veículos encontrados
     while($RetVeiculosAssociado = mysqli_fetch_assoc($ExeQrBuscarVeiculosCondutor)){
         $id_veiculo_associado = $RetVeiculosAssociado['id_veiculo'];
-        $i = 1;
         if($i = 2 && $id_veiculo_associado < $RowQrBuscarVeiculosCondutor){
             //Atualizar dados do associado
             echo $veiculo[$id_veiculo_associado] = "veiculo".$id_veiculo_associado."_condutor";

@@ -9,7 +9,7 @@ if($RowQrBuscarVeiculosAssociado >= 1){
         $i = 1;
         if($i = 1 && $id_veiculo_associado <= $RowQrBuscarVeiculosAssociado){
             //Atualizar dados do associado
-            echo $veiculo[$id_veiculo_associado] = "veiculo".$id_veiculo_associado."_associado";
+            echo "<br>". $veiculo[$id_veiculo_associado] = "veiculo".$id_veiculo_associado."_associado";
             echo "<br>
             <pre>";
             echo $QueryBuscarAssociadoAtualizar[$id_veiculo_associado] = "

@@ -15,6 +15,6 @@ function buscarAssociado(){
             }
         }
     };
-    xhttp.open("GET","./js/BuscarUsuario.php?CPF=" + campoCPF , true);
+    xhttp.open("GET","./js/BuscarAssociados.php?CPF=" + campoCPF , true);
     xhttp.send(null);
 }

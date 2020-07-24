@@ -15,6 +15,6 @@ function carregarProcedente(){
             }
         }
     };
-    vrs_xhtml.open("GET", "js/Carregar-Procedente.php?P=" + procedente_veiculo, true);
+    vrs_xhtml.open("GET", "js/Step6/Carregar-Procedente.php?P=" + procedente_veiculo, true);
     vrs_xhtml.send(null);
 }

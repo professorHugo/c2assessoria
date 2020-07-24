@@ -5,7 +5,6 @@ if(isset($_GET['CPF'])){
     $CPF = $_GET['CPF'];
     $QueryBuscarAssociado = "SELECT * FROM tb_associados WHERE cpf_associado = '$CPF'";
 
-    sleep(1);
     $ExeQrBuscarAssociado = mysqli_query($connection, $QueryBuscarAssociado);
     $CountBuscarAssociado = mysqli_affected_rows($connection);
 
@@ -16,5 +15,11 @@ if(isset($_GET['CPF'])){
             <input type="text" id="nome_associado_return" disabled class="form-control form-control-lg" placeholder="<?php echo $NomeReturn = $ReturnAssociado['nome_associado'];?>"> 
             <?php
         }
+    }else{
+    ?>
+        <input type="hidden" name="cpf_associado_novo" value="<?php echo $CPF?>">
+        <input type="hidden" name="novo_associado">
+        <input type="text" name="nome_associado_return" class="form-control form-control-lg" placeholder="Nome Completo"> 
+    <?php
     }
 }

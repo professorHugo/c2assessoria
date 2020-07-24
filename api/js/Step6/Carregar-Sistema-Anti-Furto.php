@@ -6,13 +6,12 @@ if(isset($_GET['T'])){
         case 0 : 
             ?>
             <label for="name_foto_sistema" class="label-file">Não há sistema antifurto</label>
-            <input type="hidden" id="name_foto_sistema" value="0">
             <?php
         break;
 
         case 1 : ?>
         
-            <input type="file" id="foto_sistema" name="foto_sistema btn btn-default"><?php
+            <input type="file" id="foto_sistema" name="foto_sistema"><?php
             
         break;
 

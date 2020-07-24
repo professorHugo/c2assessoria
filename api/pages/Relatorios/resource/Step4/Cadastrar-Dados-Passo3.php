@@ -6,6 +6,7 @@
  "<br> Bairro do Evento: " . $BairroEvento = addslashes($_POST['bairro_evento']);
  "<br> Cidade do Evento: " . $CidadeEvento = addslashes($_POST['cidade_evento']);
  "<br> UF do Evento: " . $UFEvento = $_POST['estado_evento'];
+ "<br> Nr do Evento: " . $NrEvento = $_POST['numero_evento'];
 
 $Protocolo = $_SESSION['Protocolo']['pr'];
 $Update =  date("Y/m/d H:i:s");
@@ -18,6 +19,7 @@ $QueryInserirPasso3 = "
         horario_evento = '$HorarioEvento',
         cep_evento = '$CEPEvento',
         endereco_evento = '$EnderecoEvento',
+        numero_evento = '$NrEvento',
         bairro_evento = '$BairroEvento',
         cidade_evento = '$CidadeEvento',
         uf_evento = '$UFEvento'

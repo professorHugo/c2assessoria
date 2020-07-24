@@ -6,7 +6,7 @@
 "<br> Quantidade de Veículos: " . $QuantidadeVeiculosExtra = $_POST['veiculos_quantidade'];
 $Protocolo = $_SESSION['Protocolo']['pr'];
 "CPF: " . $CPFAssociado = $_SESSION['Protocolo']['cpf'];
-
+$Condutor = $_SESSION['Condutor'];
 $Update =  date("Y/m/d H:i:s");
 "<br> Associado apontou em midias sociais: " . $MidiasSociaisAssociado = $_POST['midias_sociais_associado'];
 "<br> Print: " . $PrintMidiasSociais = $printMidiasSociais;

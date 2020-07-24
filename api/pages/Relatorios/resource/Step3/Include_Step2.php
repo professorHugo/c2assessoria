@@ -7,6 +7,7 @@ $marcaVeiculo = $_POST['marca_veiculo'];
 $modeloVeiculo = $_POST['modelo_veiculo'];
 
 $_SESSION['CondutorVeiculo'] = $contudorVeiculo;
+$_SESSION['PlacaVeiculo'] = $placaVeiculo;
 
 //Array do Passo 2
 $Step2 = array($contudorVeiculo,$nomeCondutor,$placaVeiculo,$marcaVeiculo,$modeloVeiculo);

@@ -8,8 +8,8 @@
         <div class="col-sm-12 col-md-3">
             <select name="proprietario_legal" onchange="proprietarioChange();" id="proprietario_legal" class="form-control form-control-lg" required>
                 <option value="" selected disabled>Selecione</option>
-                <option value="Associado">Associado(a)</option>
-                <option value="Terceiros">Terceiros</option>
+                <option value="1">Associado(a)</option>
+                <option value="2">Terceiros</option>
             </select>
         </div>
     </div>

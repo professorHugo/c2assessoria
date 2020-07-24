@@ -17,19 +17,25 @@ echo "<br> Print: " . $PrintMidiasSociais = $printMidiasSociaisCondutor;
 //Análise de Veículos Próprios do Condutor
 include_once "Frag2/Veiculo-Proprio-Condutor.php";
 
-//Verificar se o veículo (mesmo extra) já está armazenado no banco de dados
-switch($QtdVeiculoProprioCondutor){
-    case 1: include_once "Frag2/Veiculo1.php";break;
-    case 2: 
-        include_once "Frag2/Veiculo1.php";
-        include_once "Frag2/Veiculo2.php";
-    break;
-    case 3: 
-        include_once "Frag2/Veiculo1.php";
-        include_once "Frag2/Veiculo2.php";
-        include_once "Frag2/Veiculo3.php";
-    break;
+if($VeiculoProprioCondutor == 1){
+    //Cadastrar Veículos do Condutor
+    //Verificar se o veículo (mesmo extra) já está armazenado no banco de dados
+    switch($QtdVeiculoProprioCondutor){
+        case 1: include_once "Frag2/Veiculo1.php";break;
+        case 2: 
+            include_once "Frag2/Veiculo1.php";
+            include_once "Frag2/Veiculo2.php";
+        break;
+        case 3: 
+            include_once "Frag2/Veiculo1.php";
+            include_once "Frag2/Veiculo2.php";
+            include_once "Frag2/Veiculo3.php";
+        break;
+    }
+}else{
+
 }
+
 echo "<br>";
 //Update dos veículos do condutor
 include_once "Frag2/UpdateCondutor.php";

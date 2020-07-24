@@ -14,7 +14,7 @@ if(isset($_POST['placa_veiculo1_condutor'])){
             (
                 segurado_veiculo,
                 protocolo_evento,
-                condutor_evento,
+                condutor_veiculo,
                 marca_veiculo,
                 modelo_veiculo,
                 placa_veiculo,

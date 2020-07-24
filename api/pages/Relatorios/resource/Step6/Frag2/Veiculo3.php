@@ -21,7 +21,7 @@ if(isset($_POST['placa_veiculo3_condutor'])){
             VALUES(
                 '$CPFAssociado',
                 '$Protocolo',
-                '$condutor',
+                '$Condutor',
                 '$MarcaVeiculo3_condutor',
                 '$ModeloVeiculo3_condutor',
                 '$PlacaVeiculo3_condutor',

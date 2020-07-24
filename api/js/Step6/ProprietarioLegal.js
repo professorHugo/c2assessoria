@@ -13,6 +13,6 @@ function proprietarioChange(){
             }
         }
     };
-    vrs_xhtml.open("GET", "js/Vinculo.php?V=" + proprietario_legal, true);
+    vrs_xhtml.open("GET", "js/Step6/Vinculo.php?V=" + proprietario_legal, true);
     vrs_xhtml.send(null);
 }

@@ -28,7 +28,20 @@
         </div>
         <label for="marca_veiculo" class="col-xs-12 col-md-2 col-form-label col-form-label-lg">Marca:</label>
         <div class="col-xs-12 col-md-4">
-            <input type="text" id="marca_veiculo" name="marca_veiculo" class="form-control form-control-lg" required>
+            <select name="marca_veiculo" id="marca_veiculo" class="form-control form-control-lg" required>
+            <option value="" selected disabled>Selecione a marca</option>
+            <?php
+                $QueryBuscarMarcas = "SELECT * FROM tb_marcas_veiculos";
+                $ExeQrBuscarMarcas = mysqli_query($connection, $QueryBuscarMarcas);
+                while($ResBuscarMarcas = mysqli_fetch_assoc($ExeQrBuscarMarcas)){
+                ?>
+                    <option value="<?php echo $ResBuscarMarcas['nome_marca']?>">
+                        <?php echo $ResBuscarMarcas['nome_marca']?>
+                    </option>
+                <?php
+                }
+            ?>
+            </select>
         </div>
         <div class="clearfix"></div>
         <label for="modelo_veiculo" class="col-12 col-form-label col-form-label-lg">Modelo:</label>
