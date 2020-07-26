@@ -38,10 +38,10 @@
         <div class="col-sm-12 col-md-3">
             <select name="procedente_veiculo" onchange="carregarProcedente();" id="procedente_veiculo" required class="form-control form-control-lg">
                 <option value="" disabled selected>Selecione</option>
-                <option value="0">Não Apresentou</option>
-                <option value="1">Loja</option>
-                <option value="2">Particular</option>
-                <option value="3">Leilão</option>
+                <option value="1">Não Apresentou</option>
+                <option value="2">Loja</option>
+                <option value="3">Particular</option>
+                <option value="4">Leilão</option>
             </select>
         </div>
         <div class="input-group col-sm-12 col-md-6" id="return_procedente">

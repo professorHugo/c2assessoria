@@ -34,6 +34,50 @@
             }
         ?>
         </div>
+        <div style="margin-top:35px"></div>
+        <div class="col-2 text-right">
+            Status:
+        </div>
+        <div class="col-3">
+            <?php echo $ResRelatorios['status_relatorio']?>
+        </div>
+        
+        <div class="col"></div>
+        <div class="col-3 text-right">
+            Data/Hora do evento:
+        </div>
+        <div class="col-2">
+            <b>
+            <?php 
+                $data = str_replace("-", "/", $ResRelatorios['data_evento']);
+                echo date('d/m/Y', strtotime($data));?> | 
+            <?php echo $ResRelatorios['horario_evento']?>
+            </b>
+        </div>
+        <div class="col-2 text-right">
+            Endereço:
+        </div>
+        <div class="col-7">
+            <?php 
+                echo 
+                $ResRelatorios['endereco_evento'] . ", ".
+                $ResRelatorios['numero_evento'] . " - ".
+                $ResRelatorios['bairro_evento'] . " - ".
+                $ResRelatorios['cidade_evento'] . " | ".
+                $ResRelatorios['uf_evento']
+            ?>
+        </div>
+        <div class="col-1 text-right">
+            CEP:
+        </div>
+        <div class="col-2">
+            <b>
+            <?php 
+                $CEPBuscado = $ResRelatorios['cep_evento'];
+                echo $MostrarCEP = substr_replace($CEPBuscado, "-", 5,0);
+            ?>
+            </b>
+        </div>
     </div>
     <hr>
     <div class="clearfix" style="margin-top:35px"></div>
@@ -131,4 +175,25 @@
     </div>
     <hr>
     <h2 class="text-center bg-dark text-white">Perfil do Condutor</h2>
+    <div class="row">
+    
+    </div>
+    <h2 class="text-center bg-dark text-white">Veículo</h2>
+    <div class="row">
+        <div class="col-2 text-right">
+            Marca:
+        </div>
+        <div class="col-1">
+            Marca
+        </div>
+        <div class="col-1 text-right">
+            Modelo
+        </div>
+        <div class="col-1 text-right">
+            Placa
+        </div>
+        <div class="col">
+            AAA9999
+        </div>
+    </div>
 </div>

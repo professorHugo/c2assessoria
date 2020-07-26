@@ -6,6 +6,11 @@
 </ul>
 <b>Resultado: <span class="text-danger"><?php echo "Análise";?></span></b>
 <hr>
+<style>
+input[type='file']#print_vistoria_cautelar{
+    width: 100%;
+}
+</style>
 
 <?php
     //Formulário do Passo 8

@@ -1,15 +1,15 @@
 <?php
 switch ($ProcedenteVeiculo) {
-    case 0:
+    case 1:
         echo "<br>" . $PrintProcedencia = "Nao_Apresentado";
     break;
-    case 1:
+    case 2:
         echo "<br>" . $PrintProcedencia = "Loja";
     break;
-    case 2:
+    case 3:
         echo "<br>" . $PrintProcedencia = "Particular";
     break;
-    case 3:
+    case 4:
         echo "<br>" . $PrintProcedencia = "Leilao";
     break;
 }

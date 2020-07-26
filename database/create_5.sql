@@ -67,14 +67,6 @@ insert into tb_clientes(nome_cliente)values
 ('SEJA UNNICA - ASSOCIAÃ‡ÃƒO DE BENEFICIOS UNNICA'),
 ('TECX PARK - GESTÃƒO DE MÃƒO OBRA T. S. T. LTDA');
 
-/*TB Vistorias Realizadas*/
-create table tb_vistorias_realizadas(
-    id_vistoria int not null auto_increment PRIMARY KEY,
-    protocolo_vistoria VARCHAR(20) DEFAULT NULL,
-    tipo_vistoria int DEFAULT NULL, /* FK */
-    data_vistoria TIMESTAMP null DEFAULT current_timestamp,
-    FOREIGN KEY(tipo_vistoria) REFERENCES tb_tipo_vistorias(id_tipo_vistoria)
-)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*TB Fotos*/
 create table tb_fotos(
@@ -83,6 +75,17 @@ create table tb_fotos(
     protocolo_foto VARCHAR(100) DEFAULT NULL,
     pasta_foto VARCHAR(100) DEFAULT NULL,
     nome_foto varchar(200) DEFAULT NULL
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+/*TB Vistorias Realizadas*/
+create table tb_vistorias_realizadas(
+    id_vistoria int not null auto_increment PRIMARY KEY,
+    protocolo_vistoria VARCHAR(20) DEFAULT NULL,
+    situacao_vistoria int DEFAULT NULL,
+    arquivo_vistoria int DEFAULT NULL,
+    data_vistoria TIMESTAMP null DEFAULT current_timestamp,
+
+    FOREIGN KEY(arquivo_vistoria) REFERENCES tb_fotos(id_foto)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*Tb Fotos Documentos Veículos Segurados*/
@@ -292,7 +295,7 @@ create table tb_relatorios(
     bairro_evento VARCHAR(255) DEFAULT null,
     cidade_evento VARCHAR(255) DEFAULT null,
     uf_evento VARCHAR(10) DEFAULT null,
-    status_relatorio VARCHAR(10) DEFAULT NULL,
+    status_relatorio VARCHAR(50) DEFAULT NULL,
 
     midias_sociais_associado VARCHAR(10) DEFAULT null,
     print_midias_associado VARCHAR(100) DEFAULT null,

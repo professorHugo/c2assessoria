@@ -21,11 +21,26 @@
             </select>
         </div>
     </div>
-    <div class="clearfix" style="margin:6% 0"></div>
+    <div class="clearfix" style="margin:2% 0"></div>
     <div class="form-group row" id="return_vistoria_realizada">
     <!-- Return Ajax -->
     </div>
-
+    <!-- Observação da Vistoria -->
+    <div class="row col-12 align-items-center" style="margin-top:15px;margin-bottom:15px">
+            <div class="col-sm-12 col-md-2 float-left">
+                <label for="observacao_vistoria" class="col-form-label col-form-label-lg">Observação: </label>
+            </div>
+            <div class="col-sm-12 col-md-10 float-left">
+                <textarea 
+                name="observacao_vistoria" 
+                id="observacao_vistoria" 
+                class="form-control" 
+                cols="33" 
+                rows="5"
+                placeholder="Digite toda e qualquer observação que seja necesária a respeito da vistoria cautelar do veículo"
+                ></textarea>
+            </div>
+        </div>
     <hr>
     
     <div class="clearfix" style="margin:3% 0"></div>

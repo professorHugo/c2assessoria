@@ -40,12 +40,14 @@ $QueryCadastrarPasso1 = "
         solicitante_evento,
         protocolo_evento,
         natureza_evento,
-        cpf_associado
+        cpf_associado,
+        status_relatorio
     )VALUES(
         '$SolicitanteSindicancia',
         '$ProtocoloEvento',
         '$NaturezaEvento',
-        '$CPFAssociado'
+        '$CPFAssociado',
+        'Processando'
     )
 ";
 //Verificar se já existe o protocolo cadastrado
