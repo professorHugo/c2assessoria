@@ -1,4 +1,4 @@
-### Dashboard C2 Assessoria - Versão 2 ###
+# Dashboard C2 Assessoria - Versão 2 #
 
 ## Interface Nova ##
     *Aparência;
@@ -6,6 +6,6 @@
     *Login;
     *Diretórios mais organizados;
 
-# Conteúdo Re-Criado *
-[O Conteúdo será digitado a cada novo deploy]
+### Conteúdo Re-Criado ###
+    *[O Conteúdo será digitado a cada novo deploy]
     *
