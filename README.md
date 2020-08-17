@@ -7,5 +7,5 @@
     *Diretórios mais organizados;
 
 ### Conteúdo Re-Criado ###
-    *[O Conteúdo será digitado a cada novo deploy]
-    *
+    -- O Conteúdo será digitado a cada novo deploy --
+    
