@@ -1,0 +1,15 @@
+@media( min-width: 992px ){
+    .p-5 .text-center img{
+        display: none;
+    }
+    
+}
+
+#container-login {
+    margin-top: 4rem!important;
+}
+
+#img-loading{
+    display: block;
+    margin: 0 auto;
+}

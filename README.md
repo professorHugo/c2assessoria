@@ -8,4 +8,5 @@
 
 ### Conteúdo Re-Criado ###
     -- O Conteúdo será digitado a cada novo deploy --
+    **Sistema para login e armazenamento da $_SESSION do usuário**
     
