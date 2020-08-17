@@ -1,128 +1,94 @@
-<?php
-require_once "config/configuration.php";
-date_default_timezone_set('America/Sao_Paulo');
-session_start();
-
-if(isset($_GET['Logout'])){
-  include_once "parts/modals/modal-logoff.php";
-}
-
-if(!isset($_SESSION['Login'])){
-  ?>
-  <meta http-equiv="refresh" content="0;../">
-  <?php
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="apple-touch-icon" sizes="57x57" href="../img/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="../img/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../img/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="../img/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../img/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="../img/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="../img/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="../img/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="../img/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="../img/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../img/favicon/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Agência N2Y - Sempre ao seu lado">
 
-    <title><?php echo SITENAME?></title>
+  <title>SB Admin 2 - Dashboard</title>
 
-    <?php include_once "parts/plugins/index.php"?>
+  <!-- Custom fonts for this template-->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- Bootstrap core CSS-->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template-->
-    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+</head>
 
-    <!-- Page level plugin CSS-->
-    <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+<body id="page-top">
 
-    <!-- Custom styles for this template-->
-    <link href="../css/sb-admin.css" rel="stylesheet">
-    
-    <script>
-    $(function(){
-      if(window.innerWidth < 660){
-        $("#sidebar").hide();
-        $("#sidebarToggle").click(function(){
-          $("#sidebar").slideToggle(2000);
-        });
-      }else{
-        $("#sidebar").show();
-        $("#sidebarToggle").click(function(){
-          $("#sidebar").slideToggle(2000);
-        });
-      }
-      
-    })
-    </script>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
 
-  </head>
+    <!-- Sidebar -->
+    <?php include_once "containers/sidebar.php"?>
+    <!-- End of Sidebar -->
 
-  <body id="page-top">
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
 
-    <?php include_once "parts/navigation-top.php"?>
+      <!-- Main Content -->
+      <div id="content">
 
-    <div id="wrapper">
+        <!-- Topbar -->
+        <?php include_once "containers/Top-Menu-Bar.php";?>
+        <!-- End of Topbar -->
 
-      <?php include_once "parts/side-menu.php" ?>
-
-      <div id="content-wrapper">
-
+        <!-- Begin Page Content -->
         <div class="container-fluid">
-          <!-- Breadcrumbs-->
-          <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-              <a href="#">Painel de Controle</a>
-          </li>
-          <li class="breadcrumb-item active"><?php if(isset($_GET['url'])){echo $_GET['url'];}else{echo 'Inicio';}?></li>
-          </ol>
 
-        <?php
-          if(isset($_GET['url'])){
-            $url = $_GET['url'];
-            switch($url){
-              case $url: include "pages/".$url.".php";break;
-              default: include "pages/home.php";break;
+          <!-- Page Heading -->
+
+          <?php 
+          //Topo com botões de resumos
+          if( isset($_GET['Page']) ){
+              if ( $_GET['Page'] != "Relatorios" ){
+                include_once "containers/Container-Top.php";
+              }
+            }else{
+              include_once "containers/Container-Top.php";
             }
-          }else{
-            include_once "pages/home.php";
-          }
-        ?>
+          
+            //Navegação do conteúdo
+            if(isset($_GET['Page'])){
+              $Pagina = $_GET['Page'];
+
+              switch( $Pagina ) {
+                case $Pagina : include_once "Pages/" . $Pagina . "/index.php";break;
+                default: include_once "Pages/Home/index.php";
+              }
+            }else{
+              include_once "Pages/Home/index.php";
+            }
+          ?>
 
         </div>
         <!-- /.container-fluid -->
-        <?php include_once "parts/footer.php"?>
+
       </div>
-      <!-- /.content-wrapper -->
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <?php include_once "containers/Footer.php"?>
+      <!-- End of Footer -->
+
     </div>
-    <!-- /#wrapper -->
+    <!-- End of Content Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
+  </div>
+  <!-- End of Page Wrapper -->
 
-    <?php include_once "parts/modals/logoff.php"?>
-  </body>
+  <!-- Complementos da página principal -->
+  <?php include_once "containers/To-Up-Button.php"?>
+  <?php include_once "containers/Logout-Modal.php"?>
+  <!-- Plugins -->
+  <?php include_once "containers/Plugins-End.php"?>
+
+</body>
 
 </html>
