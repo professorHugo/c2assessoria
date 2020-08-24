@@ -1,3 +1,9 @@
+<?php
+require_once "config/Config.php";
+session_start();
+date_default_timezone_set('America/Sao_Paulo');
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -17,6 +23,11 @@
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+  <script src="https://use.fontawesome.com/5bf16b2cc9.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Core jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
 </head>
 

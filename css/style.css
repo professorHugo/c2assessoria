@@ -13,3 +13,8 @@
     display: block;
     margin: 0 auto;
 }
+
+.teste{
+    align-content: space-between;
+    justify-items: center;
+}

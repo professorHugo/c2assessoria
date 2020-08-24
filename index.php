@@ -1,4 +1,8 @@
 <?php require_once "api/config/Config.php"?>
+<?php
+session_start();
+// session_destroy();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -36,11 +40,17 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <?php
-              if( isset($_GET['Login']) ){
-                include_once "containers/Login.php";
+            
+              if( isset($_SESSION['LoginUsuario']) ){
+                include_once "containers/Logado.php";
               }else{
-                include_once "containers/Container-Login.php";
+                if( isset($_GET['Login']) ){
+                  include_once "containers/Login.php";
+                }else{
+                  include_once "containers/Container-Login.php";
+                }
               }
+              
             ?>
           </div>
         </div>
