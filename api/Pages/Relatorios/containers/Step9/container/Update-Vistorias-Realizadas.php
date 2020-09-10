@@ -25,7 +25,8 @@ if( $RowQrBuscarVistoria >= 1 ){
         $QueryUpdateArquivoVistoria = "
             UPDATE tb_vistorias_realizadas
             SET
-                arquivo_vistoria = '$IdVistoria'
+                arquivo_vistoria = '$IdVistoria',
+                tipo_vistoria = '1'
             WHERE protocolo_vistoria = '$Protocolo'
         ";
         echo "</pre>";

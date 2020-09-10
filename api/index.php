@@ -15,7 +15,26 @@ date_default_timezone_set('America/Sao_Paulo');
   <meta name="description" content="">
   <meta name="author" content="Agência N2Y - Sempre ao seu lado">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>
+  Advisory² - 
+  <?php 
+    if(isset($_GET['Page'])) {
+      if( isset($_GET['Cadastrar']) ){
+        $Title = $_GET['Page'] . ": Cadastrar";
+      }else{
+        $Title = $_GET['Page'];
+      }
+
+      if( isset($_GET['Relatorios']) ){
+        $Title = $_GET['Page'] . ": Relatórios";
+      }
+      
+    }else{
+      $Title =  "Home";
+    }
+    echo $Title;
+  ?>
+  </title>
 
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -27,6 +46,8 @@ date_default_timezone_set('America/Sao_Paulo');
   <link rel="stylesheet" href="css/styles.css">
   <!-- Core jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="js/jquery.form.js"></script>
+
 
 
 </head>

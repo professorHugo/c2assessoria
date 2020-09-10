@@ -8,5 +8,7 @@
 <?php
 include_once "Dados-Passo8.php";
 include_once "Form.php";
+//Cadastrar Vistoria
 include_once "Cadastrar-Dados-Passo8.php";
+//Upload de arquivos
 include_once "Uploads.php";

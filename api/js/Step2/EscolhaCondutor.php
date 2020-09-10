@@ -10,14 +10,14 @@ if(isset($_GET['Escolha'])){
         id="nome_condutor" 
         name="" 
         class="form-control form-control-lg" 
-        placeholder="<?php echo $_SESSION['CadastroSindicancia1'][5]?>"
+        placeholder="<?php echo $_SESSION['NomeAssociado']?>"
         disabled>
         <input 
         type="hidden" 
         id="nome_condutor" 
         name="nome_condutor" 
         class="form-control form-control-lg" 
-        value="<?php echo $_SESSION['CadastroSindicancia1'][5]?>"
+        value="<?php echo $_SESSION['NomeAssociado']?>"
         >
     <?php
     }else{

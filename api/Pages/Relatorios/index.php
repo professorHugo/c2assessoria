@@ -12,6 +12,12 @@
 <script src="js/Step7/Carregar-Prints.js"></script>
 <script src="js/Step8/Carregar-Foto-Vistoria.js"></script>
 <script src="js/Step9/Carregar-Foto-CNH.js"></script>
+<script src="js/Step10/Carregar-Situacao-Financeira.js"></script>
+<script src="js/Step12/Carregar-Testemunhas.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script src="js/Step14/Carregar-Orgaos-Publicos.js"></script>
+<script src="js/Step15/Salvar-Entrevistados.js"></script>
+<script src="js/Step15/BuscarCEPEntrevistado.js"></script>
 
 
 

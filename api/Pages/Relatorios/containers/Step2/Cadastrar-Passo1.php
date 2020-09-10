@@ -27,6 +27,7 @@ if(isset($_POST['novo_associado'])){
 }
 
 echo "<br>Solicitante: ". $SolicitanteSindicancia = $_POST['solicitante'];
+echo "<br>Sindicante: " . $Sindicante = $_SESSION['LoginUsuario']['id_usuario'];
 echo "<br>Protocolo: ". $ProtocoloEvento = $_POST['protocolo_evento'];
 echo "<br>Natureza Evento: ".$NaturezaEvento = $_POST['natureza_evento'];
 echo "<br>CPF Associado: ".$CPFAssociado = $_POST['cpf_associado'];
@@ -38,12 +39,14 @@ echo "<br>Cadastro do Relatório<pre>" .
 $QueryCadastrarPasso1 = "
     INSERT INTO tb_relatorios(
         solicitante_evento,
+        sindicante_evento,
         protocolo_evento,
         natureza_evento,
         cpf_associado,
         status_relatorio
     )VALUES(
         '$SolicitanteSindicancia',
+        '$Sindicante',
         '$ProtocoloEvento',
         '$NaturezaEvento',
         '$CPFAssociado',

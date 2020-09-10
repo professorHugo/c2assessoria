@@ -16,10 +16,12 @@ if( $RowQrBuscarVistoria >=1 ){
         INSERT INTO tb_vistorias_realizadas(
             protocolo_vistoria,
             situacao_vistoria,
+            observacao_vistoria,
             data_vistoria
         )VALUES(
             '$Protocolo',
             '$SituacaoVistoria',
+            '$ObservacaoVistoria',
             '$DataVistoria '
         )
     ";

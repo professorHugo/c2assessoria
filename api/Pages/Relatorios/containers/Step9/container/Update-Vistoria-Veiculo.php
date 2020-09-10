@@ -17,7 +17,7 @@ if( $RowQrBuscarVistoria >= 1 ){
     $QueryUpdateVistoriaVeiculo = "
         UPDATE tb_veiculos
         SET 
-            vistoria_veiculo = '$IdVistoria'
+            vistoria_realizada = '$IdVistoria'
         WHERE placa_veiculo = '$PlacaVeiculo' AND protocolo_evento = '$Protocolo'
     ";
     echo "</pre>";

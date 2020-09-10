@@ -32,6 +32,7 @@ create table tb_proprietarios(
     chn_proprietario varchar(200) DEFAULT NULL
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
+
 /*TB Sistemas Anti-Furto*/
 create table tb_sistemas_anti_furto(
     id_sistema int not null auto_increment PRIMARY KEY,
@@ -82,15 +83,50 @@ insert into tb_fotos(
     'default', '../', 'default.png'
 );
 
+/* TB CNHS REGISTRADAS*/
+CREATE TABLE tb_cnh_registros(
+    id_cnh int not null primary key auto_increment,
+    protocolo_cnh VARCHAR(50) DEFAULT NULL,
+    dono_cnh int DEFAULT null,
+    status_cnh VARCHAR(50) DEFAULT NULL,
+    rg_cnh varchar(50) DEFAULT NULL,
+    emissor_rg_cnh VARCHAR(50) DEFAULT null,
+    uf_rg_cnh VARCHAR (5) DEFAULT NULL,
+    cpf_cnh VARCHAR (11) DEFAULT null,
+    nascimento_cnh TIMESTAMP DEFAULT current_timestamp,
+    permissao_cnh VARCHAR(50) DEFAULT NULL,
+    aac_cnh VARCHAR(10) DEFAULT null,
+    categoria_cnh VARCHAR(10) DEFAULT NULL,
+    registro_cnh VARCHAR(25) DEFAULT NULL,
+    validade_cnh TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    primeira_hab VARCHAR(25) DEFAULT NULL,
+    img_cnh int DEFAULT NULL,
+
+    FOREIGN KEY(img_cnh) REFERENCES tb_fotos(id_foto)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+CREATE TABLE tb_financeiro_veiculo (
+    id_financeiro int not null primary key auto_increment,
+    protocolo_financeiro varchar(100) DEFAULT NULL,
+    instituicao_financeiro VARCHAR(100) DEFAULT NULL,
+    total_parcelas_financeiro int DEFAULT NULL,
+    valor_parcela_financeiro varchar(100) DEFAULT NULL,
+    parcelas_pagas_financeiro int DEFAULT NULL,
+    situacao_financeiro int DEFAULT NULL
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
 /*TB Vistorias Realizadas*/
 create table tb_vistorias_realizadas(
     id_vistoria int not null auto_increment PRIMARY KEY,
     protocolo_vistoria VARCHAR(20) DEFAULT NULL,
-    situacao_vistoria varchar(50) DEFAULT NULL,
+    tipo_vistoria INT DEFAULT NULL,
+    situacao_vistoria VARCHAR(50) DEFAULT NULL,
+    observacao_vistoria VARCHAR(500) DEFAULT NULL,
     arquivo_vistoria int DEFAULT NULL,
     data_vistoria TIMESTAMP null DEFAULT current_timestamp,
 
-    FOREIGN KEY(arquivo_vistoria) REFERENCES tb_fotos(id_foto)
+    FOREIGN KEY(arquivo_vistoria) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(tipo_vistoria) REFERENCES tb_tipo_vistorias(id_tipo_vistoria)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*Tb Fotos Documentos Veículos Segurados*/
@@ -163,9 +199,8 @@ create table tb_veiculos(
     placa_veiculo varchar(8) null,
     seguro_veiculo varchar(10) DEFAULT "Sim",
     dut_veiculo varchar(100) null,
-    procedente_veiculo int(1) null, /*1: LOJA | 2: PARTICULAR | 3: LEILÃO*/
+    procedente_veiculo int(1) null,
     proprietario_anterior_veiculo varchar(100) DEFAULT null,
-    procedencia_apresentada int,
     chaves_apresentadas_veiculo int null, /*1:de uso | 2: reserva | 3: não apresentada*/
     sistema_anti_furto int null, /* FK */
     evento_multa_veiculo int null, /*0: não | 1: sim*/
@@ -174,27 +209,25 @@ create table tb_veiculos(
     restricoes3_veiculo varchar(100),
     queixa_evento_veiculo int null, /*0: não | 1: sim*/
     vistoria_veiculo int null, /*FK*/
-    data_vistoria_veiculo int null, /* FK */
-    instituicao_financeira_veiculo varchar(100),
-    parcelas_financiamento_veiculo int null,
-    valor_parcela_financiamento_veiculo varchar(100),
-    parcelas_pagas_financiamento_veiculo int null, /*QUANTIDADE NUMÉRICA DE PARCELAS PAGAS*/
-    atraso_financiamento_veiculo int null, /* 0: não | 1: sim */
+    vistoria_realizada int null, /* FK */
+
+    financeiro_veiculo int DEFAULT NULL,
+
     foto_nota_fiscal_veiculo int null,
 
     INDEX(proprietario_veiculo),
     INDEX(vistoria_veiculo),
-    INDEX(vistoria_veiculo),
-    INDEX(data_vistoria_veiculo),
+    INDEX(vistoria_realizada),
     INDEX(foto_nota_fiscal_veiculo),
-    INDEX(procedencia_apresentada),
+    INDEX(procedente_veiculo),
+    INDEX(financeiro_veiculo),
 
 
     FOREIGN KEY(proprietario_veiculo) REFERENCES tb_proprietarios(id_proprietario),
-    FOREIGN KEY(vistoria_veiculo) REFERENCES tb_tipo_vistorias(id_tipo_vistoria),
-    FOREIGN KEY(data_vistoria_veiculo) REFERENCES tb_vistorias_realizadas(id_vistoria),
+    FOREIGN KEY(vistoria_realizada) REFERENCES tb_vistorias_realizadas(id_vistoria),
     FOREIGN KEY(foto_nota_fiscal_veiculo) REFERENCES tb_fotos(id_foto),
-    FOREIGN KEY(procedencia_apresentada) REFERENCES tb_fotos_procedentes(id_foto_procedente)
+    FOREIGN KEY(procedente_veiculo) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(financeiro_veiculo) REFERENCES tb_financeiro_veiculo(id_financeiro)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 
@@ -203,7 +236,6 @@ create table tb_veiculos(
 create table tb_associados(
     id_associado int not null PRIMARY KEY auto_increment,
     cpf_associado bigint DEFAULT null,
-    rg_associado bigint DEFAULT null,
     seguradora_associado int DEFAULT null,
     nome_associado varchar(200) DEFAULT null,
     cep_associado varchar(11) DEFAULT null,
@@ -218,28 +250,107 @@ create table tb_associados(
     veiculo2_associado int DEFAULT null,
     veiculo3_associado int DEFAULT null,
     veiculo4_associado int DEFAULT null,
-    status_cnh_associado int DEFAULT null,
+    cnh_associado int DEFAULT null,
+
     FOREIGN KEY(seguradora_associado) REFERENCES tb_clientes(id_cliente),
     FOREIGN KEY(veiculo1_associado) REFERENCES tb_veiculos(id_veiculo),
     FOREIGN KEY(veiculo2_associado) REFERENCES tb_veiculos(id_veiculo),
     FOREIGN KEY(veiculo3_associado) REFERENCES tb_veiculos(id_veiculo),
-    FOREIGN KEY(veiculo4_associado) REFERENCES tb_veiculos(id_veiculo)
+    FOREIGN KEY(veiculo4_associado) REFERENCES tb_veiculos(id_veiculo),
+    FOREIGN KEY(cnh_associado) REFERENCES tb_cnh_registros(id_cnh)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+-- TB Tipos de testemunhas sabedoras
+CREATE TABLE tb_tipos_testemunhas(
+    id_tipo int not null PRIMARY KEY auto_increment,
+    nome_tipo varchar(50) NULL
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_tipos_testemunhas(nome_tipo)VALUES(NULL),('Comerciante');
+
+-- TB Declarações apresentadas
+CREATE TABLE tb_declaracoes(
+    id_declaracao int not null PRIMARY KEY auto_increment,
+    entrevistado varchar(10) DEFAULT NULL,
+    protocolo_declaracoes varchar(100) DEFAULT NULL,
+    dia_fatos_declaracao varchar(500) DEFAULT NULL,
+    via_publica_declaracao varchar(500) DEFAULT NULL,
+    o_que_fazia_declaracao int,
+
+    FOREIGN KEY(o_que_fazia_declaracao) REFERENCES tb_tipos_testemunhas(id_tipo)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+/* TB Orgãos Publicos */
+CREATE TABLE tb_pr_legal(
+    id_pr_legal int not null PRIMARY KEY auto_increment,
+    protocolo_pr_legal varchar(100) DEFAULT NULL,
+
+    pm_resposta VARCHAR(10) DEFAULT NULL,
+    pm_pr_legal int DEFAULT NULL,
+
+    pc_resposta VARCHAR(10) DEFAULT NULL,
+    pc_pr_legal int DEFAULT NULL,
+
+    localizacao_resposta VARCHAR(10) DEFAULT NULL,
+    localizacao_pr_legal int DEFAULT NULL,
+
+    boletim_resposta VARCHAR(10) DEFAULT NULL,
+    boletim_autentico int DEFAULT NULL,
+    boletim_pr_legal int DEFAULT NULL,
+
+    resposta_sinesp VARCHAR(10) DEFAULT NULL,
+    print_sinesp VARCHAR(10) DEFAULT NULL,
+    sinesp_pr_legal int DEFAULT NULL,
+
+    FOREIGN KEY(pm_pr_legal) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(pc_pr_legal) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(localizacao_pr_legal) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(boletim_pr_legal) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(sinesp_pr_legal) REFERENCES tb_fotos(id_foto)
+    
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+/* TB RELACIONAMENTO DO ENTREVISTADO */
+CREATE TABLE tb_relacionamento_entrevistado(
+    id_relacionamento int not null PRIMARY KEY auto_increment,
+    protocolo_relacionamento VARCHAR(100) DEFAULT NULL,
+    nome_entrevistado VARCHAR(100) DEFAULT null,
+    bom_estado_veiculo int DEFAULT NULL,
+    conhecimento_evento int DEFAULT NULL,
+    informacoes_divergentes int DEFAULT NULL,
+    pernoite_garagem int DEFAULT NULL,
+    vinculo_entrevistado int DEFAULT NULL,
+
+    /*textos*/
+    texto_bom_estado VARCHAR(100) DEFAULT NULL,
+    texto_conhecimento_evento VARCHAR(100) DEFAULT NULL,
+    texto_informacoes_divergentes VARCHAR(100) DEFAULT NULL,
+    texto_pernoite_garagem VARCHAR(100) DEFAULT NULL,
+    texto_vinculo_entrevistado VARCHAR(100) DEFAULT NULL
+
+
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*TB Intrevistados*/
 create table tb_entrevistados(
     id_entrevistado int not null auto_increment PRIMARY KEY,
+    protocolo_entrevistados VARCHAR(50) DEFAULT NULL,
     tipo_entrevistado int, /*0: evento | 1: convivio | 2: testemunha*/
     nome_entrevistado varchar(100),
     sexo_entrevistado varchar(9),
+    relacionamento_entrevistado int DEFAULT NULL,
     telefone_entrevistado varchar(11),
     cep_entrevistado varchar(8),
     endereco_entrevistado varchar(100),
+    numero_end_entrevistado varchar(50),
     bairro_entrevistado varchar(100),
     cidade_entrevistado varchar(50),
+    estado_entrevistado varchar(50),
     nacionalidade_entrevistado varchar(50),
+    declaracao_entrevistado int,
     foto_declaracao_entrevistado int,
 
+    FOREIGN KEY(relacionamento_entrevistado) REFERENCES tb_relacionamento_entrevistado(id_relacionamento),
+    FOREIGN KEY(declaracao_entrevistado) REFERENCES tb_declaracoes(id_declaracao),
     FOREIGN KEY(foto_declaracao_entrevistado) REFERENCES tb_fotos(id_foto)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
@@ -250,6 +361,75 @@ create table tb_natureza_evento(
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 insert into tb_natureza_evento(descricao_natureza)values
 ('Roubo'),('Furto'),('Colisão');
+
+
+
+
+/*TBs Local do evento*/
+CREATE TABLE tb_tipo_local(
+    id_tipo_local int not null primary key auto_increment,
+    tipo_local varchar(50)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_tipo_local(tipo_local)VALUES('Residencial'),('Comercial'),('Mista');
+
+CREATE TABLE tb_indice_criminalidade(
+    id_indice int not null primary key auto_increment,
+    indice_criminalidade VARCHAR(50)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_indice_criminalidade(indice_criminalidade)VALUES('Alto'),('Médio'),('Baixo');
+
+CREATE TABLE tb_fluxo_pedestres(
+    id_fluxo int not null primary key auto_increment,
+    fluxo_pedestres VARCHAR(50)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_fluxo_pedestres(fluxo_pedestres)VALUES('Alto'),('Médio'),('Baixo');
+
+CREATE TABLE tb_caracteristicas_via(
+    id_caracteristica int not null primary key auto_increment,
+    caracteristica_via VARCHAR(50)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_caracteristicas_via(caracteristica_via)VALUES('Pavimentada'),('Não Pavimentada');
+
+CREATE TABLE tb_classificacao_regiao(
+    id_classificacao int not null primary key auto_increment,
+    classificacao_regiao VARCHAR(50)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_classificacao_regiao(classificacao_regiao)VALUES('Média/Alta'),('Popular'),('Comunidade');
+
+CREATE TABLE tb_permissao_estacionar(
+    id_permissao int not null primary key auto_increment,
+    permissao_estacionar VARCHAR(50)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_permissao_estacionar(permissao_estacionar)VALUES('Sim'),('Não'),('Não se Aplica');
+
+CREATE TABLE tb_local_evento(
+    id_local INT NOT NULL PRIMARY KEY auto_increment,
+    protocolo_local VARCHAR(100) DEFAULT NULL,
+    tipo_local int,
+    indice_local int,
+    fluxo_local int,
+    via_local int,
+    classificacao_local int,
+    permissao_local int,
+
+    KEY(tipo_local),
+    KEY(indice_local),
+    KEY(fluxo_local),
+    KEY(via_local),
+    KEY(classificacao_local),
+    KEY(permissao_local)
+
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+ALTER TABLE `tb_local_evento` ADD  FOREIGN KEY (`tipo_local`) REFERENCES `tb_tipo_local`(`id_tipo_local`);
+ALTER TABLE `tb_local_evento` ADD  FOREIGN KEY (`indice_local`) REFERENCES `tb_indice_criminalidade`(`id_indice`);
+ALTER TABLE `tb_local_evento` ADD  FOREIGN KEY (`fluxo_local`) REFERENCES `tb_fluxo_pedestres`(`id_fluxo`);
+ALTER TABLE `tb_local_evento` ADD  FOREIGN KEY (`via_local`) REFERENCES `tb_caracteristicas_via`(`id_caracteristica`);
+ALTER TABLE `tb_local_evento` ADD  FOREIGN KEY (`classificacao_local`) REFERENCES `tb_classificacao_regiao`(`id_classificacao`);
+ALTER TABLE `tb_local_evento` ADD  FOREIGN KEY (`permissao_local`) REFERENCES `tb_permissao_estacionar`(`id_permissao`);
+
+
+
+
 
 /*TB Sindicantes*/
 create table tb_sindicantes(
@@ -270,10 +450,12 @@ create table tb_condutores(
     veiculo2_condutor int DEFAULT NULL,
     veiculo3_condutor int DEFAULT NULL,
     vinculo_associado varchar(50) DEFAULT NULL,
+    cnh_condutor int DEFAULT NULL,
 
     FOREIGN KEY(veiculo1_condutor) REFERENCES tb_veiculos(id_veiculo),
     FOREIGN KEY(veiculo2_condutor) REFERENCES tb_veiculos(id_veiculo),
-    FOREIGN KEY(veiculo3_condutor) REFERENCES tb_veiculos(id_veiculo)
+    FOREIGN KEY(veiculo3_condutor) REFERENCES tb_veiculos(id_veiculo),
+    FOREIGN KEY(cnh_condutor) REFERENCES tb_fotos(id_foto)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*TB Relatorios*/
@@ -283,6 +465,7 @@ create table tb_relatorios(
     horario_criacao TIMESTAMP not null DEFAULT current_timestamp,
     horario_update TIMESTAMP null,
     solicitante_evento int,
+    sindicante_evento int,
     protocolo_evento varchar(255),
     natureza_evento int,
     cpf_associado varchar(11),
@@ -297,15 +480,19 @@ create table tb_relatorios(
     bairro_evento VARCHAR(255) DEFAULT null,
     cidade_evento VARCHAR(255) DEFAULT null,
     uf_evento VARCHAR(10) DEFAULT null,
+    local_evento int DEFAULT NULL,
+
     status_relatorio VARCHAR(50) DEFAULT NULL,
 
     midias_sociais_associado VARCHAR(10) DEFAULT null,
     print_midias_associado VARCHAR(100) DEFAULT null,
 
     FOREIGN KEY(solicitante_evento) REFERENCES tb_clientes(id_cliente),
+    FOREIGN KEY(sindicante_evento) REFERENCES tb_usuarios(id_usuario),
     FOREIGN KEY(natureza_evento) REFERENCES tb_natureza_evento(id_natureza),
-    FOREIGN key(condutor_evento) REFERENCES tb_condutores(id_condutor)
-    
+    FOREIGN key(condutor_evento) REFERENCES tb_condutores(id_condutor),
+    FOREIGN KEY(local_evento) REFERENCES tb_local_evento(id_local)
+
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 

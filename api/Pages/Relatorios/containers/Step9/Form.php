@@ -2,7 +2,7 @@
     <!-- Buscar dados no banco, caso tenha o cadastro do associado -->
     <div class="form-group row">
         <div class="col-12">
-            <h5>CNH do condutor do veículo</h5>
+            <h4>CNH do condutor do veículo</h4>
         </div>
         <div class="col-12">
             <label for="cnh_condutor" class="col-sm-12 col-md-2 col-form-label col-form-label-lg float-left">
@@ -14,7 +14,7 @@
                     id="cnh_condutor" 
                     class="form-control form-control-lg"
                     required
-                    onchange="carregarCNHCondutor()"
+                    onchange="carregarCNHCondutor();carregarCNHCondutor2()"
                 >
                 <option value="" selected disabled>Selecione</option>
                 <option value="1">Valida</option>
@@ -26,6 +26,10 @@
             </div>
             <div class="col-sm-12 col-md-6 float-left" id="return_cnh_condutor">
             <!-- Return Ajax -->
+            </div>
+            <div class="clearfix" style="Margin-bottom:15px;"></div>
+            <div class="col-sm-12 col-md-12 float-left" id="return_cnh_condutor2">
+            <!-- Retornar Ajax (Dados da CNH) -->
             </div>
         </div>
     </div>
@@ -42,7 +46,7 @@
             ?>
             <div class="form-group row">
                 <div class="col-12">
-                    <h5>CNH do Associado</h5>
+                    <h4>CNH do Associado</h4>
                 </div>
                 <div class="col-12">
                     <label for="cnh_associado" class="col-sm-12 col-md-2 col-form-label col-form-label-lg float-left">
@@ -54,7 +58,7 @@
                             id="cnh_associado" 
                             class="form-control form-control-lg"
                             required
-                            onchange="carregarCNHAssociado()"
+                            onchange="carregarCNHAssociado(); carregarCNHAssociado2()"
                         >
                         <option value="" selected disabled>Selecione</option>
                         <option value="1">Valida</option>
@@ -66,6 +70,11 @@
                     </div>
                     <div class="col-sm-12 col-md-6 float-left" id="return_cnh_associado">
                     <!-- Return Ajax -->
+                    </div>
+
+                    <div class="clearfix" style="Margin-bottom:15px;"></div>
+                    <div class="col-sm-12 col-md-12 float-left" id="return_cnh_associado2">
+                    <!-- Retornar Ajax (Dados da CNH) -->
                     </div>
                 </div>
             </div>

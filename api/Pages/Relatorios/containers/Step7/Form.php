@@ -99,13 +99,7 @@
         <div class="col-xs-12 col-md-4">
             <a href="?url=Relatorios" class="btn btn-outline-danger btn-lg btn-block">Cancelar</a>
         </div>
-        <div class="col-xs-12 col-md-4">
-            <button type="button" class="btn btn-outline-warning btn-lg btn-block" name="salvar_step2">
-                <span>
-                    Salvar
-                </span>
-            </button>
-        </div>
+        <div class="col-xs-12 col-md-4"></div>
         <div class="col-xs-12 col-md-4">
             <button class="btn btn-outline-success btn-lg btn-block">Próximo</button>
         </div>

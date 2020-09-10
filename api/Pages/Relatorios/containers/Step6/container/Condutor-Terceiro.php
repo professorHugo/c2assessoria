@@ -1,34 +1,32 @@
 <?php
- "<br>Estado Civil Condutor: " . $CivilCondutor = $_POST['estado_civil_condutor'];
- "<br>Profissão Condutor: " . $ProfissaoCondutor = $_POST['profissao_condutor'];
- "<br>Veículo Próprio: ";
+echo "<br>Estado Civil Condutor: " . $CivilCondutor = $_POST['estado_civil_condutor'];
+echo "<br>Profissão Condutor: " . $ProfissaoCondutor = $_POST['profissao_condutor'];
+echo "<br>Veículo Próprio: ";
 $VeiculoProprio = $_POST['veiculo_proprio'];
 if( $VeiculoProprio == 1 ){
-     "Sim";
+    echo "Sim";
 }else{
-     "Não";
+    echo "Não";
 }
 
 if( $VeiculoProprio == 1 ){
-     "<br>Quantidade: " . $VeiculosQuantidade = $_POST['veiculos_quantidade'];
+    echo "<br>Quantidade: " . $VeiculosQuantidade = $_POST['veiculos_quantidade'];
     
     for( $count = 1 ; $count <= $VeiculosQuantidade; $count++ ){
         //Contador dos veículos
-        "<br>Placa: " . $Placa = "placa_veiculo" . $count . "_condutor";
-        "<br>Marca: " . $Marca = "marca_veiculo" . $count . "_condutor";
-        "<br>Modelo: " . $Modelo = "modelo_veiculo" . $count . "_condutor";
-        "<br>Seguro: " . $Seguro = "seguro_veiculo" . $count . "_condutor";
+       echo "<br>Placa: " . $Placa = "placa_veiculo" . $count . "_condutor";
+       echo "<br>Marca: " . $Marca = "marca_veiculo" . $count . "_condutor";
+       echo "<br>Modelo: " . $Modelo = "modelo_veiculo" . $count . "_condutor";
+       echo "<br>Seguro: " . $Seguro = "seguro_veiculo" . $count . "_condutor";
 
         switch( $count ){
             case $count :
-                 "<br><b>Veículo $count</b>:";
-                 "<br>Placa: " . $PlacaVeiculo.$Placa = $_POST[$Placa];
-                 "<br>Marca: " . $MarcaVeiculo1.$Marca = $_POST[$Marca];
-                 "<br>Modelo: " . $ModeloVeiculo1.$Modelo = $_POST[$Modelo];
-                 "<br>Seguro: " . $SeguroVeiculo1.$Seguro = $_POST[$Seguro];
-                 "<hr>";
-
-                
+                echo "<br><b>Veículo $count</b>:";
+                echo "<br>Placa: " . $PlacaVeiculo.$Placa = $_POST[$Placa];
+                echo "<br>Marca: " . $MarcaVeiculo1.$Marca = $_POST[$Marca];
+                echo "<br>Modelo: " . $ModeloVeiculo1.$Modelo = $_POST[$Modelo];
+                echo "<br>Seguro: " . $SeguroVeiculo1.$Seguro = $_POST[$Seguro];
+                echo "<hr>";                
             break;
         }
     }
@@ -37,19 +35,19 @@ if( $VeiculoProprio == 1 ){
 
     for( $count = 1 ; $count <= $VeiculosQuantidade; $count++ ){
         //Contador dos veículos
-        "<br>Placa: " . $Placa = "placa_veiculo" . $count . "_condutor";
-        "<br>Marca: " . $Marca = "marca_veiculo" . $count . "_condutor";
-        "<br>Modelo: " . $Modelo = "modelo_veiculo" . $count . "_condutor";
-        "<br>Seguro: " . $Seguro = "seguro_veiculo" . $count . "_condutor";
+       echo "<br>Placa: " . $Placa = "placa_veiculo" . $count . "_condutor";
+       echo "<br>Marca: " . $Marca = "marca_veiculo" . $count . "_condutor";
+       echo "<br>Modelo: " . $Modelo = "modelo_veiculo" . $count . "_condutor";
+       echo "<br>Seguro: " . $Seguro = "seguro_veiculo" . $count . "_condutor";
 
         switch( $count ){
             case $count :
-                 "<br><b>Veículo $count</b>:";
-                 "<br>Placa: " . $PlacaVeiculo.$Placa = "NULL";
-                 "<br>Marca: " . $MarcaVeiculo1.$Marca = "NULL";
-                 "<br>Modelo: " . $ModeloVeiculo1.$Modelo = "NULL";
-                 "<br>Seguro: " . $SeguroVeiculo1.$Seguro = "NULL";
-                 "<hr>";
+                echo "<br><b>Veículo $count</b>:";
+                echo "<br>Placa: " . $PlacaVeiculo.$Placa = "NULL";
+                echo "<br>Marca: " . $MarcaVeiculo1.$Marca = "NULL";
+                echo "<br>Modelo: " . $ModeloVeiculo1.$Modelo = "NULL";
+                echo "<br>Seguro: " . $SeguroVeiculo1.$Seguro = "NULL";
+                echo "<hr>";
             break;
         }
     }

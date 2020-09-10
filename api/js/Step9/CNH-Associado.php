@@ -8,5 +8,9 @@ if(isset($_GET['A'])){
         <input type="file" id="foto_cnh_associado" name="foto_cnh_associado">
         <label for="foto_cnh_associado" class="label-file">Carregar</label>
     <?php
+    }else{
+    ?>
+    <input type="hidden" name="foto_cnh_associado" value="1">
+    <?php
     }
 }
