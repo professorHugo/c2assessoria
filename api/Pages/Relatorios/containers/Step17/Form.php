@@ -1,4 +1,4 @@
-<form action="?Page=Relatorios&Cadastrar&Step=16" method="post" enctype="multipart/form-data">
+<form action="?Page=Relatorios&Cadastrar&Step=18" method="post" enctype="multipart/form-data">
     <!-- Buscar dados no banco, caso tenha o cadastro do associado -->
     <div class="row">
 
@@ -20,7 +20,7 @@
                 SELECT * FROM tb_entrevistados
                 WHERE
                     protocolo_entrevistados = '$Protocolo' AND
-                    tipo_entrevistado = 3
+                    tipo_entrevistado = 4
                 ";
                 "</pre>";
                 $ExeQrBuscarEntrevistados = mysqli_query($connection, $QueryBuscarEntrevistados);
@@ -99,7 +99,7 @@
                 tb_entrevistados 
             WHERE 
                 protocolo_entrevistados = '$Protocolo' 
-                && tipo_entrevistado = '3'
+                && tipo_entrevistado = 4
         ";
         "</pre>";
 
@@ -123,7 +123,7 @@
                 $nome = $ReturnEntrevistados['nome_entrevistado'];
                 $sexo = $ReturnEntrevistados['sexo_entrevistado'];
                 $telefone = $ReturnEntrevistados['telefone_entrevistado'];
-                $declaracao = $ReturnEntrevistados['foto_declaracao_entrevistado_c'];
+                $declaracao = $ReturnEntrevistados['foto_declaracao_entrevistado_a'];
                 
 
                 ?>
@@ -171,7 +171,7 @@
 
                     <script>
                         $(function(){
-                            var $input<?php echo $idTestemunha?> = document.getElementById('foto_declaracao_entrevistado_c<?php echo $idTestemunha?>');
+                            var $input<?php echo $idTestemunha?> = document.getElementById('foto_declaracao_entrevistado_a<?php echo $idTestemunha?>');
                             var $fileName<?php echo $idTestemunha?> = document.getElementById('file-name<?php echo $idTestemunha?>');
 
                             $input<?php echo $idTestemunha?>.addEventListener('change', function(){
@@ -181,7 +181,7 @@
                     </script>
 
                     <label
-                        for="foto_declaracao_entrevistado_c<?php echo $idTestemunha?>"
+                        for="foto_declaracao_entrevistado_a<?php echo $idTestemunha?>"
                         class="btn btn-success col-12"
                     >
                         Carregar Foto da declaração
@@ -196,8 +196,8 @@
                     </div>
                     <input
                         type="file"
-                        name="foto_declaracao_entrevistado_c<?php echo $idTestemunha?>"
-                        id="foto_declaracao_entrevistado_c<?php echo $idTestemunha?>"
+                        name="foto_declaracao_entrevistado_a<?php echo $idTestemunha?>"
+                        id="foto_declaracao_entrevistado_a<?php echo $idTestemunha?>"
                         style="display:none"
                     >
 
@@ -484,7 +484,7 @@ style="
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar/Cancelar</button>
-        <button onclick="SalvarEntrevistado()" type="button" class="btn btn-primary">
+        <button onclick="SalvarEntrevistadoAssociado()" type="button" class="btn btn-primary">
             <i class="fa fa-floppy-o" aria-hidden="true"></i>
             Salvar Entrevistado
         </button>

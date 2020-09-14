@@ -63,7 +63,7 @@ if( $ExeQrCadastrarRelacionamento ){
             nacionalidade_entrevistado
         )VALUES(
             '$Protocolo',
-            '3',
+            '4',
             '$IdRelacionamento',
             '$nome',
             '$sexo',
@@ -124,7 +124,7 @@ if( $ExeQrCadastrarRelacionamento ){
                     </div>
                 <div class="modal-footer">
                     <a 
-                        href="?Page=Relatorios&Cadastrar&Step=15" 
+                        href="?Page=Relatorios&Cadastrar&Step=17" 
                         class="btn btn-form btn-form" 
                         style="background: var(--blue);color: #fff"
                     >
@@ -145,5 +145,3 @@ if( $ExeQrCadastrarRelacionamento ){
 }else{
     echo "<br>Erro: " . mysqli_error($connection);
 }
-
-

@@ -5,7 +5,7 @@ $QueryBuscarEntrevistados = "
         tb_entrevistados
     WHERE 
         protocolo_entrevistados = '$Protocolo' &&
-        tipo_entrevistado = '3'
+        tipo_entrevistado = '4'
 ";
 echo "</pre>";
 $ExeQrBuscarEntrevistados = mysqli_query($connection, $QueryBuscarEntrevistados);
@@ -14,7 +14,7 @@ if( $ExeQrBuscarEntrevistados ){
     // echo "<br>Achou: " . mysqli_num_rows($ExeQrBuscarEntrevistados) . " Registros";
     while( $ReturnEntrevistados = mysqli_fetch_assoc($ExeQrBuscarEntrevistados) ){
         echo "<br> ID: " . $IdEntrevistado = $ReturnEntrevistados['id_entrevistado'];
-        echo "<br>" . $ArquivoDeclaracao = "foto_declaracao_entrevistado_c".$IdEntrevistado;
+        echo "<br>" . $ArquivoDeclaracao = "foto_declaracao_entrevistado_a".$IdEntrevistado;
 
         echo "<br>Arquivo: " . $FileDeclaracaoEntrevistado = $_FILES[$ArquivoDeclaracao]['tmp_name'];
 
@@ -55,7 +55,7 @@ if( $ExeQrBuscarEntrevistados ){
                 include "container/SQL/Query-Insert-Foto-Entrevistado.php";
 
                 //Update
-                if( $ExeQrCadastrarFotoDeclaracaoCondutor ){
+                if( $ExeQrCadastrarFotoDeclaracaoAssociado ){
                     echo "
                         <br>Foto cadastrada, fazer update na tb_entrevistados com a foto
                         <b>$FotoDeclaracaoEntevistado</b>

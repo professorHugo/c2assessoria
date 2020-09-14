@@ -17,6 +17,7 @@
 <script type="text/javascript" src="js/jquery.form.js"></script>
 <script src="js/Step14/Carregar-Orgaos-Publicos.js"></script>
 <script src="js/Step15/Salvar-Entrevistados.js"></script>
+<script src="js/Step17/Salvar-Entrevistado-Associado.js"></script>
 <script src="js/Step15/BuscarCEPEntrevistado.js"></script>
 
 

@@ -14,3 +14,19 @@
     margin-top: 80px;
     /* display: none; */
 }
+
+.entrevistados[data-toggle=collapse]::after{
+    content: '\f0d8';
+    color: rgba(255,255,255,.5);
+    font-family: 'Font Awesome 5 Free';
+    width: 1rem;
+    text-align: center;
+    float: right;
+    vertical-align: 0;
+    border: 0;
+    font-weight: 900;
+}
+
+.entrevistados[data-toggle=collapse].collapsed::after{
+    content: '\f0d7';
+}

@@ -1,4 +1,4 @@
-<form action="?Page=Relatorios&Cadastrar&Step=17" method="post" enctype="multipart/form-data" id="Entrevistados">
+<form action="?Page=Relatorios&Cadastrar&Step=19" method="post" enctype="multipart/form-data" id="Entrevistados">
     <h5 class="text-center">
         <span class="text-danger">Atenção: </span>
         Nessa sessão, você deve apontar o que diz a respeito das declarações dos entrevistados. 
@@ -20,7 +20,7 @@
                 entrevistados.relacionamento_entrevistado = relacionamento.id_relacionamento
         WHERE 
             relacionamento.protocolo_relacionamento = '$Protocolo' AND
-            entrevistados.tipo_entrevistado = 3
+            entrevistados.tipo_entrevistado = 4
     ";
     echo "</pre>";
     $ExeQrBuscarEntrevistados = mysqli_query($connection, $QueryBuscarEntrevistados);
