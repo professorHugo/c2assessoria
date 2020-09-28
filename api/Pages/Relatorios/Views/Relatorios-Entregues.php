@@ -10,7 +10,10 @@ if( $IdUsuario != 1 ){
     if( mysqli_num_rows($ExeQrBuscarUsuario) >= 1 ){
         echo "<br><pre>" . 
         $QueryBuscarRelatorios = "
-            SELECT * FROM tb_relatorios
+            SELECT * FROM 
+                tb_relatorios relatorio
+            INNER JOIN tb_associados associados
+                ON relatorio.cpf_associado = associados.cpf_associado
             WHERE sindicante_evento = '$IdUsuario'
         ";
         echo "</pre>";
@@ -19,7 +22,10 @@ if( $IdUsuario != 1 ){
 }else{
     echo "<br>Permissão Master<pre>" . 
     $QueryBuscarRelatorios = "
-        SELECT * FROM tb_relatorios
+        SELECT * FROM 
+            tb_relatorios relatorio
+        INNER JOIN tb_associados associados
+            ON relatorio.cpf_associado = associados.cpf_associado
     ";
     echo "</pre>";
 }
@@ -27,32 +33,17 @@ if( $IdUsuario != 1 ){
 $ExeQrBuscarRelatorios = mysqli_query($connection, $QueryBuscarRelatorios);
 
 ?>
-<table class="table table-bordered table-dark">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Protocolo</th>
-            <th scope="col">Associado</th>
-            <th scope="col">Status</th>
-            <?php
-                if($IdUsuario == 1){
-                    echo "<th scope='col'>Dados</th>";
-                }else{
-                    echo "<th scope='col'>Dados</th>";
-                }
-            ?>
-        </tr>
-    </thead>
+<div class="row" id="Relatorios">
+    
+    <?php
+        if( mysqli_num_rows($ExeQrBuscarRelatorios) >= 1 ){
+            while($ReturnRelatorios = mysqli_fetch_assoc($ExeQrBuscarRelatorios)){
 
-<?php
-if( mysqli_num_rows($ExeQrBuscarRelatorios) >= 1 ){
-    while($ReturnRelatorios = mysqli_fetch_assoc($ExeQrBuscarRelatorios)){
+                include "container/View-Relatorios.php";
 
-        include "container/View-Relatorios.php";
-
-    }
-}else{
-    echo "<br>Nenhum Relatório cadastrado no sistema";
-}
-?>
-</table>
+            }
+        }else{
+            echo "<br>Nenhum Relatório cadastrado no sistema";
+        }
+    ?>
+</div>

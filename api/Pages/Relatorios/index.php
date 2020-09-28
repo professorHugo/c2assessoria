@@ -19,6 +19,8 @@
 <script src="js/Step15/Salvar-Entrevistados.js"></script>
 <script src="js/Step17/Salvar-Entrevistado-Associado.js"></script>
 <script src="js/Step15/BuscarCEPEntrevistado.js"></script>
+<script src="js/Step20/Carregar-Mobilidade.js"></script>
+<script src="js/Step21/Registro-Mobilidade.js"></script>
 
 
 
@@ -33,9 +35,18 @@ if( isset($_GET['Cadastrar']) ){
             default: include_once "Pages/Relatorios/Views/Relatorios-Entregues.php";break;
         }
 
-    }else{
-        include_once "Pages/Relatorios/Views/Relatorios-Entregues.php";
     }
 }else{
-    include_once "Pages/Relatorios/Views/Relatorios-Entregues.php";
+    if( isset($_GET['Controle']) ){
+        $Controle = $_GET['Controle'];
+        
+        switch( $Controle ){
+            case $Controle:
+                include_once "Pages/Relatorios/Controller/$Controle/index.php";break;
+            default: include_once "Pages/Relatorios/Views/Relatorios-Entregues.php";break;
+        }
+    }
+    else{
+        include_once "Pages/Relatorios/Views/Relatorios-Entregues.php";
+    }
 }

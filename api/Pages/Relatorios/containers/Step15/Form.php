@@ -3,7 +3,7 @@
     <div class="row">
 
         <div class="col-12">
-            <h5>Convívio do condutor</h5>
+            <h5>Convívio do Condutor</h5>
         </div>
 
         <div class="col-12">
@@ -107,15 +107,14 @@
         $RowQrBuscarEntrevistados = mysqli_num_rows($ExeQrBuscarEntrevistados);
         if( $RowQrBuscarEntrevistados >= 1 ){
             ?>
-            <h5 class="text-center">
+            <h5 class="text-center col-12" style="margin-bottom: 3%">
                 <span class="text-danger">Atenção: </span>
-                Ao avançar para o próximo passo, as fotos serão carregadas.
-                Tenha certeza que escolheu as fotos de cada testemunha corretamente. <br>
-                <span class="text-danger">OBS:</span>
-                Verifique o nome do arquivo <i><b>(caixa com o texto)</b></i> de cada testemunha
-                caso necessário.
+                Após <b>adicionar os entrevistados</b>, poderá inserir as imagens de suas declarações. <br>
+                <span class="text-danger">OBS: </span>
+                Atente-se ao posicionamento da câmera para poder enviar imagens na orientação
+                correta. <br> Ative a <b>Rotação Automática</b> do seu celular antes de fotografar.
             </h5>
-
+            
             <?php
             while($ReturnEntrevistados = mysqli_fetch_assoc($ExeQrBuscarEntrevistados)){
                 $idTestemunha = $ReturnEntrevistados['id_entrevistado'];

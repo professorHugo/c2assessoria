@@ -19,6 +19,7 @@ create table tb_usuarios(
     nome_usuario varchar(50) not null,
     senha_usuario int, /* FK */
     permissao_usuario int, /* FK */
+    
     FOREIGN KEY(senha_usuario) REFERENCES tb_senhas_auth(id_senha),
     FOREIGN KEY(permissao_usuario) REFERENCES tb_permissoes(id_permissao)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
@@ -240,7 +241,7 @@ create table tb_associados(
     nome_associado varchar(200) DEFAULT null,
     cep_associado varchar(11) DEFAULT null,
     endereco_associado varchar(100) DEFAULT null,
-    bairro_associado varchar(50) DEFAULT null,
+    bairro_associado varchar(100) DEFAULT null,
     cidade_associado varchar(50) DEFAULT null,
     estado_associado varchar(50) DEFAULT null,
     nacionalidade_associado varchar(50) DEFAULT null,
@@ -427,9 +428,70 @@ ALTER TABLE `tb_local_evento` ADD  FOREIGN KEY (`via_local`) REFERENCES `tb_cara
 ALTER TABLE `tb_local_evento` ADD  FOREIGN KEY (`classificacao_local`) REFERENCES `tb_classificacao_regiao`(`id_classificacao`);
 ALTER TABLE `tb_local_evento` ADD  FOREIGN KEY (`permissao_local`) REFERENCES `tb_permissao_estacionar`(`id_permissao`);
 
+/* Registro de Telemetria */
+CREATE TABLE tb_registro_telemetria(
+    id_telemetria int not null primary key auto_increment,
+    protocolo_telemetria VARCHAR(50) DEFAULT NULL,
+    placa_telemetria VARCHAR(50) DEFAULT NULL,
+    local_telemetria INT DEFAULT NULL,
+    residencia_telemetria INT DEFAULT NULL,
+    ap_irregular_telemetria INT DEFAULT NULL,
 
+    print_telemetria INT DEFAULT NULL,
 
+    FOREIGN KEY(print_telemetria) REFERENCES tb_fotos(id_foto)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
+/* Registro Mobilidade urbana */
+
+CREATE TABLE tb_registro_mobilidade(
+    id_mobilidade int not null PRIMARY KEY auto_increment,
+    protocolo_mobilidade varchar (50) DEFAULT NULL,
+    placa_mobilidade VARCHAR(8) DEFAULT NULL,
+    uso_dia_mobilidade varchar (50) DEFAULT NULL,
+    instalado_mobilidade VARCHAR (50) DEFAULT NULL,
+    nome_terceiro VARCHAR(100) DEFAULT NULL,
+    telefone_terceiro VARCHAR(50) DEFAULT NULL,
+    irregularidades_mobilidade varchar(50) DEFAULT NULL,
+    convergencia_mobilidade VARCHAR(50) DEFAULT NULL,
+    print_mobilidade int DEFAULT NULL,
+
+    FOREIGN KEY(print_mobilidade) REFERENCES tb_fotos(id_foto)
+
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+DROP TABLE IF EXISTS tb_app_mobilidade;
+CREATE TABLE tb_app_mobilidade(
+    id_app int not null PRIMARY KEY auto_increment,
+    nome_app VARCHAR(50) DEFAULT NULL
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+DROP TABLE IF EXISTS tb_mobilidade;
+CREATE TABLE tb_mobilidade(
+    id_mobilidade int not NULL PRIMARY KEY auto_increment,
+    protocolo_mobilidade VARCHAR(50) DEFAULT NULL,
+    placa_mobilidade VARCHAR(8) DEFAULT NULL,
+    registros_mobilidade VARCHAR(50) DEFAULT NULL,
+    convergencia_mobilidade VARCHAR(50) DEFAULT NULL,
+    observacao_mobilidade VARCHAR(255) DEFAULT NULL,
+    motorista_mobilidade VARCHAR(50) DEFAULT NULL,
+    app1_mobilidade int DEFAULT NULL,
+    app2_mobilidade int DEFAULT NULL,
+    app3_mobilidade int DEFAULT NULL,
+    app4_mobilidade int DEFAULT NULL,
+    app5_mobilidade int DEFAULT NULL,
+    app6_mobilidade int DEFAULT NULL,
+    registro_mobilidade int,
+
+    FOREIGN KEY(registro_mobilidade) REFERENCES tb_registro_mobilidade(id_mobilidade),
+    FOREIGN KEY(app1_mobilidade) REFERENCES tb_app_mobilidade(id_app),
+    FOREIGN KEY(app2_mobilidade) REFERENCES tb_app_mobilidade(id_app),
+    FOREIGN KEY(app3_mobilidade) REFERENCES tb_app_mobilidade(id_app),
+    FOREIGN KEY(app4_mobilidade) REFERENCES tb_app_mobilidade(id_app),
+    FOREIGN KEY(app5_mobilidade) REFERENCES tb_app_mobilidade(id_app),
+    FOREIGN KEY(app6_mobilidade) REFERENCES tb_app_mobilidade(id_app)
+    
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*TB Sindicantes*/
 create table tb_sindicantes(
@@ -484,8 +546,10 @@ create table tb_relatorios(
 
     status_relatorio VARCHAR(50) DEFAULT NULL,
 
-    midias_sociais_associado VARCHAR(10) DEFAULT null,
-    print_midias_associado VARCHAR(100) DEFAULT null,
+    contexto_geral_relatorio longtext DEFAULT null,
+
+    print_associado int DEFAULT NULL, /* 1: Sim | 2: Não */
+    print_condutor int DEFAULT NULL, /* 1: Sim | 2: Não */
 
     FOREIGN KEY(solicitante_evento) REFERENCES tb_clientes(id_cliente),
     FOREIGN KEY(sindicante_evento) REFERENCES tb_usuarios(id_usuario),

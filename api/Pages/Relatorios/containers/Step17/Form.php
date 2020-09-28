@@ -3,7 +3,7 @@
     <div class="row">
 
         <div class="col-12">
-            <h5>Convívio do condutor</h5>
+            <h5>Convívio do Associado</h5>
         </div>
 
         <div class="col-12">

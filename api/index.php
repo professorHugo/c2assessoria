@@ -120,6 +120,27 @@ date_default_timezone_set('America/Sao_Paulo');
   <?php include_once "containers/Logout-Modal.php"?>
   <!-- Plugins -->
   <?php include_once "containers/Plugins-End.php"?>
+  <script>
+    // Close any open menu accordions when window is resized below 768px
+    $(function() {
+      if ($(window).width() < 768) {
+        $('.sidebar .collapse').collapse('hide');
+      };
+      
+      // Toggle the side navigation when window is resized below 480px
+      if ($(window).width() < 768 && !$(".sidebar").hasClass("toggled")) {
+        $("body").addClass("sidebar-toggled");
+        $(".sidebar").addClass("toggled");
+        $('.sidebar .collapse').collapse('hide');
+      };
+    });
+  </script>
+  
+  <?php
+    if( isset($_GET['Logout']) ){
+      echo "<script>alert('fazer logof')</script>";
+    }
+  ?>
 
 </body>
 

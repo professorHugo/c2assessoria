@@ -4,7 +4,18 @@
 </ul>
 <b>Resultado: <span class="text-danger"><?php echo "Análise";?></span></b>
 <hr>
+<script>
+$(function(){
+    $('#button-upload').on('click', function() {
+        $('#print_telemetria').trigger('click');
+    });
 
+    $('#print_telemetria').on('change', function() {
+        var fileName = $(this)[0].files[0].name;
+        $('#file_telemetria').val(fileName);
+    });
+});
+</script>
 <?php
 "<br> Protocolo: " . $Protocolo = $_SESSION['ProtocoloCondutor'];
  "<br> CPF/Pasta do Associado: " .

@@ -1,0 +1,1 @@
+Excluir Relatório, apenas para permissão master
