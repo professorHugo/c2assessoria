@@ -6,7 +6,7 @@ enctype="multipart/form-data"
 
 <div class="form-group row">
     <div class="col-12">
-        <h5>Perfil do Associado</h5>
+        <h5 style="border-bottom: 1px solid #ddd">Perfil do Associado</h5>
     </div>
     <label for="estado_civil" class="col-sm-12 col-md-2 col-form-label col-form-label-lg">
         Estado Civil: 
@@ -42,6 +42,46 @@ enctype="multipart/form-data"
             }
         ?>
     </div>
+    <div class="col-12" style="margin-top: 1rem"></div>
+    <div class="col-12">
+        <h5 style="border-bottom: 1px solid #ddd">Domicílio:</h5>
+        <div class="form-group row">
+            <label for="cep_associado" class="col-xs-12 col-md-2 col-form-label col-form-label-lg float-left">
+                CEP: 
+            </label>
+            <div class="col-sm-11 col-md-2 float-left">
+                <input type="number" placeholder="00000000" name="cep_associado" id="cep_associado" class="form-control form-control-lg" required>
+            </div>
+            <div class="col-sm-1 col-md-1 align-items-center float-left" style="cursor:pointer">
+                <i class="fa fa-search form-control-lg"></i>
+            </div>
+            <label for="endereco_associado" class="col-sm-12 col-md-2 col-form-label col-form-label-lg float-left">Endereço:</label>
+            <div class="col-sm-10 col-md-4 float-left">
+                <input type="hidden" name="endereco_associado" id="endereco_associado" value="" required>
+                <input type="text" name="endereco_associado_exibir" placeholder="Aguardando CEP..." disabled id="endereco_associado_exibir" class="form-control form-control-lg">
+            </div>
+            <div class="col-sm-2 col-md-1 float-left">
+                <input type="text" name="numero_associado" placeholder="Nº" class="form-control form-control-lg">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="bairro_associado" class="col-sm-12 col-md-2 col-form-label col-form-label-lg">Bairro:</label>
+            <div class="col-sm-12 col-md-3">
+                <input type="hidden" name="bairro_associado" id="bairro_associado">
+                <input type="text" class="form-control form-control-lg" name="bairro_associado_exibir" id="bairro_associado_exibir" placeholder="Aguardando CEP..." disabled>
+            </div>
+            <label for="cidade_associado" class="col-sm-12 col-md-2 col-form-label col-form-label-lg">Cidade:</label>
+            <div class="col-sm-12 col-md-4">
+                <input type="hidden" name="cidade_associado" id="cidade_associado">
+                <input type="text" disabled placeholder="Aguardando CEP..." class="form-control form-control-lg" name="cidade_associado_exibir" id="cidade_associado_exibir" >
+            </div>
+            <div class="col-sm-12 col-md-1">
+                <input type="hidden" name="estado_associado" id="estado_associado">
+                <input type="text" disabled placeholder="..." class="form-control form-control-lg" name="estado_associado_exibir" id="estado_associado_exibir" >
+            </div>
+        </div>
+    </div>
+    
 </div>
 <hr>
 <div class="form-group row">

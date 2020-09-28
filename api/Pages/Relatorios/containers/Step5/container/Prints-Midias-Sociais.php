@@ -67,7 +67,9 @@ if($midiasSociais == "Sim"){
                             echo "<br><pre>".
                             $QueryUpdateRelatorio = "
                                 UPDATE tb_relatorios
-                                    SET midias_sociais_associado = '$IdFoto'
+                                SET 
+                                    midias_sociais_associado = '$IdFoto',
+                                    status_relatorio = '$_GET[Step]'
                                 WHERE protocolo_evento = '$Protocolo'
                             ";
                             echo "</pre>";

@@ -5,6 +5,13 @@ echo "<br>Profissão do condutor: " . $ProfissaoCondutor;
 echo "<br>Estado civil do condutor: " . $CivilCondutor;
 echo "<br>Vínculo com associado: " . $VinculoAssociado;
 echo "<br>CPF Associado: " . $CPFAssociado = $_SESSION['PastaAssociado'];
+echo "<br>CEP Condutor: " . $CEPCondutor = $_POST['cep_condutor'];
+echo "<br>Endereço: " . $EnderecoCondutor = $_POST['endereco_condutor'];
+echo "<br>Número: " . $NumeroEndCondutor = $_POST['numero_condutor'];
+$LogadouroCondutor = $EnderecoCondutor."-".$NumeroEndCondutor;
+echo "<br>Bairro: " . $BairroCondutor = $_POST['bairro_condutor'];
+echo "<br>Cidade: " . $CidadeCondutor = $_POST['cidade_condutor'];
+echo "<br>UF: " . $UFCondutor = $_POST['estado_condutor'];
 
 
 //Update do condutor com os dados e os veículos
@@ -14,7 +21,13 @@ $QueryUpdateCondutorTerceiro = "
     SET
         civil_condutor = '$CivilCondutor',
         profissao_condutor = '$ProfissaoCondutor',
-        vinculo_associado = '$VinculoAssociado'
+        vinculo_associado = '$VinculoAssociado',
+        civil_condutor = '$CivilCondutor',
+        cep_condutor = '$CEPCondutor',
+        endereco_condutor = '$LogadouroCondutor',
+        bairro_condutor = '$BairroCondutor',
+        cidade_condutor = '$CidadeCondutor',
+        estado_condutor = '$UFCondutor'
     WHERE nome_condutor = '$NomeCondutor' AND protocolo_evento = '$Protocolo'
 ";
 echo "</pre>";

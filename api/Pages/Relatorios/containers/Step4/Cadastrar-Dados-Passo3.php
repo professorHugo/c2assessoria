@@ -22,7 +22,8 @@ $QueryInserirPasso3 = "
         numero_evento = '$NrEvento',
         bairro_evento = '$BairroEvento',
         cidade_evento = '$CidadeEvento',
-        uf_evento = '$UFEvento'
+        uf_evento = '$UFEvento',
+        status_relatorio = '$_GET[Step]'
     WHERE protocolo_evento = '$Protocolo'
 ";
 echo "</pre>";

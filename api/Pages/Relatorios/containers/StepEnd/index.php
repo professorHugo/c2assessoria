@@ -65,4 +65,21 @@ Modal Logged in
     </div>
 </div>
 <?php
+
+echo "<br><pre>".
+$UpdateRelatorio = "
+    UPDATE tb_relatorios
+    SET 
+        status_relatorio = 'Entregue'
+    WHERE protocolo_evento = '$Protocolo'
+";
+echo "</pre>";
+$ExeQrUpdateRelatorio = mysqli_query($connection, $UpdateRelatorio);
+if( $ExeQrUpdateRelatorio ){
+    echo "<br>Relatório atualizado";
+}else{
+    echo "<br>Erro: " . mysqli_error($connection);
 }
+
+}
+

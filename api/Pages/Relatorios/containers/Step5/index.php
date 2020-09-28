@@ -30,3 +30,5 @@ if( $_POST['outro_veiculo'] == 1){
 }
 include_once "container/Prints-Midias-Sociais.php";
 include_once "Update-Veiculos-Associado.php";
+include_once "Update-Dados-Domicilio.php";
+include_once "Update-Relatorio.php";

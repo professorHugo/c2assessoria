@@ -1,4 +1,3 @@
-
 <div class="col-12" style="margin-top: 4rem"></div>
 
 <?php 
@@ -36,7 +35,9 @@
     }
 ?>
 
-<h4 class="col-12" style="border-bottom: 1px solid #ddd">Perfil do Condutor <?php echo $NomeCondutor?></h4>
+<h4 class="col-12" style="border-bottom: 1px solid #ddd">
+    Perfil do Condutor <?php echo $NomeCondutor?> (Vínculo: <?php echo $VinculoAssociado ?>)
+</h4>
 
 
 <div class="col-sm-12 col-md-3 float-left">
@@ -51,6 +52,8 @@
 <div class="col-sm-12 col-md-3 float-left">
     CPF: <?php echo $CPFCondutor?>
 </div>
+
+
 <div class="col-12" style="margin-top: 2rem"></div>
 <h5 class="col-12" style="border-bottom: 1px solid #ddd">CNH do Condutor: </h5>
 
@@ -83,3 +86,12 @@
         echo date("d-m-Y", strtotime($ValidadeCNHCondutor));
     ?>
 </div>
+
+<?php
+if( $Veiculo1Condutor != "" && $Veiculo2Condutor != "" && $Veiculo3Condutor != "" ){
+    include "Veiculos-Extras-Condutor.php";
+}
+if( $PrintAssociado == 1 ){
+    include_once "Midias-Sociais-Condutor.php";
+}
+?>

@@ -9,7 +9,7 @@ if($ExeQrBuscarNomeCondutor){
     }
 }
 
-echo "<br>Vínculo com associado: " . $VinculoAssociado = $_POST['vinculo_associado'];
+echo "<br>Vínculo com associado: " . $VinculoAssociado = $_POST['vinculo_condutor'];
 echo "<br>Estado Civil Condutor: " . $EstadoCivilCondutor = $_POST['estado_civil_condutor'];
 echo "<br>Profissão Condutor: " . $ProfissaoCondutor = $_POST['profissao_condutor'];
 

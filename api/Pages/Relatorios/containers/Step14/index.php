@@ -11,3 +11,4 @@
 include "Dados-Passo13.php";
 include "Form.php";
 include "Cadastrar-Dados-Passo13.php";
+include "./Pages/Relatorios/containers/Update-Relatorio.php";

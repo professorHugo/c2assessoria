@@ -12,3 +12,4 @@ include_once "Form.php";
 include_once "Cadastrar-Dados-Passo8.php";
 //Upload de arquivos
 include_once "Uploads.php";
+include "./Pages/Relatorios/containers/Update-Relatorio.php";

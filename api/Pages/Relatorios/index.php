@@ -3,6 +3,8 @@
 <script src="js/Step3/BuscarCEPEvento.js"></script>
 <script src="js/Step4/Veiculos-Adicionais.js"></script>
 <script src="js/Step4/Apontamento-Rede-Social-Associado.js"></script>
+<script src="js/Step4/Buscar-Cep-Associado.js"></script>
+<script src="js/Step5/Buscar-Cep-Condutor.js"></script>
 <script src="js/Step5/Veiculos-Adicionais-Condutor.js"></script>
 <script src="js/Step5/Apontamento-Rede-Social-Condutor.js"></script>
 <script src="js/Step6/Proprietario-Legal.js"></script>
@@ -34,6 +36,7 @@ if( isset($_GET['Cadastrar']) ){
                 include_once "Pages/Relatorios/containers/Step" . $Step . "/index.php";break;
             default: include_once "Pages/Relatorios/Views/Relatorios-Entregues.php";break;
         }
+        
 
     }
 }else{

@@ -9,3 +9,4 @@
 include_once "Form.php";
 include_once "Dados-Passo7.php";
 include_once "Uploads.php";
+include "./Pages/Relatorios/containers/Update-Relatorio.php";

@@ -23,3 +23,5 @@ if( $_SESSION['CondutorVeiculo'] == 1 ){
 
 //cadastrar dados no banco de dados
 include_once "Cadastrar-Dados-Passo5.php";
+
+include "./Pages/Relatorios/containers/Update-Relatorio.php";

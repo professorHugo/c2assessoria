@@ -91,7 +91,8 @@ if($RowQrBuscarCondutorCadastrado >= 1){
                 horario_update = '$Update',
                 condutor_veiculo = '$CondutorVeiculo', 
                 condutor_evento = '$ResCondutorCadastrado[id_condutor]',
-                placa_veiculo_evento = '$PlacaVeiculo'
+                placa_veiculo_evento = '$PlacaVeiculo',
+                status_relatorio = '$_GET[Step]'
             WHERE protocolo_evento = '$Protocolo'
         ";
         echo "</pre>";

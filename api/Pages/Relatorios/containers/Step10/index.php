@@ -12,3 +12,4 @@ include_once "Form.php";
 include_once "Cadastrar-Dados-Passo9.php";
 //Upload da CNH e atualização dos dados
 include_once "Uploads.php";
+include "./Pages/Relatorios/containers/Update-Relatorio.php";

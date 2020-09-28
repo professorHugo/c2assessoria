@@ -1,4 +1,5 @@
-<form action="?Page=Relatorios&Cadastrar&Step=3" method="post">
+<link rel="stylesheet" href="../vendor/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" type="text/css" media="all">
+<form action="?Page=Relatorios&Cadastrar&Step=3" method="post" id="form">
     <div class="form-group row">
         <label for="condutor_select" class="col-sm-12 col-md-2 col-form-label col-form-label-lg">Condutor:</label>
         <div class="col-sm-12 col-md-4">
@@ -13,10 +14,7 @@
             <input type="text" id="nome_condutor" name="nome_condutor" class="form-control form-control-lg" disabled placeholder="Escolha o condutor">
         </div>
     </div>
-    <div class="form-grou row">
-        
-        
-    </div>
+    
     <hr>
 
     
@@ -28,20 +26,9 @@
         </div>
         <label for="marca_veiculo" class="col-xs-12 col-md-2 col-form-label col-form-label-lg">Marca:</label>
         <div class="col-xs-12 col-md-4">
-            <select name="marca_veiculo" id="marca_veiculo" class="form-control form-control-lg" required>
-            <option value="" selected disabled>Selecione a marca</option>
-            <?php
-                $QueryBuscarMarcas = "SELECT * FROM tb_marcas_veiculos";
-                $ExeQrBuscarMarcas = mysqli_query($connection, $QueryBuscarMarcas);
-                while($ResBuscarMarcas = mysqli_fetch_assoc($ExeQrBuscarMarcas)){
-                ?>
-                    <option value="<?php echo $ResBuscarMarcas['nome_marca']?>">
-                        <?php echo $ResBuscarMarcas['nome_marca']?>
-                    </option>
-                <?php
-                }
-            ?>
-            </select>
+            
+            <input type="text" name="marca_veiculo" id="marca_veiculo" placeholder="Digite a marca" class="form-control form-control-lg" required>
+
         </div>
         <div class="clearfix"></div>
         <label for="modelo_veiculo" class="col-12 col-form-label col-form-label-lg">Modelo:</label>
@@ -63,3 +50,7 @@
         </div>
     </div>
 </form>
+
+<script src="../vendor/jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js" integrity="sha256-tp8VZ4Y9dg702r7D6ynzSavKSwB9zjariSZ4Snurvmw=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/Step2/Autocomplete-Marcas.js"></script>

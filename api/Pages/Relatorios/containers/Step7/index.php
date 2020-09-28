@@ -10,3 +10,4 @@ include_once "Form.php";
 include_once "Dados-Passo6.php";
 include_once "container/Uploads.php";
 include_once "Cadastrar-Dados-Passo6.php";
+include "./Pages/Relatorios/containers/Update-Relatorio.php";

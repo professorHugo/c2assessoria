@@ -88,7 +88,30 @@ echo "<br>Nota Fiscal: ". $NotaFiscal               = $Relatorio['foto_nota_fisc
             if( $CondutorVeiculo == 2 ){
                 include_once "components/Perfil-Condutor.php";
             }
+
+            include_once "components/Sobre-O-Veiculo.php";
         ?>
         
+    </div>
+
+
+
+
+
+    <div class="col-12" style="margin-top: 6rem"></div>
+    
+    <div class="col-sm-12 col-md-6">
+        Foto CNH Associado
+        <?php
+            $QueryBuscarImagemCNH = "SELECT * FROM tb_fotos WHERE id_foto = '$FotoCNHAssociado'";
+            $ExeQrBuscarImagemCNH = mysqli_query($connection, $QueryBuscarImagemCNH);
+            mysqli_num_rows($ExeQrBuscarImagemCNH);
+            while( $Resultado = mysqli_fetch_assoc($ExeQrBuscarImagemCNH) ){
+                $Foto = $Resultado['nome_foto'];
+                ?>
+                    <img src="Docs/<?php echo "$CPFAssociado/$Foto"?>" alt="" class="img-fluid">
+                <?php
+            }
+        ?>
     </div>
 </div>

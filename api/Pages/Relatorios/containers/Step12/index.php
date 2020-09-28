@@ -18,3 +18,4 @@ $CPFAssociado = $_SESSION['PastaAssociado'];
 include_once "Form.php";
 include_once "Dados-Passo-11.php";
 include_once "Cadastrar-Dados-Passo11.php";
+include "./Pages/Relatorios/containers/Update-Relatorio.php";

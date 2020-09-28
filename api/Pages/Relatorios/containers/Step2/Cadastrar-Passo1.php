@@ -50,7 +50,7 @@ $QueryCadastrarPasso1 = "
         '$ProtocoloEvento',
         '$NaturezaEvento',
         '$CPFAssociado',
-        'Processando'
+        '$_GET[Step]'
     )
 ";
 echo "</pre>";

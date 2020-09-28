@@ -1,4 +1,4 @@
-# Dashboard C2 Assessoria - Versão 2 #
+# Advisory - C2 Assessoria - Versão 2 #
 
 ## Interface Nova ##
     *Aparência;
@@ -7,6 +7,8 @@
     *Diretórios mais organizados;
 	*Cadastro de dados usando Ajax;
 	*Atualização de dados dos entrevistados conforme tipo;
+	*Cadastro finalizado, fazer os Beta-Tests;
+	*Iniciado a leitura de dados para apresentar no relatório;
 
 ### Conteúdo Re-Criado ###
     -- O Conteúdo será digitado a cada novo deploy --
@@ -18,4 +20,8 @@
 	**
 	-- Os testes já foram refeitos, por via de segurança, devem ser refeitos --
 	
-    
+## Próximo conteúdo ##
+
+	-- Preparar as partes de configuração do sistema;
+	-- Preparar os cadastros dos Sindicantes;
+	-- Preparar o "Esqueci a senha";

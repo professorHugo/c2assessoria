@@ -14,3 +14,4 @@
 include_once "Form.php";
 include_once "Dados-Passo-10.php";
 include_once "Cadastrar-Dados-Passo10.php";
+include "./Pages/Relatorios/containers/Update-Relatorio.php";

@@ -30,3 +30,4 @@ $CPFAssociado = $_POST['cpf_associado'];
 
 include_once "Form.php";
 include_once "Cadastrar-Dados-Passo19.php";
+include "./Pages/Relatorios/containers/Update-Relatorio.php";
