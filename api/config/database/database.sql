@@ -4,13 +4,31 @@ create database c2assessoria DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_
 
 use c2assessoria;
 
+/*USO DO SISTEMA*/
+create table tb_sys_config(
+    id_sys_config int not null primary key auto_increment,
+    modo_sys_config int DEFAULT 1 comment '1: DEV | 2: Produção'
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+insert into tb_sys_config(modo_sys_config)VALUES(1);
+
 /*TB Senhas MD5*/
-create table tb_senhas_auth(id_senha int not null primary key auto_increment,md5_senha varchar(500))ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-insert into tb_senhas_auth(id_senha, md5_senha)values(1, 'eb0a191797624dd3a48fa681d3061212');
+create table tb_senhas_auth(
+    id_senha int not null primary key auto_increment,
+    md5_senha varchar(500),
+    cadastro varchar(25) DEFAULT 'novo'
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+insert into tb_senhas_auth(
+    id_senha, md5_senha, cadastro
+)values(1, 'e56f428d0f546e1072faf5acd4918b03', 'novo'), 
+(2, 'eb0a191797624dd3a48fa681d3061212', 'cadastrado'),
+(3, 'eb0a191797624dd3a48fa681d3061212', 'cadastrado'); /*Cadastro novo "c2assessoria"*/
 
 /*TB Permissões*/
-create table tb_permissoes(id_permissao int not null primary key auto_increment,nivel_permissao varchar(50))ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-insert into tb_permissoes(nivel_permissao)values('Master'),('Sindicante');
+create table tb_permissoes(
+    id_permissao int not null primary key auto_increment,
+    nivel_permissao varchar(50)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+insert into tb_permissoes(nivel_permissao)values('Master'),('Sindicante'),('Dev');
 
 /*TB Usuários*/
 create table tb_usuarios(
@@ -19,46 +37,59 @@ create table tb_usuarios(
     nome_usuario varchar(50) not null,
     senha_usuario int, /* FK */
     permissao_usuario int, /* FK */
+	usuario_ativo int, /*1: Sim | 2: Não*/
     
     FOREIGN KEY(senha_usuario) REFERENCES tb_senhas_auth(id_senha),
     FOREIGN KEY(permissao_usuario) REFERENCES tb_permissoes(id_permissao)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-insert into tb_usuarios(email_usuario,nome_usuario,senha_usuario,permissao_usuario)VALUES('hugo.n2y@gmail.com','Hugo Christian',1,1);
+insert into tb_usuarios(
+    email_usuario,nome_usuario,senha_usuario,permissao_usuario
+)VALUES('hugo.n2y@gmail.com','Hugo Christian',2,3),
+('admin@c2assessoria.com.br','Administrador',3,1);
+
+/*TB VINCULOS*/
+create table tb_vinculos(
+	id_vinculo int not null primary key auto_increment,
+	descricao_vinculo varchar(50)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_vinculos(descricao_vinculo)VALUES('Pai');
 
 /*TB Proprietários*/
 create table tb_proprietarios(
     id_proprietario int not null PRIMARY KEY auto_increment,
     protocolo_evento varchar(50) DEFAULT NULL,
     nome_proprietario varchar(200) DEFAULT NULL,
-    chn_proprietario varchar(200) DEFAULT NULL
+    vinculo_associado varchar(200) DEFAULT NULL
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 
 /*TB Sistemas Anti-Furto*/
 create table tb_sistemas_anti_furto(
     id_sistema int not null auto_increment PRIMARY KEY,
-    tipo_sistema varchar(50) not null
+    tipo_sistema varchar(50) not null,
+	ativacao int default 1 comment '1: Ativado | 2: Desativado'
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 insert into tb_sistemas_anti_furto(
     tipo_sistema
 )values('Alarme'),('Rastreador'),('Localizador'),('Rastreador/Localizador');
 
 /*TB Tipo de Vistorias*/
-create table tb_tipo_vistorias(
-    id_tipo_vistoria int not null auto_increment PRIMARY KEY,
-    nome_tipo_vistoria varchar(100) not null
+create table tb_detran_estados(
+    id_detran int not null PRIMARY KEY auto_increment,
+    estado_detran varchar(3) DEFAULT NULL,
+    ativacao int DEFAULT 1 comment '1: Ativado | 2: Desativado'
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-insert into tb_tipo_vistorias(
-    nome_tipo_vistoria
-)values(
-    'Periódica'
-);
 
 /*TB Clientes (Seguradoras)*/
 create table tb_clientes(
     id_cliente int not null auto_increment PRIMARY KEY,
     nome_cliente VARCHAR(100),
-    data_cadastro TIMESTAMP null DEFAULT current_timestamp
+	email_cliente varchar(100) DEFAULT NULL COMMENT 'email do cliente',
+	telefone_cliente VARCHAR(25) DEFAULT NULL COMMENT 'Telefone do cliente',
+	contato_cliente VARCHAR(100) DEFAULT NULL COMMENT 'Nome do contato com o cliente',
+    data_cadastro DATE DEFAULT NULL COMMENT 'data do cadastro',
+	data_update DATE DEFAULT NULL COMMENT 'data de atualização',
+	ativacao int DEFAULT "1" comment '1: Ativado | 2: Desativado'
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 insert into tb_clientes(nome_cliente)values
 ('Universo AGV - AssociaÃ§Ã£o GestÃ£o Veicular Universo'),
@@ -116,31 +147,60 @@ CREATE TABLE tb_financeiro_veiculo (
     situacao_financeiro int DEFAULT NULL
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
-/*TB Vistorias Realizadas*/
-create table tb_vistorias_realizadas(
-    id_vistoria int not null auto_increment PRIMARY KEY,
-    protocolo_vistoria VARCHAR(20) DEFAULT NULL,
-    tipo_vistoria INT DEFAULT NULL,
-    situacao_vistoria VARCHAR(50) DEFAULT NULL,
-    observacao_vistoria VARCHAR(500) DEFAULT NULL,
-    arquivo_vistoria int DEFAULT NULL,
-    data_vistoria TIMESTAMP null DEFAULT current_timestamp,
+CREATE TABLE `tb_vistorias_realizadas` (
+  `id_vistoria` int(11) NOT NULL,
+  `protocolo_vistoria` varchar(20) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `tipo_vistoria` int(11) DEFAULT NULL,
+  `situacao_vistoria` varchar(50) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `observacao_vistoria` varchar(500) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `arquivo_vistoria` int(11) DEFAULT NULL,
+  `data_vistoria` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
-    FOREIGN KEY(arquivo_vistoria) REFERENCES tb_fotos(id_foto),
-    FOREIGN KEY(tipo_vistoria) REFERENCES tb_tipo_vistorias(id_tipo_vistoria)
-)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tb_vistorias_realizadas`
+--
+ALTER TABLE `tb_vistorias_realizadas`
+  ADD PRIMARY KEY (`id_vistoria`),
+  ADD KEY `arquivo_vistoria` (`arquivo_vistoria`),
+  ADD KEY `tipo_vistoria` (`tipo_vistoria`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tb_vistorias_realizadas`
+--
+ALTER TABLE `tb_vistorias_realizadas`
+  MODIFY `id_vistoria` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `tb_vistorias_realizadas`
+--
+ALTER TABLE `tb_vistorias_realizadas`
+  ADD CONSTRAINT `tb_vistorias_realizadas_ibfk_1` FOREIGN KEY (`arquivo_vistoria`) REFERENCES `tb_fotos` (`id_foto`),
+  ADD CONSTRAINT `tb_vistorias_realizadas_ibfk_2` FOREIGN KEY (`tipo_vistoria`) REFERENCES `tb_tipo_vistorias` (`id_tipo_vistoria`);
 
 /*Tb Fotos Documentos Veículos Segurados*/
-create table tb_fotos_veiculos(
-    id_foto int not null PRIMARY KEY auto_increment,
-    local_foto VARCHAR(100) DEFAULT NULL,
-    nome_foto VARCHAR(100) DEFAULT NULL
-)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+-- create table tb_fotos_veiculos(
+--     id_foto int not null PRIMARY KEY auto_increment,
+--     local_foto VARCHAR(100) DEFAULT NULL,
+--     nome_foto VARCHAR(100) DEFAULT NULL
+-- )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*tb tipos procedentes*/
 create table tb_tipos_procedentes(
     id_procedente INT NOT NULL PRIMARY KEY auto_increment,
-    descricao_procedente VARCHAR(20) DEFAULT NULL
+    descricao_procedente VARCHAR(20) DEFAULT NULL,
+	ativacao int DEFAULT 1 comment '1: Ativado | 2: Desativado'
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 INSERT INTO tb_tipos_procedentes(
     descricao_procedente
@@ -158,9 +218,15 @@ create table tb_fotos_procedentes(
     FOREIGN KEY(tipo_procedente) REFERENCES tb_tipos_procedentes(id_procedente)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
+
+
+
+
+
 create table tb_tipos_chaves(
-    id_tipo_chave INT NOT NULL PRIMARY KEY auto_increment,
-    descricao_chave VARCHAR(100) DEFAULT NULL
+    id_chave INT NOT NULL PRIMARY KEY auto_increment,
+    descricao_chave VARCHAR(100) DEFAULT NULL,
+	ativacao int default 1 comment '1: Ativado | 2: Desativado'
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 INSERT INTO tb_tipos_chaves(
     descricao_chave
@@ -174,8 +240,14 @@ create table tb_chaves_apresentadas(
     local_chave_apresentada VARCHAR(100) DEFAULT NULL,
     nome_chave_apresentada VARCHAR(100) DEFAULT NULL,
 
-    FOREIGN KEY(tipo_chave_apresentada) REFERENCES tb_tipos_chaves(id_tipo_chave)
+    INDEX(tipo_chave_apresentada),
+    
+    FOREIGN KEY(tipo_chave_apresentada) REFERENCES tb_tipos_chaves(id_chave)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+
+
+
 
 /*Tb foto sistema anti-furto*/
 create table tb_foto_sistema_af(
@@ -188,6 +260,9 @@ create table tb_foto_sistema_af(
     FOREIGN KEY(tipo_sistema) REFERENCES tb_sistemas_anti_furto(id_sistema)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
+
+
+
 /*TB Veículos*/
 create table tb_veiculos(
     id_veiculo int not null auto_increment primary key,
@@ -198,12 +273,17 @@ create table tb_veiculos(
     marca_veiculo varchar(50) null,
     modelo_veiculo varchar(100) null,
     placa_veiculo varchar(8) null,
+
+    protecao_veiculo varchar(10) DEFAULT "Sim" COMMENT 'Se há proteção para o veículo' ,
+
     seguro_veiculo varchar(10) DEFAULT "Sim",
+
     dut_veiculo varchar(100) null,
-    procedente_veiculo int(1) null,
+    procedente_veiculo varchar(50) null,
     proprietario_anterior_veiculo varchar(100) DEFAULT null,
     chaves_apresentadas_veiculo int null, /*1:de uso | 2: reserva | 3: não apresentada*/
     sistema_anti_furto int null, /* FK */
+	sistema_anti_furto_tipo int null,
     evento_multa_veiculo int null, /*0: não | 1: sim*/
     restricoes1_veiculo varchar(100),
     restricoes2_veiculo varchar(100),
@@ -220,14 +300,12 @@ create table tb_veiculos(
     INDEX(vistoria_veiculo),
     INDEX(vistoria_realizada),
     INDEX(foto_nota_fiscal_veiculo),
-    INDEX(procedente_veiculo),
     INDEX(financeiro_veiculo),
 
 
     FOREIGN KEY(proprietario_veiculo) REFERENCES tb_proprietarios(id_proprietario),
     FOREIGN KEY(vistoria_realizada) REFERENCES tb_vistorias_realizadas(id_vistoria),
     FOREIGN KEY(foto_nota_fiscal_veiculo) REFERENCES tb_fotos(id_foto),
-    FOREIGN KEY(procedente_veiculo) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(financeiro_veiculo) REFERENCES tb_financeiro_veiculo(id_financeiro)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
@@ -258,7 +336,7 @@ create table tb_associados(
     FOREIGN KEY(veiculo2_associado) REFERENCES tb_veiculos(id_veiculo),
     FOREIGN KEY(veiculo3_associado) REFERENCES tb_veiculos(id_veiculo),
     FOREIGN KEY(veiculo4_associado) REFERENCES tb_veiculos(id_veiculo),
-    FOREIGN KEY(cnh_associado) REFERENCES tb_cnh_registros(id_cnh)
+    FOREIGN KEY(cnh_associado) REFERENCES tb_fotos(id_foto)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 -- TB Tipos de testemunhas sabedoras
@@ -358,10 +436,17 @@ create table tb_entrevistados(
 /*TB Natureza de Eventos*/
 create table tb_natureza_evento(
     id_natureza int not null auto_increment PRIMARY KEY,
-    descricao_natureza VARCHAR(50)
+    descricao_natureza VARCHAR(50),
+	ativacao int default '1' comment '1: Ativado | 2: Desativado'
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 insert into tb_natureza_evento(descricao_natureza)values
 ('Roubo'),('Furto'),('Colisão');
+
+create table tb_tipos_civil(
+	id_civil int not null primary key auto_increment,
+	descricao_civil varchar(50) default null,
+	ativacao int default 1 comment '1: Ativado | 1: Desativado'
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 
 
@@ -496,12 +581,28 @@ CREATE TABLE tb_mobilidade(
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*TB Sindicantes*/
+drop table if exists tb_sindicantes;
 create table tb_sindicantes(
     id_sindicante int not null auto_increment PRIMARY KEY,
     id_usuario int,
+    ativacao int DEFAULT 2 COMMENT "1: Sim | 2: Não",
+
     FOREIGN KEY(id_usuario) REFERENCES tb_usuarios(id_usuario)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-insert into tb_sindicantes(id_usuario)values(1);
+INSERT INTO `tb_sindicantes` (`id_sindicante`, `id_usuario`, `ativacao`) VALUES (NULL, '1', '2'), (NULL, '2', '2');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*Tb condutores*/
 create table tb_condutores(

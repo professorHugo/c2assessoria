@@ -1,9 +1,15 @@
 <?php
 require_once "config/Config.php";
 session_start();
+// session_destroy();
 date_default_timezone_set('America/Sao_Paulo');
+if( isset($_GET['Logout']) ){
+    
+  include "containers/Fazer-Logoff.php";
 
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,7 +22,7 @@ date_default_timezone_set('America/Sao_Paulo');
   <meta name="author" content="Agência N2Y - Sempre ao seu lado">
 
   <title>
-  Advisory² - 
+  Advisory <?php echo VERSION ?> - 
   <?php 
     if(isset($_GET['Page'])) {
       if( isset($_GET['Cadastrar']) ){
@@ -42,13 +48,13 @@ date_default_timezone_set('America/Sao_Paulo');
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-  <script src="https://use.fontawesome.com/5bf16b2cc9.js"></script>
+  <script src="https://use.fontawesome.com/c42a50f139.js"></script>
   <link rel="stylesheet" href="css/styles.css">
   <!-- Core jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script type="text/javascript" src="js/jquery.form.js"></script>
 
-
+  <?php include "../containers/Favicon.php"?>
 
 </head>
 
@@ -79,7 +85,12 @@ date_default_timezone_set('America/Sao_Paulo');
           <?php 
           //Topo com botões de resumos
           if( isset($_GET['Page']) ){
-              if ( $_GET['Page'] != "Relatorios" ){
+              if ( 
+                $_GET['Page'] != "Relatorios" && 
+                $_GET['Page'] != "Sindicantes" &&
+                $_GET['Page'] != "Clientes" &&
+                $_GET['Page'] != "Settings"
+              ){
                 include_once "containers/Container-Top.php";
               }
             }else{
@@ -107,6 +118,14 @@ date_default_timezone_set('America/Sao_Paulo');
 
       <!-- Footer -->
       <?php include_once "containers/Footer.php"?>
+      <?php include "containers/Modal-Cadastro-Sindicante.php";?>
+      <?php include "containers/Modal-Cadastro-Clientes.php";?>
+      <?php include "containers/Modal-Cadastro-Naturezas.php";?>
+      <?php include "containers/Modal-Cadastro-Civil.php";?>
+      <?php include "containers/Modal-Cadastro-Procedente.php";?>
+      <?php include "containers/Modal-Cadastro-Chaves.php";?>
+      <?php include "containers/Modal-Cadastro-AntiFurto.php";?>
+      <?php include "containers/Modal-Cadastro-Detran.php";?>
       <!-- End of Footer -->
 
     </div>
@@ -135,12 +154,6 @@ date_default_timezone_set('America/Sao_Paulo');
       };
     });
   </script>
-  
-  <?php
-    if( isset($_GET['Logout']) ){
-      echo "<script>alert('fazer logof')</script>";
-    }
-  ?>
 
 </body>
 

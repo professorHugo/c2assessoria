@@ -14,7 +14,11 @@ session_start();
   <meta name="description" content="">
   <meta name="author" content="Agência N2Y - Sempre perto de você">
 
-  <title>SB Admin 2 - Login</title>
+  <title>
+    <?php
+      echo SITENAME . " - Advisory" . VERSION;
+    ?>
+  </title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,6 +28,8 @@ session_start();
   
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+  <?php include "containers/Favicon.php"?>
 
 </head>
 

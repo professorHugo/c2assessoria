@@ -17,7 +17,7 @@
 
                 <img src="img/logo.png" alt="C2 Assessoria" title="C2 Assessoria" class="img-fluid"style="max-height:30%;">
                 <i class="fa fa-user-times" aria-hidden="true"></i> 
-                Esse usuário <?php echo $_POST['email']?> não é válido
+                O usuário <b><?php echo $_POST['email']?></b> não é válido
                 <br><br>
                 <h2 class="h4 text-black-900 mb4">
                     <a href="?" class="small">

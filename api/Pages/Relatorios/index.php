@@ -1,55 +1,73 @@
-<script src="js/Step1/BuscarAssociados.js"></script>
-<script src="js/Step2/EscolhaCondutor.js"></script>
-<script src="js/Step3/BuscarCEPEvento.js"></script>
-<script src="js/Step4/Veiculos-Adicionais.js"></script>
-<script src="js/Step4/Apontamento-Rede-Social-Associado.js"></script>
-<script src="js/Step4/Buscar-Cep-Associado.js"></script>
-<script src="js/Step5/Buscar-Cep-Condutor.js"></script>
-<script src="js/Step5/Veiculos-Adicionais-Condutor.js"></script>
-<script src="js/Step5/Apontamento-Rede-Social-Condutor.js"></script>
-<script src="js/Step6/Proprietario-Legal.js"></script>
-<script src="js/Step6/Carregar-Procedente.js"></script>
-<script src="js/Step6/Carregar-Foto-Chaves.js"></script>
-<script src="js/Step6/Carregar-Print-Rastreador.js"></script>
-<script src="js/Step7/Carregar-Prints.js"></script>
-<script src="js/Step8/Carregar-Foto-Vistoria.js"></script>
-<script src="js/Step9/Carregar-Foto-CNH.js"></script>
-<script src="js/Step10/Carregar-Situacao-Financeira.js"></script>
-<script src="js/Step12/Carregar-Testemunhas.js"></script>
-<script type="text/javascript" src="js/jquery.form.js"></script>
-<script src="js/Step14/Carregar-Orgaos-Publicos.js"></script>
-<script src="js/Step15/Salvar-Entrevistados.js"></script>
-<script src="js/Step17/Salvar-Entrevistado-Associado.js"></script>
-<script src="js/Step15/BuscarCEPEntrevistado.js"></script>
-<script src="js/Step20/Carregar-Mobilidade.js"></script>
-<script src="js/Step21/Registro-Mobilidade.js"></script>
-
-
-
 <?php
-if( isset($_GET['Cadastrar']) ){
-    if( isset($_GET['Step']) ){
-        $Step = $_GET['Step'];
 
-        switch( $Step ) {
-            case $Step:
-                include_once "Pages/Relatorios/containers/Step" . $Step . "/index.php";break;
-            default: include_once "Pages/Relatorios/Views/Relatorios-Entregues.php";break;
-        }
-        
+if( $SysMode == 1 ){
+  echo $SysModeNome;
+  echo "<br>Página de Relatórios";
 
-    }
+  if( isset($_GET['Criar']) ){
+
+    echo "<br>Criar Relatório";
+    include_once "Criar/index.php";
+
+  }else if( isset($_GET['Preencher']) ){
+
+    echo "<br>Preencher o Relatório";
+    include_once "Preencher/index.php";
+
+  }else if( isset($_GET['Editar']) ){
+
+    echo "<br>Editar Relatório";
+    include_once "Editar/index.php";
+
+  }else if( isset($_GET['Entregar']) ){
+    
+    echo "<br>Entregar Relatório";
+    include_once "Entregar/index.php";
+
+  }else if( isset($_GET['Apagar']) ){
+    
+    echo "<br>Apagar Relatorio";
+    include_once "Apagar/index.php";
+
+  }else{
+
+    echo "<br>Ver Relatórios";
+    include_once "View/index.php";
+
+  }
 }else{
-    if( isset($_GET['Controle']) ){
-        $Controle = $_GET['Controle'];
-        
-        switch( $Controle ){
-            case $Controle:
-                include_once "Pages/Relatorios/Controller/$Controle/index.php";break;
-            default: include_once "Pages/Relatorios/Views/Relatorios-Entregues.php";break;
-        }
-    }
-    else{
-        include_once "Pages/Relatorios/Views/Relatorios-Entregues.php";
-    }
+   $SysModeNome;
+   "<br>Página de Relatórios";
+
+  if( isset($_GET['Criar']) ){
+
+     "<br>Criar Relatório";
+    include_once "Criar/index.php";
+
+  }else if( isset($_GET['Preencher']) ){
+
+     "<br>Preencher o Relatório";
+    include_once "Preencher/index.php";
+
+  }else if( isset($_GET['Editar']) ){
+
+     "<br>Editar Relatório";
+    include_once "Editar/index.php";
+
+  }else if( isset($_GET['Entregar']) ){
+    
+     "<br>Entregar Relatório";
+    include_once "Entregar/index.php";
+
+  }else if( isset($_GET['Apagar']) ){
+    
+     "<br>Apagar Relatorio";
+    include_once "Apagar/index.php";
+
+  }else{
+
+     "<br>Ver Relatórios";
+    include_once "View/index.php";
+
+  }
 }
