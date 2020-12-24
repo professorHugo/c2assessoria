@@ -39,11 +39,11 @@ $(function(){
   });
 
   $('#button-upload_documento2').on('click', function() {
-      $('#print_foto_documento_proprietario3').trigger('click');
+      $('#print_foto_documento_proprietario_anterior2').trigger('click');
   });
 
-  $('#print_foto_documento_proprietario3').on('change', function() {
+  $('#print_foto_documento_proprietario_anterior2').on('change', function() {
       var fileName = $(this)[0].files[0].name;
-      $('#file_foto_documento_proprietario3').val(fileName);
+      $('#file_foto_documento_proprietario_anterior2').val(fileName);
   });
 });

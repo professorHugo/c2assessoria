@@ -16,7 +16,11 @@
 
 	-- Toda a estrutura foi modificada para um formato de cadastro onde o sindicante deve coletar e preencher dados separadamente de acordo com os tópicos do relatório criado para ele
 
-	
+	1 - Processo para salvar o perfil do Associado concluído, fazer o carregamento dos dados do associado	ao entrar de novo no perfil. Estado Civil, Profissão e veículos extra carregados. Iniciar o carregamento dos veículos extras para apagar;
+
+	2 - Iniciar o processo para salvar o perfil do Condutor, caso tenha. É o mesmo processo que o perfil do Associado.
+
+	-- Ajustes realizados na *tb_cnh_registros*
 	
 	
 ## Próximo conteúdo ##

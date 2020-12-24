@@ -36,29 +36,13 @@ if(isset($_GET['Quantidade'])){
             <div class="col-xs-12 col-md-6">
                 <select name="protecao_veiculo1" id="protecao_veiculo1" class="form-control form-control-lg" required>
                     <option value="">Selecione</option>
-                    <option value="Sim">Sim</option>
+                    <option value="Sim - Proteção">Sim - Proteção</option>
+                    <option value="Sim - Seguro">Sim - Seguro</option>
                     <option value="Não">Não</option>
                 </select>
             </div>
         
-            <div class="col-2 float-left">
-                <input 
-                    type="checkbox" 
-                    class="form-control" 
-                    name="seguro_veiculo1" 
-                    id="seguro_veiculo1" 
-                    value="Sim"
-                    style="
-                        display:block;
-                        width: 50%;
-                        height: calc(.75rem + .75rem + 2px);
-                        margin-top: .75rem;
-                    "
-                >
-            </div>
-            <label for="seguro_veiculo1" class="col-9 float-left col-form-label col-form-label-lg">
-                O veículo tem seguro
-            </label>
+            
             
         </div>
 
@@ -94,31 +78,12 @@ if(isset($_GET['Quantidade'])){
             <div class="col-xs-12 col-md-6">
                 <select name="protecao_veiculo2" id="protecao_veiculo2" class="form-control form-control-lg" style="display: none" required>
                     <option value="">Selecione</option>
-                    <option value="Sim">Sim</option>
-                    <option value="Não">Não</option>
+                    <option value="Sim - Proteção">Sim - Proteção</option>
+                    <option value="Sim - Seguro">Sim - Seguro</option>
                     <option value="NULL" selected>Vazio</option>
                 </select>
             </div>
         
-            <div class="col-2 float-left">
-                <input 
-                    type="checkbox" 
-                    class="form-control" 
-                    name="seguro_veiculo2" 
-                    id="seguro_veiculo2" 
-                    value="Sim"
-                    style="
-                        display:none;
-                        width: 50%;
-                        height: calc(.75rem + .75rem + 2px);
-                        margin-top: .75rem;
-                    "
-                >
-            </div>
-            <label for="seguro_veiculo2" class="col-9 float-left col-form-label col-form-label-lg" style="display: none">
-                O veículo tem seguro
-            </label>
-            
         </div>
 
         </div>
@@ -152,31 +117,12 @@ if(isset($_GET['Quantidade'])){
             <div class="col-xs-12 col-md-6">
                 <select name="protecao_veiculo3" id="protecao_veiculo3" class="form-control form-control-lg" style="display: none" required>
                     <option value="">Selecione</option>
-                    <option value="Sim">Sim</option>
-                    <option value="Não">Não</option>
+                    <option value="Sim - Proteção">Sim - Proteção</option>
+                    <option value="Sim - Seguro">Sim - Seguro</option>
                     <option value="NULL" selected>Vazio</option>
                 </select>
             </div>
         
-            <div class="col-2 float-left">
-                <input 
-                    type="checkbox" 
-                    class="form-control" 
-                    name="seguro_veiculo3" 
-                    id="seguro_veiculo3" 
-                    value="Sim"
-                    style="
-                        display:none;
-                        width: 50%;
-                        height: calc(.75rem + .75rem + 2px);
-                        margin-top: .75rem;
-                    "
-                >
-            </div>
-            <label for="seguro_veiculo3" class="col-9 float-left col-form-label col-form-label-lg" style="display: none">
-                O veículo tem seguro
-            </label>
-            
         </div>
 
         </div>
@@ -216,29 +162,11 @@ if(isset($_GET['Quantidade'])){
             <div class="col-xs-12 col-md-6">
                 <select name="protecao_veiculo1" id="protecao_veiculo1" class="form-control form-control-lg" required>
                     <option value="">Selecione</option>
-                    <option value="Sim">Sim</option>
+                    <option value="Sim - Proteção">Sim - Proteção</option>
+                    <option value="Sim - Seguro">Sim - Seguro</option>
                     <option value="Não">Não</option>
                 </select>
             </div>
-        
-            <div class="col-2 float-left">
-                <input 
-                    type="checkbox" 
-                    class="form-control" 
-                    name="seguro_veiculo1" 
-                    id="seguro_veiculo1" 
-                    value="Sim"
-                    style="
-                        display:block;
-                        width: 50%;
-                        height: calc(.75rem + .75rem + 2px);
-                        margin-top: .75rem;
-                    "
-                >
-            </div>
-            <label for="seguro_veiculo1" class="col-9 float-left col-form-label col-form-label-lg">
-                O veículo tem seguro
-            </label>
             
         </div>
 
@@ -274,30 +202,12 @@ if(isset($_GET['Quantidade'])){
             <div class="col-xs-12 col-md-6">
                 <select name="protecao_veiculo2" id="protecao_veiculo2" class="form-control form-control-lg" required>
                     <option value="">Selecione</option>
-                    <option value="Sim">Sim</option>
+                    <option value="Sim - Proteção">Sim - Proteção</option>
+                    <option value="Sim - Seguro">Sim - Seguro</option>
                     <option value="Não">Não</option>
                 </select>
             </div>
         
-            <div class="col-2 float-left">
-                <input 
-                    type="checkbox" 
-                    class="form-control" 
-                    name="seguro_veiculo2" 
-                    id="seguro_veiculo2" 
-                    value="Sim"
-                    style="
-                        display:block;
-                        width: 50%;
-                        height: calc(.75rem + .75rem + 2px);
-                        margin-top: .75rem;
-                    "
-                >
-            </div>
-            <label for="seguro_veiculo2" class="col-9 float-left col-form-label col-form-label-lg">
-                O veículo tem seguro
-            </label>
-            
         </div>
 
         </div>
@@ -330,31 +240,13 @@ if(isset($_GET['Quantidade'])){
             <div class="col-xs-12 col-md-6">
                 <select name="protecao_veiculo3" id="protecao_veiculo3" class="form-control form-control-lg" style="display: none" required>
                     <option value="">Selecione</option>
-                    <option value="Sim">Sim</option>
+                    <option value="Sim - Proteção">Sim - Proteção</option>
+                    <option value="Sim - Seguro">Sim - Seguro</option>
                     <option value="Não">Não</option>
                     <option value="NULL" selected>Vazio</option>
                 </select>
             </div>
         
-            <div class="col-2 float-left">
-                <input 
-                    type="checkbox" 
-                    class="form-control" 
-                    name="seguro_veiculo3" 
-                    id="seguro_veiculo3" 
-                    value="Sim"
-                    style="
-                        display:none;
-                        width: 50%;
-                        height: calc(.75rem + .75rem + 2px);
-                        margin-top: .75rem;
-                    "
-                >
-            </div>
-            <label for="seguro_veiculo3" class="col-9 float-left col-form-label col-form-label-lg" style="display:none">
-                O veículo tem seguro
-            </label>
-            
         </div>
 
         </div>
@@ -394,30 +286,12 @@ if(isset($_GET['Quantidade'])){
             <div class="col-xs-12 col-md-6">
                 <select name="protecao_veiculo1" id="protecao_veiculo1" class="form-control form-control-lg" required>
                     <option value="">Selecione</option>
-                    <option value="Sim">Sim</option>
+                    <option value="Sim - Proteção">Sim - Proteção</option>
+                    <option value="Sim - Seguro">Sim - Seguro</option>
                     <option value="Não">Não</option>
                 </select>
             </div>
         
-            <div class="col-2 float-left">
-                <input 
-                    type="checkbox" 
-                    class="form-control" 
-                    name="seguro_veiculo1" 
-                    id="seguro_veiculo1" 
-                    value="Sim"
-                    style="
-                        display:block;
-                        width: 50%;
-                        height: calc(.75rem + .75rem + 2px);
-                        margin-top: .75rem;
-                    "
-                >
-            </div>
-            <label for="seguro_veiculo1" class="col-9 float-left col-form-label col-form-label-lg">
-                O veículo tem seguro
-            </label>
-            
         </div>
 
         </div>
@@ -452,30 +326,12 @@ if(isset($_GET['Quantidade'])){
             <div class="col-xs-12 col-md-6">
                 <select name="protecao_veiculo2" id="protecao_veiculo2" class="form-control form-control-lg" required>
                     <option value="">Selecione</option>
-                    <option value="Sim">Sim</option>
+                    <option value="Sim - Proteção">Sim - Proteção</option>
+                    <option value="Sim - Seguro">Sim - Seguro</option>
                     <option value="Não">Não</option>
                 </select>
             </div>
         
-            <div class="col-2 float-left">
-                <input 
-                    type="checkbox" 
-                    class="form-control" 
-                    name="seguro_veiculo2" 
-                    id="seguro_veiculo2" 
-                    value="Sim"
-                    style="
-                        display:block;
-                        width: 50%;
-                        height: calc(.75rem + .75rem + 2px);
-                        margin-top: .75rem;
-                    "
-                >
-            </div>
-            <label for="seguro_veiculo2" class="col-9 float-left col-form-label col-form-label-lg">
-                O veículo tem seguro
-            </label>
-            
         </div>
 
         </div>
@@ -508,30 +364,12 @@ if(isset($_GET['Quantidade'])){
             <div class="col-xs-12 col-md-6">
                 <select name="protecao_veiculo3" id="protecao_veiculo3" class="form-control form-control-lg" required>
                     <option value="">Selecione</option>
-                    <option value="Sim">Sim</option>
+                    <option value="Sim - Proteção">Sim - Proteção</option>
+                    <option value="Sim - Seguro">Sim - Seguro</option>
                     <option value="Não">Não</option>
                 </select>
             </div>
         
-            <div class="col-2 float-left">
-                <input 
-                    type="checkbox" 
-                    class="form-control" 
-                    name="seguro_veiculo3" 
-                    id="seguro_veiculo3" 
-                    value="Sim"
-                    style="
-                        display:block;
-                        width: 50%;
-                        height: calc(.75rem + .75rem + 2px);
-                        margin-top: .75rem;
-                    "
-                >
-            </div>
-            <label for="seguro_veiculo3" class="col-9 float-left col-form-label col-form-label-lg">
-                O veículo tem seguro
-            </label>
-            
         </div>
 
         </div>

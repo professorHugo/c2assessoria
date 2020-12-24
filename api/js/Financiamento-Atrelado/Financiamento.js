@@ -31,7 +31,10 @@ function statusPagamentos(){
       return_status_pagamentos = document.getElementById('return_status_pagamentos');
 
   if( status_pagamentos == 1 ){
-    fotos_parcelas.setAttribute('style', 'display: none');
+    fotos_parcelas.setAttribute(
+      'style', 
+      'display: block; min-height: 290px'
+      );
   }else{
     fotos_parcelas.setAttribute(
       'style', 

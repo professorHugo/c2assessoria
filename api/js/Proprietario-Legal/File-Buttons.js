@@ -1,5 +1,5 @@
 $(function(){
-  $('#button-upload').on('click', function() {
+  $('#button-upload1').on('click', function() {
       $('#print_foto_frente_documento_veiculo').trigger('click');
   });
 
@@ -9,7 +9,7 @@ $(function(){
   });
 
 
-  $('#button-upload').on('click', function() {
+  $('#button-upload2').on('click', function() {
       $('#print_foto_verso_documento_veiculo').trigger('click');
   });
 

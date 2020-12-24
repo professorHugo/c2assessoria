@@ -2,7 +2,7 @@
 if( isset($_GET['C']) ){
   $Comprovante = $_GET['C'];
 
-  if( $Comprovante < 4 ){
+  if( $Comprovante <= 4 && $Comprovante != 1 ){
     ?>
       <label 
         for="comprovante_procedente" 

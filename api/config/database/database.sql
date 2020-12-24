@@ -73,7 +73,7 @@ insert into tb_sistemas_anti_furto(
     tipo_sistema
 )values('Alarme'),('Rastreador'),('Localizador'),('Rastreador/Localizador');
 
-/*TB Tipo de Vistorias*/
+/*TB Locais DETRAN*/
 create table tb_detran_estados(
     id_detran int not null PRIMARY KEY auto_increment,
     estado_detran varchar(3) DEFAULT NULL,
@@ -116,25 +116,17 @@ insert into tb_fotos(
 );
 
 /* TB CNHS REGISTRADAS*/
-CREATE TABLE tb_cnh_registros(
+DROP TABLE IF EXISTS tb_cnh_registros;
+CREATE TABLE IF NOT EXISTS tb_cnh_registros(
     id_cnh int not null primary key auto_increment,
     protocolo_cnh VARCHAR(50) DEFAULT NULL,
-    dono_cnh int DEFAULT null,
+    dono_cnh varchar(255) DEFAULT null,
     status_cnh VARCHAR(50) DEFAULT NULL,
-    rg_cnh varchar(50) DEFAULT NULL,
-    emissor_rg_cnh VARCHAR(50) DEFAULT null,
-    uf_rg_cnh VARCHAR (5) DEFAULT NULL,
-    cpf_cnh VARCHAR (11) DEFAULT null,
-    nascimento_cnh TIMESTAMP DEFAULT current_timestamp,
-    permissao_cnh VARCHAR(50) DEFAULT NULL,
-    aac_cnh VARCHAR(10) DEFAULT null,
-    categoria_cnh VARCHAR(10) DEFAULT NULL,
-    registro_cnh VARCHAR(25) DEFAULT NULL,
-    validade_cnh VARCHAR(25) DEFAULT null,
-    primeira_hab VARCHAR(25) DEFAULT NULL,
-    img_cnh int DEFAULT NULL,
+    img_cnh1 int DEFAULT NULL,
+    img_cnh2 int DEFAULT NULL,
 
-    FOREIGN KEY(img_cnh) REFERENCES tb_fotos(id_foto)
+    FOREIGN KEY(img_cnh1) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(img_cnh2) REFERENCES tb_fotos(id_foto)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 CREATE TABLE tb_financeiro_veiculo (
@@ -187,7 +179,6 @@ ALTER TABLE `tb_vistorias_realizadas`
 --
 ALTER TABLE `tb_vistorias_realizadas`
   ADD CONSTRAINT `tb_vistorias_realizadas_ibfk_1` FOREIGN KEY (`arquivo_vistoria`) REFERENCES `tb_fotos` (`id_foto`),
-  ADD CONSTRAINT `tb_vistorias_realizadas_ibfk_2` FOREIGN KEY (`tipo_vistoria`) REFERENCES `tb_tipo_vistorias` (`id_tipo_vistoria`);
 
 /*Tb Fotos Documentos Veículos Segurados*/
 -- create table tb_fotos_veiculos(
@@ -274,9 +265,7 @@ create table tb_veiculos(
     modelo_veiculo varchar(100) null,
     placa_veiculo varchar(8) null,
 
-    protecao_veiculo varchar(10) DEFAULT "Sim" COMMENT 'Se há proteção para o veículo' ,
-
-    seguro_veiculo varchar(10) DEFAULT "Sim",
+    protecao_veiculo varchar(50) DEFAULT "Sim" COMMENT 'Se há proteção para o veículo' ,
 
     dut_veiculo varchar(100) null,
     procedente_veiculo varchar(50) null,
@@ -322,7 +311,8 @@ create table tb_associados(
     bairro_associado varchar(100) DEFAULT null,
     cidade_associado varchar(50) DEFAULT null,
     estado_associado varchar(50) DEFAULT null,
-    nacionalidade_associado varchar(50) DEFAULT null,
+    outros_veiculos int DEFAULT null comment '1: sim | 2: não',
+    quantidade_veiculos int DEFAULT null comment 'Quantidade de veículos extras'
     civil_associado varchar(50) DEFAULT null,
     profissao_associado varchar(50) DEFAULT null,
     veiculo1_associado int DEFAULT null,
@@ -336,7 +326,7 @@ create table tb_associados(
     FOREIGN KEY(veiculo2_associado) REFERENCES tb_veiculos(id_veiculo),
     FOREIGN KEY(veiculo3_associado) REFERENCES tb_veiculos(id_veiculo),
     FOREIGN KEY(veiculo4_associado) REFERENCES tb_veiculos(id_veiculo),
-    FOREIGN KEY(cnh_associado) REFERENCES tb_fotos(id_foto)
+    FOREIGN KEY(cnh_associado) REFERENCES tb_cnh_registros(id_cnh)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 -- TB Tipos de testemunhas sabedoras

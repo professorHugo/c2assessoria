@@ -28,22 +28,4 @@ $(function(){
   });
 
 
-  //Foto do documento
-  $('#button-upload_documento1').on('click', function() {
-      $('#print_foto_documento_proprietario_anterior1').trigger('click');
-  });
-
-  $('#print_foto_documento_proprietario_anterior1').on('change', function() {
-      var fileName = $(this)[0].files[0].name;
-      $('#file_foto_documento_proprietario_anterior1').val(fileName);
-  });
-
-  $('#button-upload_documento2').on('click', function() {
-      $('#print_foto_documento_proprietario3').trigger('click');
-  });
-
-  $('#print_foto_documento_proprietario3').on('change', function() {
-      var fileName = $(this)[0].files[0].name;
-      $('#file_foto_documento_proprietario3').val(fileName);
-  });
 });

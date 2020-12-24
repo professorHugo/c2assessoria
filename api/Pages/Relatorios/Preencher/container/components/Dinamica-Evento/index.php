@@ -1,5 +1,5 @@
 <form
-  action="?Page=Relatorios&Preencher&Protocolo=<?php echo $Protocolo?>&Content=Salvar"
+  action="?Page=Relatorios&Preencher&Protocolo=<?php echo $Protocolo?>&Content=Dinamica-Evento&Salvar"
   method="post" enctype="multipart/form-data"
   style="width: 100%"
 >
@@ -39,6 +39,7 @@
     <div class="col-6">
       <button
         type="submit"
+        name="Salvar"
         class="btn btn-outline-success btn-lg btn-block"
       >
         Salvar
@@ -46,3 +47,11 @@
     </div>
   </div>
 </form>
+
+<?php
+  if( isset($_POST['Salvar']) && isset($_GET['Salvar']) ){
+    include 'components/Salvar.php';
+    if( $SysMode == 2 ){
+      include 'components/Modal-Salvar.php';
+    }
+  }

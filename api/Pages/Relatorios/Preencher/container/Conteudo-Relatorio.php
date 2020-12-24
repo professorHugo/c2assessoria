@@ -45,7 +45,7 @@
 <div class="col-12" style="border-top: 1px solid #bbb; margin-bottom: 1rem;float: left;height:1px"></div>
 <?php include "components/Info-Pesquisa-Convivio.php"?>
 
-<!-- Contexto-Geral -->
+<!-- Contexto-Geral-Form -->
 <h4 class='col-12' style="margin-top: 2rem">
   Contexto Geral
 </h4>

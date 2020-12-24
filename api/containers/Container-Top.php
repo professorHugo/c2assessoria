@@ -1,6 +1,11 @@
 <?php
- "Permissão: " . $Permissao = $_SESSION['LoginUsuario']['permissao_usuario'];
- "<br>Id: " . $IdUsuario = $_SESSION['LoginUsuario']['id_usuario'];
+    if( $SysMode == 1 ){
+        echo "Permissão: " . $Permissao = $_SESSION['LoginUsuario']['permissao_usuario'];
+        echo "<br>Id: " . $IdUsuario = $_SESSION['LoginUsuario']['id_usuario'];
+    }else{
+        "Permissão: " . $Permissao = $_SESSION['LoginUsuario']['permissao_usuario'];
+        "<br>Id: " . $IdUsuario = $_SESSION['LoginUsuario']['id_usuario'];
+    }
 ?>
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">

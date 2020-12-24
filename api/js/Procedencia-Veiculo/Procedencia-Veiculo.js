@@ -5,7 +5,7 @@ function escolhaProcedente(){
   var ajax_procedente = new XMLHttpRequest();
 
   return_comprovante.innerHTML = '<img src="img/ajax-loader.gif" class="img-fluid">';
-  if( procedente_veiculo >= 4){
+  if( procedente_veiculo >= 5){
     return_foto_comprovante.setAttribute('style', 'display: none; margin-top: 10px');
   }
   ajax_procedente.onreadystatechange = function(){

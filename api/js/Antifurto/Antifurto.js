@@ -5,7 +5,7 @@ function escolhaSistemaAntifurto(){
   img_comprovantes = document.getElementById('img_comprovantes');
 
   if( sistema_antifurto == 1 ){
-    telemetria_rastreador.setAttribute('style', 'display:block; min-height: 260px');
+    telemetria_rastreador.setAttribute('style', 'display:block; min-height: 260px; margin-top: 55px');
   }else{
     telemetria_rastreador.setAttribute('style', 'display:none');
     img_comprovantes.setAttribute('style', 'display:none');
@@ -32,7 +32,7 @@ function selectComprovanteRastreador(){
   img_comprovantes = document.getElementById('img_comprovantes');
 
   if( sistema_antifurto == 1 ){
-    img_comprovantes.setAttribute('style', 'display:block; min-height: 190px; margin-bottom: 15px');
+    img_comprovantes.setAttribute('style', 'display:block; min-height: 180px; margin-bottom: 15px');
   }else{
     img_comprovantes.setAttribute('style', 'display:none');
   }

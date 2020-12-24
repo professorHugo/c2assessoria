@@ -1,12 +1,11 @@
 <?php
-  $ExeQrBuscarRelatorios = mysqli_query($connection, $QueryBuscarRelatorios);
-  $RowQrByscarRelatorios = mysqli_num_rows($ExeQrBuscarRelatorios);
-  
+
   if( $RowQrByscarRelatorios > 0 ){
     ?>
-      <h2 class="col-7 float-left">Preencher relatório: </h2>
+      <h2 class="col-12 float-left">Preencher relatório: <?php echo $_GET['Protocolo'] ?></h2>
       <?php
         echo '<h4 class="col-5 float-left" style="margin-top: .4rem">';
+        
         while( $Relatorio = mysqli_fetch_assoc($ExeQrBuscarRelatorios) ){
           echo $Relatorio['natureza_evento'] . "-2020-" . date('m');
           if( $Relatorio['id_relatorio'] < 10){
@@ -41,5 +40,7 @@
         ?>
       </div>
     <?php
-  }  
+  }else{
+    echo "<br>Erro: " . mysqli_error($connection);
+  }
 ?>

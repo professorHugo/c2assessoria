@@ -28,17 +28,15 @@ if( isset($_GET['Proprietario']) ){
       >Vínculo:
       </label>
 
-      <div class="col-3 float-left" style="margin-top:10px">
-        <select 
+      <div class="col-9 float-left" style="margin-top:10px">
+        <input 
           type="text" 
           name="vinculo_proprietario" 
           id="vinculo_proprietario" 
           class="form-control form-control-lg"
+          placeholder="Pai, Mãe, Irmão, Amigo, Etc."
           required
         >
-          <option value="" disabled selected>Escolha</option>
-          <option value="1">Opção 1</option>
-        </select>
       </div>
 
       <label 
@@ -48,7 +46,7 @@ if( isset($_GET['Proprietario']) ){
       >CRV/DUT:
       </label>
 
-      <div class="col-3 float-left" style="margin-top:10px">
+      <div class="col-9 float-left" style="margin-top:10px">
         <select 
           type="text" 
           name="documento_veiculo" 

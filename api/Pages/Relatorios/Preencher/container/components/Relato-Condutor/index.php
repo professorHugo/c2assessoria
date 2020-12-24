@@ -2,14 +2,15 @@
 <script src="js/Relato-Condutor/File-Buttons.js"></script>
 
 <form
-  action="?Page=Relatorios&Preencher&Protocolo=<?php echo $Protocolo?>&Content=Salvar"
+  action="?Page=Relatorios&Preencher&Protocolo=<?php echo $Protocolo?>&Content=Relato-Condutor&Salvar"
   method="post" enctype="multipart/form-data"
   style="width: 100%"
 >
+  <?php include 'components/containers/Dados-Associado.php' ?>
   <div class="form-group row">
     <label
       for="relato_condutor"
-      class="col-sm-12 col-form-label col-form-label-lg float-left"
+      class="col-12 col-form-label col-form-label-lg float-left"
     >
       Relato do condutor associado:
     </label>
@@ -26,83 +27,9 @@
   </div>
 
 
+  <!-- Fotos do documento do condutor -->
 
-  <div class="row" id="fotos_documento_condutor">
-    <h5 style="
-      width: 100%; 
-      border-bottom: 1px #ddd solid; 
-      margin-bottom: 1rem;
-      margin-top: 1rem
-    "
-    >Documento: </h5>
-
-    <label 
-      for="foto_documento_condutor_frente" 
-      class="col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
-      style="margin-top: 10px"
-    >
-      Documento Frente: 
-    </label>
-
-    <div class="col-sm-7 com-md-3 float-left" style="margin-top: 10px">
-      <input 
-        type="file" 
-        name="print_foto_documento_condutor_frente" 
-        id="print_foto_documento_condutor_frente"
-        style="display: none;"
-      >
-      <input 
-        type="text" 
-        name="file_foto_documento_condutor_frente" 
-        id="file_foto_documento_condutor_frente"
-        placeholder="Escolha o arquivo"
-        class="form-control form-control-lg col-9 float-left"
-        readonly
-      >
-      <button 
-        type="button" 
-        class="btn-default form-control form-control-lg col-3 float-left"
-        id="button-upload_documento_condutor_frente"
-      >
-        <i class="fa fa-upload" aria-hidden="true"></i>
-      </button>
-    </div>
-
-
-
-    <label 
-      for="foto_documento_condutor_verso" 
-      class="col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
-      style="margin-top: 10px"
-    >
-      Documento Verso:  
-    </label>
-
-    <div class="col-sm-7 com-md-3 float-left" style="margin-top: 10px">
-      <input 
-        type="file" 
-        name="print_foto_documento_condutor_verso" 
-        id="print_foto_documento_condutor_verso"
-        style="display: none;"
-      >
-      <input 
-        type="text" 
-        name="file_foto_documento_condutor_verso" 
-        id="file_foto_documento_condutor_verso"
-        placeholder="Escolha o arquivo"
-        class="form-control form-control-lg col-9 float-left"
-        readonly
-      >
-      <button 
-        type="button" 
-        class="btn-default form-control form-control-lg col-3 float-left"
-        id="button-upload_documento_condutor_verso"
-      >
-        <i class="fa fa-upload" aria-hidden="true"></i>
-      </button>
-    </div>
-    
-  </div>
+  <?php include 'components/containers/Fotos-Condutor.php'?>
 
 
 
@@ -110,12 +37,12 @@
   <div class="form-group row" style="margin-top: 2rem">
     <label
       for="declaracao_apresentada"
-      class="col-sm-6 col-md-3 col-form-label col-form-label-lg float-left"
+      class="col-6 col-md-3 col-form-label col-form-label-lg float-left"
     >
       Apresentou Declaração:
     </label>
 
-    <div class="col-sm-6 col-md-3">
+    <div class="col-6 col-md-3">
       <select
         name="declaracao_apresentada"
         id="declaracao_apresentada"
@@ -133,116 +60,11 @@
 
 
 
+  <!-- Fotos declaração do condutor -->
+  <?php include 'components/containers/Declaracao-Condutor.php'?>
 
 
-  <div class="row" id="declaracao_condutor" style="display:none">
-    <h5 style="width: 100%; border-bottom: 1px #ddd solid; margin-bottom: 1rem">Declaração: </h5>
-
-    <label 
-      for="foto_declaracao_condutor1" 
-      class="col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
-      style="margin-top: 10px"
-    >
-      Foto 1: 
-    </label>
-
-    <div class="col-sm-7 com-md-3 float-left" style="margin-top: 10px">
-      <input 
-        type="file" 
-        name="print_foto_declaracao_condutor1" 
-        id="print_foto_declaracao_condutor1"
-        style="display: none;"
-      >
-      <input 
-        type="text" 
-        name="file_foto_declaracao_condutor1" 
-        id="file_foto_declaracao_condutor1"
-        placeholder="Escolha o arquivo"
-        class="form-control form-control-lg col-9 float-left"
-        readonly
-      >
-      <button 
-        type="button" 
-        class="btn-default form-control form-control-lg col-3 float-left"
-        id="button-upload_declaracao1"
-      >
-        <i class="fa fa-upload" aria-hidden="true"></i>
-      </button>
-    </div>
-
-
-
-    <label 
-      for="foto_declaracao_condutor2" 
-      class="col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
-      style="margin-top: 10px"
-    >
-      Foto 2: 
-    </label>
-
-    <div class="col-sm-7 com-md-3 float-left" style="margin-top: 10px">
-      <input 
-        type="file" 
-        name="print_foto_declaracao_condutor2" 
-        id="print_foto_declaracao_condutor2"
-        style="display: none;"
-      >
-      <input 
-        type="text" 
-        name="file_foto_declaracao_condutor2" 
-        id="file_foto_declaracao_condutor2"
-        placeholder="Escolha o arquivo"
-        class="form-control form-control-lg col-9 float-left"
-        readonly
-      >
-      <button 
-        type="button" 
-        class="btn-default form-control form-control-lg col-3 float-left"
-        id="button-upload_declaracao2"
-      >
-        <i class="fa fa-upload" aria-hidden="true"></i>
-      </button>
-    </div>
-
-
-
-    <label 
-      for="foto_declaracao_condutor3" 
-      class="col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
-      style="margin-top: 10px"
-    >
-      Foto 3: 
-    </label>
-
-    <div class="col-sm-7 com-md-3 float-left" style="margin-top: 10px">
-      <input 
-        type="file" 
-        name="print_foto_declaracao_condutor3" 
-        id="print_foto_declaracao_condutor3"
-        style="display: none;"
-      >
-      <input 
-        type="text" 
-        name="file_foto_declaracao_condutor3" 
-        id="file_foto_declaracao_condutor3"
-        placeholder="Escolha o arquivo"
-        class="form-control form-control-lg col-9 float-left"
-        readonly
-      >
-      <button 
-        type="button" 
-        class="btn-default form-control form-control-lg col-3 float-left"
-        id="button-upload_declaracao3"
-      >
-        <i class="fa fa-upload" aria-hidden="true"></i>
-      </button>
-    </div>
-
-  </div>
-
-
-
-  <div class="clearfix" style="margin: 1rem 0"></div>
+  <div class="clearfix" style="margin: 1.5rem 0"></div>
   <hr>
 
   <div class="form-group row">
@@ -258,6 +80,7 @@
     <div class="col-6">
       <button
         type="submit"
+        name="Salvar"
         class="btn btn-outline-success btn-lg btn-block"
       >
         Salvar
@@ -265,3 +88,11 @@
     </div>
   </div>
 </form>
+
+<?php
+  if( isset($_POST['Salvar']) && isset($_GET['Salvar']) ){
+    include 'components/Salvar.php';
+    if( $SysMode == 2 ){
+      include 'components/Modal-Salvar.php';
+    }
+  }

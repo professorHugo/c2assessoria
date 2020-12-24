@@ -6,12 +6,12 @@ if( isset($_GET['Comprovante']) ){
     ?>
       <label
         for="comprovante_instalacao"
-        class="col-sm-5 col-md-3 col-form-label col-form-label-lg"
+        class="col-xs-4 col-sm-5 col-md-3 col-form-label col-form-label-lg"
         style="margin-top: 10px"
       >Comprovante:
       </label>
 
-      <div class="col-sm-7 col-md-3" style="margin: 10px -10px 10px 10px; padding-right:0">
+      <div class="col-xs-8 col-sm-7 col-md-3" style="margin: 10px -10px 10px 10px; padding-right:0">
         <select
           name="comprovante_instalacao"
           id="comprovante_instalacao"

@@ -49,7 +49,7 @@ if( $SysMode == 1 ){
             if( $RowQrLogarUsuario > 0 ){
                 echo "<br>Usuário <b>$email</b> logado, armazenar sessão e fazer o login";
                 while( $DadosUsuario = mysqli_fetch_assoc($ExeQrLogarUsuario) ){
-                    session_start();
+                    // session_start();
                     $_SESSION['LoginUsuario'] = $DadosUsuario;
 
                     ?>

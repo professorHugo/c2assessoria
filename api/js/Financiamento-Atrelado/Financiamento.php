@@ -6,11 +6,11 @@ if( isset($_GET['Financiamento']) ){
     ?>
       <label
         for="instituicao_financeira"
-        class="col-sm-4 col-md-3 col-form-label col-form-label-lg"
+        class="col-xs-4 col-sm-4 col-md-3 col-form-label col-form-label-lg"
         style="margin-top: 10px"
       >Instituição:
       </label>
-      <div class="col-sm-8 col-md-3" style="margin-top: 10px">
+      <div class="col-xs-8 col-sm-8 col-md-3" style="margin-top: 10px">
         <input
           type="text"
           name="instituicao_financeira"
@@ -21,11 +21,11 @@ if( isset($_GET['Financiamento']) ){
 
       <label
         for="valor_parcelas"
-        class="col-sm-5 col-md-3 col-form-label col-form-label-lg"
-        style="margin-top: 10px"
+        class="col-xs-4 col-sm-5 col-md-3 col-form-label col-form-label-lg"
+        style="margin-top: 10px; font-size: 1rem"
       >Valor das Parcelas:
       </label>
-      <div class="col-sm-7 col-md-3" style="margin-top: 10px">
+      <div class="col-xs-8 col-sm-7 col-md-3" style="margin-top: 10px">
         <input
           type="text"
           name="valor_parcelas"
@@ -37,11 +37,11 @@ if( isset($_GET['Financiamento']) ){
 
       <label
         for="qtd_total_parcelas"
-        class="col-sm-6 col-md-3 col-form-label col-form-label-lg"
+        class="col-xs-4 col-sm-6 col-md-3 col-form-label col-form-label-lg"
         style="margin-top: 10px"
-      >Quantidade de Parcelas:
+      >Total Parcelas:
       </label>
-      <div class="col-sm-6 col-md-3" style="margin-top: 10px">
+      <div class="col-xs-8 col-sm-6 col-md-3" style="margin-top: 10px">
         <input
           type="text"
           name="qtd_total_parcelas"
@@ -52,27 +52,27 @@ if( isset($_GET['Financiamento']) ){
 
       <label
         for="qtd_parcelas_pagas"
-        class="col-sm-5 col-md-3 col-form-label col-form-label-lg"
+        class="col-xs-4 col-sm-5 col-md-3 col-form-label col-form-label-lg"
         style="margin-top: 10px"
       >Total Pagas:
       </label>
-      <div class="col-sm-7 col-md-3" style="margin-top: 10px">
+      <div class="col-xs-8 col-sm-7 col-md-3" style="margin-top: 10px">
         <input
           type="text"
           name="qtd_parcelas_pagas"
           id="qtd_parcelas_pagas"
           class="form-control form-control-lg"
-          placeholder="Apenas o valor. Ex: 999,99"
+          placeholder="Quantidade pagas"
         >
       </div>
 
       <label
         for="status_pagamentos"
-        class="col-sm-6 col-md-6 col-form-label col-form-label-lg"
-        style="margin-top: 10px"
-      >Status do Pagamento:
+        class="col-xs-4 col-sm-6 col-md-6 col-form-label col-form-label-lg"
+        style="margin-top: 10px; font-size: 1.05rem"
+      >Status Pagamento:
       </label>
-      <div class="col-sm-6 col-md-6" style="margin-top: 10px">
+      <div class="col-xs-8 col-sm-6 col-md-6" style="margin-top: 10px">
         <select
           name="status_pagamentos"
           id="status_pagamentos"
@@ -90,17 +90,17 @@ if( isset($_GET['Financiamento']) ){
       <div style="width: 100%; display:none" id="return_status_pagamentos">
         <label
           for="qtd_parcelas_inadimplente"
-          class="col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
+          class="col-xs-4 col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
           style="margin-top: 10px;"
         >Total Inadimplentes:
         </label>
-        <div class="col-sm-7 col-md-3 float-left" style="margin-top: 10px">
+        <div class="col-xs-8 col-sm-7 col-md-3 float-left" style="margin-top: 25px">
           <input
             type="text"
             name="qtd_parcelas_inadimplente"
             id="qtd_parcelas_inadimplente"
             class="form-control form-control-lg"
-            placeholder="Apenas o valor. Ex: 9"
+            placeholder="Quantidade Não Pagas"
           >
         </div>
       </div>

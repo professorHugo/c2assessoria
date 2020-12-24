@@ -51,10 +51,12 @@ if( isset($_GET['Logout']) ){
   <script src="https://use.fontawesome.com/c42a50f139.js"></script>
   <link rel="stylesheet" href="css/styles.css">
   <!-- Core jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/jquery.form.js"></script>
+  <link rel="stylesheet" href="../vendor/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.min.css">
 
   <?php include "../containers/Favicon.php"?>
+  
 
 </head>
 

@@ -1,152 +1,183 @@
 :root{
-    --background-transparent: rgba(78,115,223,.6);
-    --blue-color: rgba(78,115,223,.7);
+  --background-transparent: rgba(78,115,223,.6);
+  --blue-color: rgba(78,115,223,.7);
 }
+/* Tela < 576 px */
+@media(max-width: 575px){
+	:root{
+		font-size: .8em!important;
+	}
+  .col-xs, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9,
+  .col-xs-10, .col-xs-11, .col-xs-12{
+    position: relative;
+    width: 100%;
+    padding-right: .75rem;
+    padding-left: .75rem;
+  }
+  .col-xs-1{
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  .col-xs-2{
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+  }
+  .col-xs-3{
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-xs-4{
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+  .col-xs-5{
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+  }
+  .col-xs-6{
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-xs-7{
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+  }
+  .col-xs-8{
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+  }
+  .col-xs-9{
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .col-xs-10{
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%;
+  }
+  .col-xs-11{
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%;
+  }
+  .col-xs-12{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 
+}
 .container-fluid{
-    color: rgb(30,30,30);
-}
-@media(min-width: 991px){
-    #return_testemunhas_local{
-        margin-top: -15px!important;
-    }
+  color: rgb(30,30,30);
 }
 
-#Testemunhas{
-    margin-top: 80px;
-    /* display: none; */
-}
 
 .entrevistados[data-toggle=collapse]::after{
-    content: '\f0d8';
-    color: rgba(255,255,255,.5);
-    font-family: 'Font Awesome 5 Free';
-    width: 1rem;
-    text-align: center;
-    float: right;
-    vertical-align: 0;
-    border: 0;
-    font-weight: 900;
+  content: '\f0d8';
+  color: rgba(255,255,255,.5);
+  font-family: 'Font Awesome 5 Free';
+  width: 1rem;
+  text-align: center;
+  float: right;
+  vertical-align: 0;
+  border: 0;
+  font-weight: 900;
 }
 
 .entrevistados[data-toggle=collapse].collapsed::after{
-    content: '\f0d7';
+  content: '\f0d7';
 }
 .icones {
-    font-family: 'Font Awesome 5 Free';
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
 }
-.icone-preencher:before{
-    content: '\f15c';
+.icones::after{
+  font-size: 1.1rem;
+}
+.icone-preencher::before{
+  content: '\f15c -Preencher';
 }
 .icone-entregar::before{
-    content: '\f1d8';
+  content: '\f1d8 -Entregar';
+}
+
+.icone-ver::before{
+  content: '\f06e -Ver';
+}
+
+.icone-compress::before{
+  content: '\f1c6 -Compactar';
 }
 
 label.label-dados-relatorios{
-    padding-top: 5px;
-    font-size: 1.1rem;
+  padding-top: 5px;
+  font-size: 1.1rem;
 }
 
-@media print{
-    *{
-        background: transparent;
-    }
-    #wrapper ul#accordionSidebar{
-        display: none;
-    }
-    .topo-relatorio{
-        margin-bottom: 2rem;
-    }
-    .cabecalho-relatorio{
-        margin-bottom: 3.5rem;
-    }
-    .topo-relatorio{
-        margin-bottom: 5rem;
-    }
-    .pagina-1{
-        margin-top: 55rem;
-    }
-    .pagina-1 .foto-cnh{
-        max-height: 20rem;
-    }
-    .pagina-1 .foto-cnh img{
-        max-height: 22rem;
-        margin: 0 25%;
-    }
-    .pagina-2{
-        margin-top: 16rem;
-    }
-    .pagina-3{
-        margin-top: 21rem;
-    }
-    .pagina-3 #proprietario-veiculo{
-        width: 100%;
-    }
-    .pagina-3 #Img-DUT{
-        width: 100%;
-    }
+@media (max-width: 575px){
+  .entrevistados[data-toggle=collapse].collapsed::after{
+    content: '\f0d7';
+  }
+  .icones {
+    font-family: 'Font Awesome 5 Free';
+    font-size: 1rem;
+    font-style: normal;
+    text-align: center;
+    float: left;
+    margin-left: 0;
+  }
+  .icones::after{
+    font-size: 0.8rem;
+  }
+  .icone-preencher::before{
+    content: '\f15c';
+  }
+  .icone-entregar::before{
+    content: '\f1d8';
+  }
+
+  .icone-ver::before{
+    content: '\f06e';
+  }
+
+  .icone-compress::before{
+    content: '\f1c6';
+  }
 }
+
 
 @media screen {
-    *{
-        background: transparent;
-    }
-    table tbody tr td a{
-        color: #fff!important;
-        text-decoration: none!important;
-        transition: .3s;
-    }
-    table tbody tr td a:hover{
-        color: var(--blue-color)!important;
-    }
-    .topo-relatorio{
-        margin-bottom: 1rem;
-    }
-    .cabecalho-relatorio{
-        margin-bottom: 2.5rem;
-    }
-    .pagina-solicitacao{
-        margin-bottom: 3rem;
-    }
-    .pagina-1{
-        margin-top: 1rem;
-    }
-    .pagina-1 .foto-cnh{
-        max-height: 20rem;
-    }
-    .pagina-1 .foto-cnh img{
-        width: 115%;
-        margin: 0 auto 0 3%;
-    }
-    .pagina-2{
-        margin-top: 4rem;
-        border-top: 1px solid #ddd
-    }
-    .pagina-3{
-        margin-top: 5rem;
-    }
-    @media( min-width: 990px ){
-
-        .pagina-1 .foto-cnh img{
-            width: auto;
-            max-height: 18rem;
-            margin: 0 25%;
-        }
-
-        .pagina-3 #proprietario-veiculo{
-            display: inline-flex;
-            align-items: center;
-        }
-        .pagina-3 #proprietario-veiculo div:last-child{
-            flex-basis: 100%;
-            position: sticky;
-            margin-left: -100%;
-        }
-        .pagina-3 #proprietario-veiculo div:first-child{
-            flex-basis: 100%;
-            position: sticky;
-            margin-top: -45%;
-        }
-    }
-    
+  *{
+      background: transparent;
+  }
+  table tbody tr td a{
+      color: #fff!important;
+      text-decoration: none!important;
+      transition: .3s;
+  }
+  table tbody tr td a:hover{
+      color: var(--blue-color)!important;
+  }
+  .space-1{
+    margin-top: 1rem;
+  }
+  .space-2{
+    margin-top: 2rem;
+  }
+  .space-3{
+    margin-top: 3rem;
+  }
+  .cabecalho-relatorio{
+    margin-bottom: 3.5rem;
+  }
+  .horario{
+    font-size: 1.2rem; padding-top: 1rem; padding-bottom:1rem
+  }
+  .topo-solicitacao h3{
+    border-bottom: 1px solid #ddd
+  }
+  
+  .rotulos{
+    border-bottom: 1px solid #ddd;
+  }
+  .nomes-rotulos{
+    font-size: 1.5rem;
+  }
 }

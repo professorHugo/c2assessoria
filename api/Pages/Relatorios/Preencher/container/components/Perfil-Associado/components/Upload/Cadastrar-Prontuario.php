@@ -1,17 +1,15 @@
 <?php
 echo "<br><pre>" . 
-$QueryCadastrarFotoProntuario = "
-  INSERT INTO tb_fotos(
-    categoria_foto,
-    protocolo_foto,
-    pasta_foto,
-    nome_foto
+$QueryCadastrarProntuario = "
+  INSERT INTO tb_cnh_registros(
+    protocolo_cnh,
+    dono_cnh,
+    status_cnh
   )VALUES(
-    'prontuario_associado',
     '$Protocolo',
-    '$target_dir',
-    '$Prontuario'
+    '$CPFAssociado',
+    '$StatusCNH'
   )
 ";
 echo "</pre>";
-$ExeQrCadastrarFotoProntuario = mysqli_query($connection, $QueryCadastrarFotoProntuario);
+$ExeQrCadastrarProntuario = mysqli_query($connection, $QueryCadastrarProntuario);

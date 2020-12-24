@@ -6,11 +6,11 @@ if( isset($_GET['T']) ){
     ?>
       <label 
         for="quantidade_testemunhas" 
-        class="col-sm-9 col-md-9 col-form-label col-form-label-lg float-left"
+        class="col-xs-9 col-sm-9 col-md-9 col-form-label col-form-label-lg float-left"
         style="margin-top:5px"
       >Adicionar Testemunha: </label>
       <div style="margin-bottom:10px"></div>
-      <div class="col-sm-3 col-md-3 float-left">
+      <div class="col-xs-3 col-sm-3 col-md-3 float-left">
         <button type="button"
           class="btn btn-success"
           data-toggle="modal"
