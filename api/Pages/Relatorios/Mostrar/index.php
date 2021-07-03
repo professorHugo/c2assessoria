@@ -14,6 +14,7 @@ if( $SysMode == 1 ){
         tb_relatorios relatorio
       INNER JOIN tb_associados associado
         ON relatorio.cpf_associado = associado.cpf_associado
+      ORDER BY horario_criacao ASC
     ";
     echo "</pre>";
   }else{
@@ -23,12 +24,12 @@ if( $SysMode == 1 ){
         tb_relatorios relatorio
       INNER JOIN tb_associados associado
         ON relatorio.cpf_associado = associado.cpf_associado
-      WHERE sindicante_evento = '$IdUsuario'
+      WHERE sindicante_evento = '$IdUsuario' ORDER BY horario_criacao ASC
     ";
     echo "</pre>";
   }
 
-  include "container/Exibir-Relatorios.php";
+  include "Exibir-Relatorios.php";
   
 }else{
 
@@ -42,6 +43,7 @@ if( $SysMode == 1 ){
         tb_relatorios relatorio
       INNER JOIN tb_associados associado
         ON relatorio.cpf_associado = associado.cpf_associado
+        ORDER BY horario_criacao ASC
     ";
      "</pre>";
   }else{
@@ -51,11 +53,11 @@ if( $SysMode == 1 ){
         tb_relatorios relatorio
       INNER JOIN tb_associados associado
         ON relatorio.cpf_associado = associado.cpf_associado
-      WHERE sindicante_evento = '$IdUsuario'
+      WHERE sindicante_evento = '$IdUsuario' ORDER BY horario_criacao ASC
     ";
      "</pre>";
   }
 
-  include "container/Exibir-Relatorios.php";
+  include "Exibir-Relatorios.php";
 
 }

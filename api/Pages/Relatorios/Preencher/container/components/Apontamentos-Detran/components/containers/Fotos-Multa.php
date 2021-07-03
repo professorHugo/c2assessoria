@@ -1,13 +1,13 @@
-<div class="col-12 col-md-6" id="prints_multas_evento" style="display: none">
+<div class="form-group" id="prints_multas_evento" style="display: none">
   <label
     for="foto1"
-    class="col-xs-5 col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
+    class="col-3 col-form-label col-form-label-lg float-left"
     style="margin-top: 10px"
   >
     Foto 1:
   </label>
 
-  <div class="col-xs-7 col-sm-7 com-md-3 float-left" style="margin-top: 10px">
+  <div class="col-9 float-left" style="margin-top: 10px">
     <input
       type="file"
       name="print_foto1"
@@ -34,13 +34,13 @@
 
   <label
     for="foto2"
-    class="col-xs-5 col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
+    class="col-3 col-form-label col-form-label-lg float-left"
     style="margin-top: 10px"
   >
     Foto 2:
   </label>
 
-  <div class="col-xs-7 col-sm-7 com-md-3 float-left" style="margin-top: 10px">
+  <div class="col-9 float-left" style="margin-top: 10px">
     <input
       type="file"
       name="print_foto2"
@@ -66,13 +66,13 @@
 
   <label
     for="foto3"
-    class="col-xs-5 col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
+    class="col-3 col-form-label col-form-label-lg float-left"
     style="margin-top: 10px"
   >
     Foto 3:
   </label>
 
-  <div class="col-xs-7 col-sm-7 com-md-3 float-left" style="margin-top: 10px">
+  <div class="col-9 float-left" style="margin-top: 10px">
     <input
       type="file"
       name="print_foto3"

@@ -24,7 +24,7 @@
     ";
     "</pre>";
     if( $ExeQrUpdateCopom = mysqli_query($connection, $QueryUpdateCopom) ){
-      echo "<br>Copom atualizado com o Texto de divergência";
+      "<br>Copom atualizado com o Texto de divergência";
     }
   
   }

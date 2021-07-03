@@ -35,7 +35,6 @@ if( isset($_GET['Proprietario']) ){
           id="vinculo_proprietario" 
           class="form-control form-control-lg"
           placeholder="Pai, Mãe, Irmão, Amigo, Etc."
-          required
         >
       </div>
 
@@ -52,7 +51,6 @@ if( isset($_GET['Proprietario']) ){
           name="documento_veiculo" 
           id="documento_veiculo" 
           class="form-control form-control-lg"
-          required
           onchange="CRV_DUT_Change();"
         >
           <option value="" disabled selected>Escolha</option>
@@ -61,6 +59,29 @@ if( isset($_GET['Proprietario']) ){
         </select>
       </div>
 
+    <?php
+  }else{
+    ?>
+      <label 
+        for="documento_veiculo" 
+        class="col-3 col-form-label col-form-label-lg float-left"
+        style="margin-top: 10px"
+      >CRV/DUT:
+      </label>
+
+      <div class="col-9 float-left" style="margin-top:10px">
+        <select 
+          type="text" 
+          name="documento_veiculo" 
+          id="documento_veiculo" 
+          class="form-control form-control-lg"
+          onchange="CRV_DUT_Change();"
+        >
+          <option value="" disabled selected>Escolha</option>
+          <option value="1">Em Branco</option>
+          <option value="2">Preenchido</option>
+        </select>
+      </div>
     <?php
   }
 }

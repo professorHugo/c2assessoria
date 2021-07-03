@@ -1,12 +1,12 @@
 <div class="col-12 float-left" id="fotos_vistoria" style="display:none; margin-top: 10px">
   <label
     for="foto_vistoria_cautelar1"
-    class="col-xs-5 col-sm-5 col-md-6 col-form-label col-form-label-lg float-left"
+    class="col-3 col-form-label col-form-label-lg float-left"
     style="margin-top: 10px"
   >
     Foto/Print1:
   </label>
-  <div class="col-xs-7 col-sm-7 com-md-6 float-left" style="margin-top: 10px">
+  <div class="col-9 float-left" style="margin-top: 10px">
     <input
       type="file"
       name="print_foto_vistoria_cautelar1"
@@ -34,12 +34,12 @@
 
   <label
     for="foto_vistoria_cautelar2"
-    class="col-xs-5 col-sm-5 col-md-6 col-form-label col-form-label-lg float-left"
+    class="col-3 col-form-label col-form-label-lg float-left"
     style="margin-top: 10px"
   >
     Foto/Print2:
   </label>
-  <div class="col-xs-7 col-sm-7 com-md-6 float-left" style="margin-top: 10px">
+  <div class="col-9 float-left" style="margin-top: 10px">
     <input
       type="file"
       name="print_foto_vistoria_cautelar2"
@@ -66,12 +66,12 @@
 
   <label
     for="foto_vistoria_cautelar3"
-    class="col-xs-5 col-sm-5 col-md-6 col-form-label col-form-label-lg float-left"
+    class="col-3 col-form-label col-form-label-lg float-left"
     style="margin-top: 10px"
   >
     Foto/Print3:
   </label>
-  <div class="col-xs-7 col-sm-7 com-md-6 float-left" style="margin-top: 10px">
+  <div class="col-9 float-left" style="margin-top: 10px">
     <input
       type="file"
       name="print_foto_vistoria_cautelar3"

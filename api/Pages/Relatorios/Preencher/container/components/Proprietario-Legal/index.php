@@ -66,6 +66,6 @@
 if( isset($_POST['Salvar']) || isset($_GET['Salvar']) ){
   include 'components/Salvar.php';
   if( $SysMode == 2 ){
-    include 'components/containers/Modal-Proprietario-Legal-Salvo.php';
+    include 'components/Modal-Proprietario-Legal-Salvo.php';
   }
 }

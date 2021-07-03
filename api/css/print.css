@@ -1,0 +1,219 @@
+:root{
+  font-size: 1rem;
+}
+
+#wrapper #content-wrapper{
+  background-color: #FFF!important;
+}
+.scroll-to-top{
+  display: none!important;
+}
+.text-aviso-pc{
+  display: none;
+}
+.editar-relato{
+  display: none;
+}
+#accordionSidebar{
+  display: none!important;
+}
+
+.rotulos{
+  border-bottom: 1px solid #ddd;
+}
+
+ 
+#Relatorio{
+  width: 100%;
+}
+
+/* Solicitação */
+.pagina-solicitacao{
+  min-height: 600px;
+}
+.pagina-solicitacao p.numero-pagina{
+  width: 100%;
+  display: block;
+  margin-top: 25px;
+  text-transform: uppercase;
+  margin-top: 850px;
+}
+
+/* Veículos Extras */
+#Veiculos-Extras .veiculos-extra, #Veiculos-Proprios .veiculos-extra{
+  width: 33.3333%!important;
+  float: left;
+  margin-bottom: 25px
+}
+.Pagina-1, .Pagina-2, .Pagina-3{
+  height: 100vh;
+}
+#Perfil-Associado p.numero-pagina{
+  width: 100%;
+  display: block;
+  text-transform: uppercase;
+}
+#Perfil-Associado .numero-pagina.perfil-1,
+#Perfil-Associado .numero-pagina.perfil-2,
+#Perfil-Associado .numero-pagina.perfil-3{
+  margin-top: -5vh;
+}
+
+/* #Veiculos-Proprios .numero-pagina{
+  width: 100%;
+  display: block;
+  text-transform: uppercase;
+  margin-top: 1100px;
+} */
+
+/* Fotos do prontuário */
+.perfil-associado #Fotos-Prontuario .foto-prontuario, 
+.perfil-condutor #Fotos-Prontuario-Condutor .foto-prontuario{
+  
+  margin-bottom: 50px;
+  min-height: 650px;
+  max-height: 650px;
+}
+.perfil-associado #Fotos-Prontuario .foto-prontuario p{
+  width: 100%!important;
+  text-align: center;
+}
+.perfil-associado #Fotos-Prontuario .foto-prontuario img{
+  width: 100%!important;
+}
+
+.perfil-associado #Fotos-Prontuario p.numero-pagina,
+.perfil-condutor #Fotos-Prontuario-Condutor p.numero-pagina,
+.perfil-condutor #Fotos-Documento-Condutor p.numero-pagina{
+  width: 100%;
+  display: block;
+  text-transform: uppercase;
+  float: left;
+}
+
+.perfil-condutor #Fotos-Documento-Condutor p.numero-pagina{
+  margin-top: 20px!important;
+}
+
+
+/* Fotos do Documento */
+.perfil-associado #Fotos-Documento .foto-documento,
+.perfil-condutor #Fotos-Documento-Condutor .foto-documento{
+  padding-top: 25px;
+  margin-bottom: 80px;
+  min-height: 650px;
+  max-height: 650px;
+  width: 100%;
+}
+.perfil-associado #Fotos-Documento .foto-documento p,
+.perfil-condutor #Fotos-Documento-Condutor .foto-documento p{
+  width: 100%!important;
+  text-align: center;
+}
+.perfil-associado #Fotos-Documento .foto-documento img,
+.perfil-condutor #Fotos-Documento-Condutor .foto-documento img{
+  max-height: 650px!important;
+  width: auto;
+}
+.foto-prontuario2{
+  margin-bottom: 825px!important;
+}
+
+.perfil-associado #Fotos-Documento p.numero-pagina{
+  width: 100%;
+  display: block;
+  text-transform: uppercase;
+  margin-top: 700px!important;
+}
+
+/* Declaração do Associado */
+.perfil-associado #Declaracao-Associado,
+.perfil-condutor #Declaracao-Condutor{
+  width: 100%!important;
+  margin-top: 50px!important;
+}
+
+/* Texto do relato */
+.perfil-associado #Declaracao-Associado .texto-relato{
+  width: 100%!important;
+  height: 1100px!important;
+  font-size: 1.3rem;
+  padding: 50px;
+  float: left;
+}
+.perfil-condutor #Declaracao-Condutor .texto-relato{
+  width: 100%!important;
+  height: 1100px!important;
+  font-size: 1.3rem;
+  padding: 50px;
+  margin-bottom: -50px;
+  float: left;
+}
+.perfil-associado #Declaracao-Associado .numero-pagina,
+.perfil-condutor #Declaracao-Condutor .numero-pagina{
+  width: 100%;
+  display: block;
+  float: left;
+  text-transform: uppercase;
+  margin-top: 300px!important;
+}
+
+/* Imagens da declaração */
+.perfil-associado #Declaracao-Associado .foto-declaracao{
+  padding-top: 25px!important;
+  margin-bottom: 80px;
+  min-height: 1100px;
+  max-height: 1100px;
+  width: 100%;
+  float:left;
+}
+.perfil-condutor #Declaracao-Condutor .foto-declaracao{
+  padding-top: 25px!important;
+  margin-bottom: 80px;
+  min-height: 1100px;
+  max-height: 1600px;
+  width: 100%;
+  float:left;
+}
+
+.perfil-associado #Declaracao-Associado .foto-declaracao p,
+.perfil-condutor #Declaracao-Condutor .foto-declaracao p{
+  padding-bottom: 20px;
+}
+.perfil-associado #Declaracao-Associado .foto-declaracao img,
+.perfil-condutor #Declaracao-Condutor .foto-declaracao img{
+  max-height: 1100px;
+}
+
+.perfil-associado #Declaracao-Associado .numero-pagina2,
+.perfil-condutor #Declaracao-Condutor .numero-pagina2{
+  width: 100%;
+  display: block;
+  float: left;
+  text-transform: uppercase;
+  margin-top: 300px!important;
+}
+
+.perfil-associado #Declaracao-Associado .foto-declaracao2{
+  padding-top: 20px;
+  margin-bottom: 80px;
+  min-height: 900px;
+  max-height: 900px;
+  width: 100%;
+  float:left;
+}
+.perfil-associado #Declaracao-Associado .numero-pagina3{
+  width: 100%;
+  display: block;
+  float: left;
+  text-transform: uppercase;
+  margin-top: 250px!important;
+}
+
+.perfil-condutor #Declaracao-Condutor .numero-pagina3{
+  width: 100%;
+  display: block;
+  float: left;
+  text-transform: uppercase;
+  margin-top: 200px!important;
+}

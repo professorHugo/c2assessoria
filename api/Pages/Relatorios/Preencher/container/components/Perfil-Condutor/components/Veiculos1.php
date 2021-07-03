@@ -96,12 +96,15 @@ if( $SysMode == 1 ){
 
 
 }else{
+
+  
   //Prod
    "<br>Veículo1: ";
    "<br>Placa: " . $Placa1 = $_POST['placa_veiculo1'];
    "<br>Marca: " . $Marca1 = $_POST['marca_veiculo1'];
    "<br>Modelo: " . $Modelo1 = $_POST['modelo_veiculo1'];
    "<br>Proteção: " . $Protecao1 = $_POST['protecao_veiculo1'];
+   "<br>Nome Condutor: " . $Condutor = $_POST['nome_condutor'];
   
   
   if( isset($_POST['placa_veiculo1']) ){
@@ -157,7 +160,7 @@ if( $SysMode == 1 ){
       if( $ExeQrCadastrarVeiculo1 ){
          "<br>Veículo 1 cadastrado";
         //Atualizar o Associado com o novo veículo extra
-         "<br>Atualizar o cadastro do Condutor<pre>";
+         "<br>Atualizar o cadastro do condutor<pre>";
          $QueryBuscarVeiculoExtra1 = "
           SELECT * FROM tb_veiculos WHERE placa_veiculo = '$Placa1'
         ";
@@ -185,7 +188,7 @@ if( $SysMode == 1 ){
         echo "<br>Erro: " . mysqli_error($connection);
       }
     }else{
-       "<br>Veículo já cadastrado";
+      "<br>Veículo já cadastrado";
     }
   }
 }

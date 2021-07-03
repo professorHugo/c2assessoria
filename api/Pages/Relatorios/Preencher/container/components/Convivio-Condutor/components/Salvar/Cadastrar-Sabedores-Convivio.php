@@ -7,7 +7,7 @@
         tb_entrevistados_convivio
       WHERE
         protocolo_sabedores = '$Protocolo' &&
-        representante_sabedor = '1'
+        representante_sabedor = '2'
     ";
     echo "</pre>";
     $ExeQrBuscarSabedoresConvivio = mysqli_query($connection, $QueryBuscarSabedoresConvivio);
@@ -24,7 +24,7 @@
         )VALUES(
           '$Protocolo',
           '1',
-          '1'
+          '0'
         )
       ";
       echo "</pre>";
@@ -42,7 +42,7 @@
           tb_entrevistados_convivio
         WHERE
           protocolo_sabedores = '$Protocolo' &&
-          representante_sabedor = '1'
+          representante_sabedor = '2'
       ";
       echo "</pre>";
       $ExeQrBuscarSabedoresConvivio = mysqli_query($connection, $QueryBuscarSabedoresConvivio);
@@ -59,7 +59,7 @@
           total_sabedores = '$QtdNova'
         WHERE
           protocolo_sabedores = '$Protocolo' &&
-          representante_sabedir - '1'
+          representante_sabedor = '2'
       ";
       echo "</pre>";
       if( $ExeQrUpdateSabedoresConvivio = mysqli_query($connection, $QueryUpdateSabedoresConvivio) ){
@@ -79,7 +79,7 @@
         tb_entrevistados_convivio
       WHERE
         protocolo_sabedores = '$Protocolo' &&
-        representante_sabedor = '1'
+        representante_sabedor = '2'
     ";
     "</pre>";
     $ExeQrBuscarSabedoresConvivio = mysqli_query($connection, $QueryBuscarSabedoresConvivio);
@@ -96,7 +96,7 @@
         )VALUES(
           '$Protocolo',
           '1',
-          '1'
+          '0'
         )
       ";
       "</pre>";
@@ -114,7 +114,7 @@
           tb_entrevistados_convivio
         WHERE
           protocolo_sabedores = '$Protocolo' &&
-          representante_sabedor = '1'
+          representante_sabedor = '2'
       ";
       "</pre>";
       $ExeQrBuscarSabedoresConvivio = mysqli_query($connection, $QueryBuscarSabedoresConvivio);
@@ -131,7 +131,7 @@
           total_sabedores = '$QtdNova'
         WHERE
           protocolo_sabedores = '$Protocolo' &&
-          representante_sabedir - '1'
+          representante_sabedor = '2'
       ";
       "</pre>";
       if( $ExeQrUpdateSabedoresConvivio = mysqli_query($connection, $QueryUpdateSabedoresConvivio) ){

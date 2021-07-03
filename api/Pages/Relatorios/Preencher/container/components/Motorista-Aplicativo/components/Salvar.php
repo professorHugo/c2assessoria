@@ -43,6 +43,11 @@
         include 'Uploads/Motorista5.php';
         echo "<br>";
       }
+
+      if( !empty($_FILES['print_comprovante_motorista_app_img6']['name']) ){
+        include 'Uploads/Motorista6.php';
+        echo "<br>";
+      }
   
       include 'Update-Relatorio.php';
     }
@@ -93,6 +98,11 @@
   
       if( !empty($_FILES['print_comprovante_motorista_app_img5']['name']) ){
         include 'Uploads/Motorista5.php';
+        "<br>";
+      }
+
+      if( !empty($_FILES['print_comprovante_motorista_app_img6']['name']) ){
+        include 'Uploads/Motorista6.php';
         "<br>";
       }
   

@@ -41,6 +41,10 @@
       if( !empty($_FILES['print_foto_inadimplencia_5']['name']) ){
         include 'Uploads/Foto-Parcelas5.php';
       }
+
+      if( !empty($_FILES['print_foto_inadimplencia_6']['name']) ){
+        include 'Uploads/Foto-Parcelas6.php';
+      }
     }
   
     //Update do financeiro_veiculo na tb_veiculos
@@ -92,6 +96,9 @@
   
       if( !empty($_FILES['print_foto_inadimplencia_5']['name']) ){
         include 'Uploads/Foto-Parcelas5.php';
+      }
+      if( !empty($_FILES['print_foto_inadimplencia_6']['name']) ){
+        include 'Uploads/Foto-Parcelas6.php';
       }
     }
   

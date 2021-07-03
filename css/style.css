@@ -18,3 +18,7 @@
     align-content: space-between;
     justify-items: center;
 }
+
+@media (max-width: 600px){
+    
+}

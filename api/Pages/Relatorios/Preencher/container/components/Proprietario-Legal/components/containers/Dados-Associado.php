@@ -7,6 +7,8 @@
         tb_relatorios relatorio
       INNER JOIN tb_veiculos veiculo
         ON veiculo.protocolo_evento = relatorio.protocolo_evento
+      INNER JOIN tb_associados associado
+        ON relatorio.cpf_associado = associado.cpf_associado
       WHERE 
         relatorio.protocolo_evento = '$Protocolo'
     ";
@@ -16,8 +18,10 @@
 
     if( $RowQrBuscarDados = 1 ){
       while($Dados = mysqli_fetch_assoc($ExeQrBuscarDados)){
+        echo "<p>Nome do Associado: " . $NomeAssociado = $Dados['nome_associado'];
+        echo "</p>";
         ?>
-          <input type="hidden" name="cpf_associado" value="<?php echo $Dados['cpf_associado']?>">
+          <input type="hidden" name="cpf_associado" value="<?php echo str_pad($Dados['cpf_associado'], 11, 0, STR_PAD_LEFT)?>">
           <input type="hidden" name="placa_veiculo" value="<?php echo $Dados['placa_veiculo']?>">
         <?php
         break;
@@ -39,7 +43,7 @@
     if( $RowQrBuscarDados = 1 ){
       while($Dados = mysqli_fetch_assoc($ExeQrBuscarDados)){
         ?>
-          <input type="hidden" name="cpf_associado" value="<?php echo $Dados['cpf_associado']?>">
+          <input type="hidden" name="cpf_associado" value="<?php echo str_pad($Dados['cpf_associado'], 11, 0, STR_PAD_LEFT)?>">
           <input type="hidden" name="placa_veiculo" value="<?php echo $Dados['placa_veiculo']?>">
         <?php
         break;

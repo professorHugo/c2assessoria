@@ -1,4 +1,5 @@
 <script src="js/COPOM/File-Buttons.js"></script>
+<script src="js/COPOM/index.js"></script>
 <form
   action="?Page=Relatorios&Preencher&Protocolo=<?php echo $Protocolo?>&Content=COPOM&Salvar"
   method="post" enctype="multipart/form-data"
@@ -30,7 +31,8 @@
         <option value="">Selecione</option>
         <option value="1">Sim, pelo Associado</option>
         <option value="2">Sim, pelo Condutor</option>
-        <option value="3">Não houve comunicado</option>
+        <option value="3">Sim, através de terceiros</option>
+        <option value="4">Não houve comunicado às autoridades</option>
       </select>
     </div>
     
@@ -57,7 +59,7 @@
 
   </div>
 
-  <div class="form-group row" id="img_comunicado_copom">
+  <div class="form-group row" id="img_comunicado_copom" style="width:105%; margin-left: -5%;font-size: 0.8rem">
     <?php include 'components/containers/Img-Copom.php'?>
   </div>
 

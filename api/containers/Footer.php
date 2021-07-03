@@ -2,7 +2,10 @@
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
             <span>
-                <?php echo SITENAME ?> &copy; 2020 - Desenvolvido por <?php echo SITEAUTHOR?>
+                <?php echo SITENAME ?> 
+                V<?php echo VERSION?> &copy; 
+                <?php echo date('Y')?> 
+                - Desenvolvido por <?php echo SITEAUTHOR?>
             </span>
         </div>
     </div>

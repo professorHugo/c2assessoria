@@ -174,6 +174,39 @@
     </button>
   </div>
 
+
+  <label
+    for="print_foto_inadimplencia_6"
+    class="col-xs-4 col-sm-5 col-md-6 col-form-label col-form-label-lg float-left"
+    style="margin-top: 10px"
+  >
+    Foto/Print6:
+  </label>
+
+  <div class="col-xs-8 col-sm-7 com-md-6 float-left" style="margin-top: 10px">
+    <input
+      type="file"
+      name="print_foto_inadimplencia_6"
+      id="print_foto_inadimplencia_6"
+      style="display: none;"
+    >
+    <input
+      type="text"
+      name="file_foto_inadimplencia_6"
+      id="file_foto_inadimplencia_6"
+      placeholder="Escolha o arquivo"
+      class="form-control form-control-lg col-9 float-left"
+      readonly
+    >
+    <button
+      type="button"
+      class="btn-default form-control form-control-lg col-3 float-left"
+      id="button-upload_6"
+    >
+      <i class="fa fa-upload" aria-hidden="true"></i>
+    </button>
+  </div>
+
   <div class="clearfix"></div>
 
 </div>

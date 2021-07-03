@@ -76,8 +76,7 @@
               echo $QueryUpdateDocumentoVeiculo1 = "
                 UPDATE tb_documento_veiculo
                 SET
-                  foto_verso_documento = '$FotoVerso',
-                  documento_preenchido = '$Documento'
+                  foto_verso_documento = '$FotoVerso'
                 WHERE
                   protocolo_documento = '$Protocolo'
               ";
@@ -212,8 +211,7 @@
               $QueryUpdateDocumentoVeiculo1 = "
                 UPDATE tb_documento_veiculo
                 SET
-                  foto_verso_documento = '$FotoVerso',
-                  documento_preenchido = '$Documento'
+                  foto_verso_documento = '$FotoVerso'
                 WHERE
                   protocolo_documento = '$Protocolo'
               ";

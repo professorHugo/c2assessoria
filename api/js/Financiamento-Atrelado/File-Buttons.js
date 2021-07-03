@@ -44,4 +44,13 @@ $(function(){
       $('#file_foto_inadimplencia_5').val(fileName);
   });
 
+  $('#button-upload_6').on('click', function() {
+    $('#print_foto_inadimplencia_6').trigger('click');
+});
+
+$('#print_foto_inadimplencia_6').on('change', function() {
+    var fileName = $(this)[0].files[0].name;
+    $('#file_foto_inadimplencia_6').val(fileName);
+});
+
 });

@@ -10,7 +10,7 @@
         name="cep_proprietario" 
         id="cep_proprietario" 
         class="form-control form-control-lg" 
-        required
+      
       >
     </div>
     <div class="col-xs-2 col-md-1 align-items-center" style="cursor:pointer">
@@ -22,14 +22,14 @@
     <label for="endereco_proprietario" class="col-xs-3 col-md-2 col-form-label col-form-label-lg"
     >Endereço:</label>
     <div class="col-xs-7 col-md-8">
-      <input type="hidden" name="endereco_proprietario" id="endereco_proprietario" value="" required>
+      <input type="hidden" name="endereco_proprietario" id="endereco_proprietario" value="">
       <input 
         type="text" 
         name="endereco_proprietario_exibir" 
         placeholder="Aguardando CEP..." 
         disabled id="endereco_proprietario_exibir" 
         class="form-control form-control-lg" 
-        required
+      
       >
     </div>
     <div class="col-xs-2 col-md-1">

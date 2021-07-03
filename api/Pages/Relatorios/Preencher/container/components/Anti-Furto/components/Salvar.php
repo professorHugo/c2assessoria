@@ -5,6 +5,7 @@
     echo "<br>CPF Associado: " . $CPFAssociado = $_POST['cpf_associado'];
     echo "<br>Placa Veículo: " . $PlacaVeiculo = $_POST['placa_veiculo'];
     echo "<br>Sistema Anti-furto: " . $AntiFurto = $_POST['sistema_antifurto'];
+    echo "<br>Texto Outros Sistemas: " . $OutrosSistemas = $_POST['outros_sistemas'];
   
     if( $AntiFurto == 1 ){
       echo "<br>Comprovante de instalação: " . $ComprovanteInstalacao = $_POST['comprovante_instalacao'];
@@ -39,16 +40,21 @@
 
       //Update data de modificação do relatório
       include 'Update-Data-Modifica-Relatorio.php';
+    }else{
+      echo "<br>Sistema antifurto comum";
+      include 'Cadastrar-Sistema-Antifurto.php';
+
+      //Update do Sistema antifurto
+      include 'Update-Veiculo.php';
     }
   }else{
 
     //PROD
-
-
     "<br>Protocolo: " . $Protocolo;
     "<br>CPF Associado: " . $CPFAssociado = $_POST['cpf_associado'];
     "<br>Placa Veículo: " . $PlacaVeiculo = $_POST['placa_veiculo'];
     "<br>Sistema Anti-furto: " . $AntiFurto = $_POST['sistema_antifurto'];
+    echo "<br>Texto Outros Sistemas: " . $OutrosSistemas = $_POST['outros_sistemas'];
   
     if( $AntiFurto == 1 ){
       "<br>Comprovante de instalação: " . $ComprovanteInstalacao = $_POST['comprovante_instalacao'];
@@ -83,5 +89,12 @@
 
       //Update data de modificação do relatório
       include 'Update-Data-Modifica-Relatorio.php';
+    }else{
+      "<br>Sistema antifurto comum";
+      include 'Cadastrar-Sistema-Antifurto.php';
+
+      //Update do Sistema antifurto
+      include 'Update-Veiculo.php';
     }
+
   }

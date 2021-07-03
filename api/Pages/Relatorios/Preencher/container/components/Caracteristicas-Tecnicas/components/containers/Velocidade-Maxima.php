@@ -13,6 +13,7 @@
       required
     >
       <option value="" selected disabled>Selecione</option>
+      <option value="0">Não Definido</option>
       <option value="1">30Km/h</option>
       <option value="2">40Km/h</option>
       <option value="3">50Km/h</option>

@@ -33,6 +33,11 @@
           include 'Uploads/Copom5.php';
           echo "<br>";
         }
+
+        if( !empty($_FILES['print_copom_img6']['name']) ){
+          include 'Uploads/Copom6.php';
+          echo "<br>";
+        }
   
         echo "<br>Divergência no Regsistro: " . $DivergenciaRegistro = $_POST['divergencia_registro'];
         if( $DivergenciaRegistro == 1 ){
@@ -42,10 +47,11 @@
         }
   
         include 'Update-Copom.php';
-        include 'Update-Relatorio.php';
+        
       }
     }
     //Update data de modificação do relatório
+    include 'Update-Relatorio.php';
     include 'Update-Data-Modifica-Relatorio.php';
   }else{
 
@@ -82,6 +88,11 @@
         }
         if( !empty($_FILES['print_copom_img5']['name']) ){
           include 'Uploads/Copom5.php';
+          "<br>";
+        }
+
+        if( !empty($_FILES['print_copom_img6']['name']) ){
+          include 'Uploads/Copom6.php';
           "<br>";
         }
   

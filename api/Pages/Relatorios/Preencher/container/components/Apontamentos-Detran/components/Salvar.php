@@ -2,7 +2,7 @@
   if( $SysMode == 1 ){
     //DEV
     echo "<br>Protocolo: " . $Protocolo;
-    echo "<br>CPF Associado: " . $CPFAssociado = $_POST['cpf_associado'];
+    echo "<br>CPF Associado: " . $CPFAssociado = $CPFAssociado = str_pad($_POST['cpf_associado'], 11, 0, STR_PAD_LEFT);
     echo "<br>Placa Veículo: " . $PlacaVeiculo = $_POST['placa_veiculo'];
     echo "<br>Estado DETRAN: " . $EstadoDetran = $_POST['estado_detran'];
     echo "<br>Multas Evento: " . $MultasEvento = $_POST['multas_evento'];
@@ -110,7 +110,7 @@
     //PROD
 
     "<br>Protocolo: " . $Protocolo;
-    "<br>CPF Associado: " . $CPFAssociado = $_POST['cpf_associado'];
+    "<br>CPF Associado: " . $CPFAssociado = $CPFAssociado = str_pad($_POST['cpf_associado'], 11, 0, STR_PAD_LEFT);
     "<br>Placa Veículo: " . $PlacaVeiculo = $_POST['placa_veiculo'];
     "<br>Estado DETRAN: " . $EstadoDetran = $_POST['estado_detran'];
     "<br>Multas Evento: " . $MultasEvento = $_POST['multas_evento'];

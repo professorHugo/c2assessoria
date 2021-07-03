@@ -1,13 +1,14 @@
 <?php
   if( $SysMode == 1 ){
     //DEV
-    $DataUpdate = date('Y-m-d H:m:i');
+    $DataUpdate = date('Y-m-d H:i');
     echo "<br>Update na data de atualização do Relatório";
     echo "<br><pre>" . 
     $QueryUpdateDataRelatorio = "
       UPDATE tb_relatorios
       SET
-        horario_update = '$DataUpdate'
+        horario_update = '$DataUpdate',
+        status_relatorio = 'Preenchendo'
       WHERE protocolo_evento = '$Protocolo'
     ";
     echo "</pre>";
@@ -22,13 +23,14 @@
     //PROD
 
 
-    $DataUpdate = date('Y-m-d H:m:i');
+    $DataUpdate = date('Y-m-d H:i');
     "<br>Update na data de atualização do Relatório";
     "<br><pre>" . 
     $QueryUpdateDataRelatorio = "
       UPDATE tb_relatorios
       SET
-        horario_update = '$DataUpdate'
+        horario_update = '$DataUpdate',
+        status_relatorio = 'Preenchendo'
       WHERE protocolo_evento = '$Protocolo'
     ";
     "</pre>";

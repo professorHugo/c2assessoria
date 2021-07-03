@@ -35,7 +35,18 @@
                     O Usuário <b><?php echo $_SESSION['LoginUsuario']['nome_usuario'] ?></b>
                     será desconectado...
                 
-                    <?php session_destroy()?>
+                    <?php 
+                        $IdUsuario = $_SESSION['LoginUsuario']['id_usuario'];
+                        $QueryUpdateStatus = "
+                            UPDATE tb_usuarios
+                            SET
+                                usuario_status = 2
+                            WHERE 
+                                id_usuario = '$IdUsuario'
+                        ";
+                        $ExeQrUpdateStatus = mysqli_query($connection, $QueryUpdateStatus);
+                        session_destroy();
+                    ?>
 
                 </p>
             </div>

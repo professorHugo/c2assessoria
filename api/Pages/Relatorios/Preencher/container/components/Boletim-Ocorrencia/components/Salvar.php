@@ -42,6 +42,9 @@
       include 'Uploads/Boletim5.php';
     }
     echo "<br>";
+    if( !empty($_FILES['print_boletim_img6']['name']) ){
+      include 'Uploads/Boletim6.php';
+    }
     echo "<br>";
   
     include 'Update-Relatorio.php';
@@ -94,6 +97,9 @@
       include 'Uploads/Boletim5.php';
     }
     "<br>";
+    if( !empty($_FILES['print_boletim_img6']['name']) ){
+      include 'Uploads/Boletim6.php';
+    }
     "<br>";
   
     include 'Update-Relatorio.php';

@@ -45,6 +45,11 @@
       include 'Uploads/Policia-Civil5.php';
       echo "<br>";
     }
+
+    if( !empty($_FILES['print_policia_civil_img6']['name']) ){
+      include 'Uploads/Policia-Civil6.php';
+      echo "<br>";
+    }
   
     include 'Update-Relatorio.php';
 
@@ -97,6 +102,11 @@
   
     if( !empty($_FILES['print_policia_civil_img5']['name']) ){
       include 'Uploads/Policia-Civil5.php';
+      "<br>";
+    }
+
+    if( !empty($_FILES['print_policia_civil_img6']['name']) ){
+      include 'Uploads/Policia-Civil6.php';
       "<br>";
     }
   

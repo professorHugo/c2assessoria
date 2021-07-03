@@ -79,7 +79,7 @@
     include 'containers/Update-Entrevistado.php';
 
     if( isset($_POST['Sabedor-Convivio']) ){
-      echo "<br><br><br>Cadastrar Sabedores do convívio do associado.........................:";
+      "<br><br><br>Cadastrar Sabedores do convívio do associado.........................:";
       include 'Cadastrar-Sabedores-Convivio.php';
     }
   

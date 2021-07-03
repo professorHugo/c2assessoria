@@ -51,7 +51,7 @@
           echo "</pre>";
           $ExeQrCadastrarFotoCopom2 = mysqli_query($connection, $QueryCadastrarFotoCopom2);
           if( $ExeQrCadastrarFotoCopom2 ){
-            echo "<br>Foto 2 COPOM cadastrada, atualizar tb_policia_civil";
+            echo "<br>Foto 2 COPOM cadastrada, atualizar tb_copom";
             echo "<br><pre>" . 
             $QueryBuscarFotoCopom2 = "
               SELECT * FROM 
@@ -140,7 +140,7 @@
           "</pre>";
           $ExeQrCadastrarFotoCopom2 = mysqli_query($connection, $QueryCadastrarFotoCopom2);
           if( $ExeQrCadastrarFotoCopom2 ){
-            "<br>Foto 2 COPOM cadastrada, atualizar tb_policia_civil";
+            "<br>Foto 2 COPOM cadastrada, atualizar tb_copom";
             "<br><pre>" . 
             $QueryBuscarFotoCopom2 = "
               SELECT * FROM 

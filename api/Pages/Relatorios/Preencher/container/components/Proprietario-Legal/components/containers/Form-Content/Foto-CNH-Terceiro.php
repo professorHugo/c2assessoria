@@ -6,7 +6,7 @@
     class="col-xs-5 col-md-3 col-form-label col-form-label-lg float-left"
     style="margin-top: 10px"
   >
-    Documento Frente: 
+    Frente: 
   </label>
 
   <div class="col-xs-7 com-md-3 float-left" style="margin-top: 10px">
@@ -40,7 +40,7 @@
     class="col-xs-5 col-md-3 col-form-label col-form-label-lg float-left"
     style="margin-top: 10px"
   >
-    Documento Verso:  
+    Verso:  
   </label>
 
   <div class="col-xs-7 com-md-3 float-left" style="margin-top: 10px">

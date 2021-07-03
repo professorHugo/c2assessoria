@@ -1,4 +1,4 @@
-<div class="col-12" id="texto_proprietario_legal" style="display:none">
+<div class="col-12" id="texto_proprietario_legal">
   <label 
     for="observacoes_proprietario_legal" 
     class="col-12 col-form-label col-form-label-lg margin"

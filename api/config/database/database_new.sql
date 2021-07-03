@@ -7,9 +7,10 @@ use c2assessoria;
 /*USO DO SISTEMA*/
 create table tb_sys_config(
     id_sys_config int not null primary key auto_increment,
-    modo_sys_config int DEFAULT 1 comment '1: DEV | 2: Produção'
+    modo_sys_config int DEFAULT 2 comment '1: DEV | 2: Produção',
+    sys_mensagens int DEFAULT 2 comment '1: Ativado | 2: Desativado'
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-insert into tb_sys_config(modo_sys_config)VALUES(1);
+insert into tb_sys_config(modo_sys_config, sys_mensagens)VALUES(2, 1);
 
 /*TB Senhas MD5*/
 create table tb_senhas_auth(
@@ -20,8 +21,8 @@ create table tb_senhas_auth(
 insert into tb_senhas_auth(
     id_senha, md5_senha, cadastro
 )values(1, 'e56f428d0f546e1072faf5acd4918b03', 'novo'), 
-(2, 'd91e80ac3436230268d5d3426e4b752d', 'cadastrado'),
-(3, 'eb0a191797624dd3a48fa681d3061212', 'cadastrado'); /*Cadastro novo "c2assessoria"*/
+(2, 'd91e80ac3436230268d5d3426e4b752d', 'novo'),
+(3, '564a3507bf79355f3b907b5d870bf53b', 'cadastrado'); /*Cadastro novo "c2assessoria"*/
 
 DROP TABLE IF EXISTS tb_permissoes;
 create table if not exists tb_permissoes(
@@ -39,6 +40,8 @@ create table if not exists tb_usuarios(
     senha_usuario int, /* FK */
     permissao_usuario int, /* FK */
 	usuario_ativo int, /*1: Sim | 2: Não*/
+
+    usuario_status int DEFAULT 2 comment '1: Logado | 2: deslogado',
     
     FOREIGN KEY(senha_usuario) REFERENCES tb_senhas_auth(id_senha),
     FOREIGN KEY(permissao_usuario) REFERENCES tb_permissoes(id_permissao)
@@ -48,10 +51,10 @@ insert into tb_usuarios(
     email_usuario,
     nome_usuario,
     senha_usuario,
-    permissao_usuario
-)VALUES('hugo.n2y@gmail.com','Hugo Christian',2,3),
-('admin@c2assessoria.com.br','Administrador',3,1),
-('sindicante@c2assessoria.com.br', 'Sindicante',1,2);
+    permissao_usuario,
+    usuario_ativo
+)VALUES('hugo.n2y@gmail.com','Hugo Christian',2,3,1),
+('admin@c2assessoria.com.br','Administrador',3,1,1);
 
 /*TB VINCULOS*/
 drop table if exists tb_vinculos;
@@ -68,9 +71,37 @@ drop table if exists tb_detran_estados;
 create table if not exists tb_detran_estados(
     id_detran int not null PRIMARY KEY auto_increment,
     estado_detran varchar(3) DEFAULT NULL,
+    vistoria_obrigatoria int DEFAULT NULL comment '1: Sim | 2: Não',
     ativacao int DEFAULT 1 comment '1: Ativado | 2: Desativado'
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-INSERT INTO tb_detran_estados(estado_detran) values('SP');
+INSERT INTO `tb_detran_estados` (`estado_detran`, `vistoria_obrigatoria`, `ativacao`) VALUES
+('SP', 1, 1),
+('AC', NULL, 1),
+('AL', NULL, 1),
+('AP', NULL, 1),
+('AM', NULL, 1),
+('BA', NULL, 1),
+('CE', NULL, 1),
+('ES', NULL, 1),
+('GO', NULL, 1),
+( 'MA', NULL, 1),
+( 'MT', NULL, 1),
+( 'MS', NULL, 1),
+( 'MG', NULL, 1),
+( 'PA', NULL, 1),
+( 'PB', NULL, 1),
+( 'PR', NULL, 1),
+( 'PE', NULL, 1),
+( 'PI', NULL, 1),
+( 'RJ', NULL, 1),
+( 'RN', NULL, 1),
+( 'RS', NULL, 1),
+( 'RO', NULL, 1),
+( 'RR', NULL, 1),
+( 'SC', NULL, 1),
+( 'SE', NULL, 1),
+( 'TO', NULL, 1),
+( 'DF', NULL, 1);
 
 /*TB Clientes (Seguradoras)*/
 drop table if exists tb_clientes;
@@ -84,14 +115,14 @@ create table if not exists tb_clientes(
 	data_update DATE DEFAULT NULL COMMENT 'data de atualização',
 	ativacao int DEFAULT "1" comment '1: Ativado | 2: Desativado'
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-insert into tb_clientes(nome_cliente)values
-('Universo AGV - AssociaÃ§Ã£o GestÃ£o Veicular Universo'),
-('Auto-Truck - AssociaÃ§Ã£o de AutimÃ³veis e VeÃ­culos Pesados'),
-('APVS BRASIL - ASSOCIACAO PROTETORA VEICULAR E SERVICOS SOCIAIS'),
-('NET CAR - NET CAR CLUBE DE BENEFICIOS'),
-('PROAUTO - ASSOCIACAO PROTETORA DE VEICULOS AUTOMOTORES '),
-('SEJA UNNICA - ASSOCIAÃ‡ÃƒO DE BENEFICIOS UNNICA'),
-('TECX PARK - GESTÃƒO DE MÃƒO OBRA T. S. T. LTDA');
+insert into tb_clientes(nome_cliente,data_cadastro)values
+('Universo AGV - AssociaÃ§Ã£o GestÃ£o Veicular Universo', '2020-01-01'),
+('Auto-Truck - AssociaÃ§Ã£o de AutimÃ³veis e VeÃ­culos Pesados', '2020-01-01'),
+('APVS BRASIL - ASSOCIACAO PROTETORA VEICULAR E SERVICOS SOCIAIS', '2020-01-01'),
+('NET CAR - NET CAR CLUBE DE BENEFICIOS', '2020-01-01'),
+('PROAUTO - ASSOCIACAO PROTETORA DE VEICULOS AUTOMOTORES ', '2020-01-01'),
+('SEJA UNNICA - ASSOCIAÃ‡ÃƒO DE BENEFICIOS UNNICA', '2020-01-01'),
+('TECX PARK - GESTÃƒO DE MÃƒO OBRA T. S. T. LTDA', '2020-01-01');
 
 /*TB Fotos*/
 drop table if exists tb_fotos;
@@ -114,6 +145,7 @@ CREATE TABLE IF NOT EXISTS tb_sistemas_anti_furto(
     id_sistema int not null auto_increment PRIMARY KEY,
     protocolo_sistema varchar(100),
     tipo_sistema varchar(50) not null comment 'Apenas o tipo de sistema',
+    texto_outros varchar(50) null comment 'Caso seja outro tipo de sistema antifurto',
     foto_comprovante1 int comment 'FK tb_fotos',
     foto_comprovante2 int comment 'FK tb_fotos',
     telemetria1 int comment 'FK tb_fotos',
@@ -347,18 +379,21 @@ CREATE TABLE IF NOT EXISTS tb_financeiro_veiculo (
     foto_parcela3 int comment 'FK tb_fotos',
     foto_parcela4 int comment 'FK tb_fotos',
     foto_parcela5 int comment 'FK tb_fotos',
+    foto_parcela6 int comment 'FK tb_fotos',
 
     INDEX(foto_parcela1),
     INDEX(foto_parcela2),
     INDEX(foto_parcela3),
     INDEX(foto_parcela4),
     INDEX(foto_parcela5),
+    INDEX(foto_parcela6),
 
     FOREIGN KEY(foto_parcela1) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto_parcela2) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto_parcela3) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto_parcela4) REFERENCES tb_fotos(id_foto),
-    FOREIGN KEY(foto_parcela5) REFERENCES tb_fotos(id_foto)
+    FOREIGN KEY(foto_parcela5) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(foto_parcela6) REFERENCES tb_fotos(id_foto)
 
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
@@ -440,7 +475,7 @@ create table if not exists tb_associados(
     veiculo4_associado int DEFAULT null,
     cnh_associado int DEFAULT null,
 
-    relato_associado varchar(1000) comment 'Texto escrito',
+    relato_associado longtext comment 'Texto escrito',
 
     documento_frente int comment 'FK tb_fotos',
     documento_verso int comment 'FK tb_fotos',
@@ -492,6 +527,7 @@ CREATE TABLE IF NOT EXISTS tb_entrevistados(
     foto3_entrevistado int comment 'FK tb_fotos',
     foto4_entrevistado int comment 'FK tb_fotos',
     foto5_entrevistado int comment 'FK tb_fotos',
+    foto6_entrevistado int comment 'FK tb_fotos',
 
     documento_entrevistado_frente int comment 'FK tb_fotos',
     documento_entrevistado_verso int comment 'FK tb_fotos',
@@ -505,6 +541,7 @@ CREATE TABLE IF NOT EXISTS tb_entrevistados(
     INDEX(foto3_entrevistado),
     INDEX(foto4_entrevistado),
     INDEX(foto5_entrevistado),
+    INDEX(foto6_entrevistado),
     INDEX(documento_entrevistado_frente),
     INDEX(documento_entrevistado_verso),
 
@@ -513,6 +550,7 @@ CREATE TABLE IF NOT EXISTS tb_entrevistados(
     FOREIGN KEY(foto3_entrevistado) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto4_entrevistado) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto5_entrevistado) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(foto6_entrevistado) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(documento_entrevistado_frente) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(documento_entrevistado_verso) REFERENCES tb_fotos(id_foto)
 
@@ -548,6 +586,8 @@ CREATE TABLE IF NOT EXISTS tb_local_evento(
     protocolo_local_evento VARCHAR(100) DEFAULT NULL,
     testemunha_entrevistado int default null comment '0: Local | 1: Convivio',
     quantidade_entrevistados int default null comment 'Armazenar a quantidade de entrevistados no local',
+
+    fotos_local_evento int comment '1: Sim | 2: Não',
 
     foto1_local_evento int comment 'FK tb_fotos',
     foto2_local_evento int comment 'FK tb_fotos',
@@ -588,7 +628,8 @@ CREATE TABLE IF NOT EXISTS tb_entrevistados_convivio(
 	confirmacao7_sabedores varchar(100) comment 'condutor/associado boa índole',
 	confirmacao8_sabedores varchar(100) comment 'boa/má conduta do condutor/associado',
 	
-	informacao_geral_sabeddores varchar(1000) comment 'Texto Geral'
+	informacao_geral_sabedores varchar(1000) comment 'Texto Geral',
+    sabedores_salvo varchar(10) comment 'Sim | Null'
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 
@@ -630,7 +671,7 @@ create table if not exists tb_sindicantes(
     FOREIGN KEY(id_usuario) REFERENCES tb_usuarios(id_usuario)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 INSERT INTO `tb_sindicantes` (`id_sindicante`, `id_usuario`, `ativacao`) 
-VALUES (NULL, '1', '1'), (NULL, '2', '1'),(NULL, '3', '1');
+VALUES (NULL, '1', '1'), (NULL, '2', '1');
 
 /* TB REGISTRO DE MOBILIDADE URBANA - FAZER */
 
@@ -681,6 +722,26 @@ create table if not exists tb_condutores(
 
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
+/* Velocidade máxima*/
+DROP TABLE IF EXISTS tb_velocidade_maxima;
+CREATE TABLE IF NOT EXISTS tb_velocidade_maxima(
+    id_velocidade int not null primary key auto_increment,
+    texto_velocidade varchar(50) comment 'Texto escrito velocidade máxima'
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO `tb_velocidade_maxima` (`id_velocidade`, `texto_velocidade`) 
+VALUES 
+(NULL, '10 KM/h'), 
+(NULL, '20 KM/h'), 
+(NULL, '30 KM/h'), 
+(NULL, '40 KM/h'), 
+(NULL, '50 KM/h'), 
+(NULL, '60 KM/h'), 
+(NULL, '70 KM/h'), 
+(NULL, '80 KM/h'), 
+(NULL, '90 KM/h'), 
+(NULL, '100 KM/h'), 
+(NULL, '110 KM/h'), 
+(NULL, '120 KM/h');
 /*CARACTERISTICAS TÉCNICAS*/
 DROP TABLE IF EXISTS tb_caracteristicas_tecnicas;
 CREATE TABLE IF NOT EXISTS tb_caracteristicas_tecnicas(
@@ -696,7 +757,9 @@ CREATE TABLE IF NOT EXISTS tb_caracteristicas_tecnicas(
     cruzamento_pista varchar(100),
     pista_curvas varchar(100),
     pista_rotatoria varchar(100),
-    velocidade_maxima varchar(100)
+    velocidade_maxima INT,
+
+    FOREIGN KEY (velocidade_maxima) REFERENCES tb_velocidade_maxima(id_velocidade)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*Boleim de Ocorrência*/
@@ -710,18 +773,21 @@ CREATE TABLE IF NOT EXISTS tb_boletim_ocorrencia(
     foto3_boletim int comment 'FK tb_fotos',
     foto4_boletim int comment 'FK tb_fotos',
     foto5_boletim int comment 'FK tb_fotos',
+    foto6_boletim int comment 'FK tb_fotos',
 
     INDEX(foto1_boletim),
     INDEX(foto2_boletim),
     INDEX(foto3_boletim),
     INDEX(foto4_boletim),
     INDEX(foto5_boletim),
+    INDEX(foto6_boletim),
 
     FOREIGN KEY(foto1_boletim) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto2_boletim) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto3_boletim) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto4_boletim) REFERENCES tb_fotos(id_foto),
-    FOREIGN KEY(foto5_boletim) REFERENCES tb_fotos(id_foto)
+    FOREIGN KEY(foto5_boletim) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(foto6_boletim) REFERENCES tb_fotos(id_foto)
 
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
@@ -736,18 +802,21 @@ CREATE TABLE IF NOT EXISTS tb_policia_militar(
     foto3_policia_militar int comment 'FK tb_fotos',
     foto4_policia_militar int comment 'FK tb_fotos',
     foto5_policia_militar int comment 'FK tb_fotos',
+    foto6_policia_militar int comment 'FK tb_fotos',
 
     INDEX(foto1_policia_militar),
     INDEX(foto2_policia_militar),
     INDEX(foto3_policia_militar),
     INDEX(foto4_policia_militar),
     INDEX(foto5_policia_militar),
+    INDEX(foto6_policia_militar),
 
     FOREIGN KEY(foto1_policia_militar) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto2_policia_militar) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto3_policia_militar) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto4_policia_militar) REFERENCES tb_fotos(id_foto),
-    FOREIGN KEY(foto5_policia_militar) REFERENCES tb_fotos(id_foto)
+    FOREIGN KEY(foto5_policia_militar) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(foto6_policia_militar) REFERENCES tb_fotos(id_foto)
     
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
@@ -762,18 +831,21 @@ CREATE TABLE IF NOT EXISTS tb_policia_civil(
     foto3_policia_civil int comment 'FK tb_fotos',
     foto4_policia_civil int comment 'FK tb_fotos',
     foto5_policia_civil int comment 'FK tb_fotos',
+    foto6_policia_civil int comment 'FK tb_fotos',
 
     INDEX(foto1_policia_civil),
     INDEX(foto2_policia_civil),
     INDEX(foto3_policia_civil),
     INDEX(foto4_policia_civil),
     INDEX(foto5_policia_civil),
+    INDEX(foto6_policia_civil),
 
     FOREIGN KEY(foto1_policia_civil) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto2_policia_civil) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto3_policia_civil) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto4_policia_civil) REFERENCES tb_fotos(id_foto),
-    FOREIGN KEY(foto5_policia_civil) REFERENCES tb_fotos(id_foto)
+    FOREIGN KEY(foto5_policia_civil) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(foto6_policia_civil) REFERENCES tb_fotos(id_foto)
     
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
@@ -789,18 +861,21 @@ CREATE TABLE IF NOT EXISTS tb_copom(
     foto3_copom int comment 'FK tb_fotos',
     foto4_copom int comment 'FK tb_fotos',
     foto5_copom int comment 'FK tb_fotos',
+    foto6_copom int comment 'FK tb_fotos',
 
     INDEX(foto1_copom),
     INDEX(foto2_copom),
     INDEX(foto3_copom),
     INDEX(foto4_copom),
     INDEX(foto5_copom),
+    INDEX(foto6_copom),
 
     FOREIGN KEY(foto1_copom) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto2_copom) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto3_copom) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto4_copom) REFERENCES tb_fotos(id_foto),
-    FOREIGN KEY(foto5_copom) REFERENCES tb_fotos(id_foto)
+    FOREIGN KEY(foto5_copom) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(foto6_copom) REFERENCES tb_fotos(id_foto)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 
@@ -819,19 +894,22 @@ CREATE TABLE IF NOT EXISTS tb_registro_mobilidade(
     foto3_mobilidade int comment 'FK tb_fotos',
     foto4_mobilidade int comment 'FK tb_fotos',
     foto5_mobilidade int comment 'FK tb_fotos',
+    foto6_mobilidade int comment 'FK tb_fotos',
 
     INDEX(foto1_mobilidade),
     INDEX(foto2_mobilidade),
     INDEX(foto3_mobilidade),
     INDEX(foto4_mobilidade),
     INDEX(foto5_mobilidade),
+    INDEX(foto6_mobilidade),
     
 
     FOREIGN KEY(foto1_mobilidade) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto2_mobilidade) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto3_mobilidade) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto4_mobilidade) REFERENCES tb_fotos(id_foto),
-    FOREIGN KEY(foto5_mobilidade) REFERENCES tb_fotos(id_foto)
+    FOREIGN KEY(foto5_mobilidade) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(foto6_mobilidade) REFERENCES tb_fotos(id_foto)
 
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
@@ -848,14 +926,71 @@ CREATE TABLE tb_motorista_aplicativo(
     foto3_motorista int DEFAULT NULL COMMENT 'FK tb_fotos',
     foto4_motorista int DEFAULT NULL COMMENT 'FK tb_fotos',
     foto5_motorista int DEFAULT NULL COMMENT 'FK tb_fotos',
+    foto6_motorista int DEFAULT NULL COMMENT 'FK tb_fotos',
     
     
     FOREIGN KEY(foto1_motorista) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto2_motorista) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto3_motorista) REFERENCES tb_fotos(id_foto),
     FOREIGN KEY(foto4_motorista) REFERENCES tb_fotos(id_foto),
-    FOREIGN KEY(foto5_motorista) REFERENCES tb_fotos(id_foto)
+    FOREIGN KEY(foto5_motorista) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(foto6_motorista) REFERENCES tb_fotos(id_foto)
     
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+DROP TABLE IF EXISTS tb_orgaos_publicos_fotos;
+CREATE TABLE IF NOT EXISTS tb_orgaos_publicos_fotos(
+    id_orgaos_publicos_fotos int not null primary key auto_increment,
+    orgaos_publicos_fotos_protocolo varchar(50) default null,
+
+    orgaos_publicos_imagem1 int default null comment 'FK tb_fotos',
+    orgaos_publicos_imagem2 int default null comment 'FK tb_fotos',
+    orgaos_publicos_imagem3 int default null comment 'FK tb_fotos',
+    orgaos_publicos_imagem4 int default null comment 'FK tb_fotos',
+    orgaos_publicos_imagem5 int default null comment 'FK tb_fotos',
+    orgaos_publicos_imagem6 int default null comment 'FK tb_fotos',
+    orgaos_publicos_imagem7 int default null comment 'FK tb_fotos',
+    orgaos_publicos_imagem8 int default null comment 'FK tb_fotos',
+    orgaos_publicos_imagem9 int default null comment 'FK tb_fotos',
+    orgaos_publicos_imagem10 int default null comment 'FK tb_fotos',
+    orgaos_publicos_imagem11 int default null comment 'FK tb_fotos',
+    orgaos_publicos_imagem12 int default null comment 'FK tb_fotos',
+
+    FOREIGN KEY(orgaos_publicos_imagem1) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(orgaos_publicos_imagem2) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(orgaos_publicos_imagem3) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(orgaos_publicos_imagem4) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(orgaos_publicos_imagem5) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(orgaos_publicos_imagem6) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(orgaos_publicos_imagem7) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(orgaos_publicos_imagem8) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(orgaos_publicos_imagem9) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(orgaos_publicos_imagem10) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(orgaos_publicos_imagem11) REFERENCES tb_fotos(id_foto),
+    FOREIGN KEY(orgaos_publicos_imagem12) REFERENCES tb_fotos(id_foto)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+/* Registro de Órgãos Públicos */
+DROP TABLE IF EXISTS tb_orgaos_publicos;
+CREATE TABLE IF NOT EXISTS tb_orgaos_publicos(
+    id_orgaos_publicos int not null primary key auto_increment,
+    protocolo_orgaos_publicos varchar(50) default null,
+
+    orgaos_publicos_fotos int default null comment 'FK tb_orgaos_publicos_fotos',
+
+    orgaos_publicos_pc int default null comment '1: sim | 2: não',
+    boletim_pc_autentico int default null comment '1: Sim | 2: Não',
+    pc_resultado1 varchar(100) comment 'Texto sobre opção escolhida',
+    pc_resultado2 varchar(100) comment 'Texto sobre opção escolhida',
+    pc_resultado3 varchar(100) comment 'Texto sobre opção escolhida',
+    orgaos_publicos_pm int default null comment '1: sim | 2: não',
+    boletim_pm_autentico int default null comment '1: Sim | 2: Não',
+    pm_resultado1 varchar(100) comment 'Texto sobre opção escolhida',
+    pm_resultado2 varchar(100) comment 'Texto sobre opção escolhida',
+    pm_resultado3 varchar(100) comment 'Texto sobre opção escolhida',
+
+    FOREIGN KEY(orgaos_publicos_fotos) REFERENCES tb_orgaos_publicos_fotos(id_orgaos_publicos_fotos)
+
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*TB Relatorios*/
@@ -882,6 +1017,8 @@ create table if not exists tb_relatorios(
     uf_evento VARCHAR(10) DEFAULT null,
     caracteristicas_local_evento int DEFAULT NULL comment 'FK tb_caracteristicas_tecnicas',
     boletim_ocorrencia int default null comment 'FK tb_boletim_ocorrencia', 
+    orgaos_publicos int default null comment 'FK tb_orgaos_publicos',
+
     policia_civil int default null comment 'FK tb_policia_civil',
     policia_militar int default null comment 'FK tb_policia_militar',
     registro_copom int default null comment 'FK tb_copom',
@@ -903,6 +1040,7 @@ create table if not exists tb_relatorios(
     FOREIGN key(condutor_evento) REFERENCES tb_condutores(id_condutor),
     FOREIGN KEY(caracteristicas_local_evento) REFERENCES tb_caracteristicas_tecnicas(id_caracteristica),
     FOREIGN KEY(boletim_ocorrencia) REFERENCES tb_boletim_ocorrencia(id_boletim),
+    FOREIGN KEY(orgaos_publicos) REFERENCES tb_orgaos_publicos(id_orgaos_publicos),
     FOREIGN KEY(policia_civil) REFERENCES tb_policia_civil(id_policia_civil),
     FOREIGN KEY(policia_militar) REFERENCES tb_policia_militar(id_policia_militar),
     FOREIGN KEY(registro_copom) REFERENCES tb_copom(id_copom),
@@ -914,18 +1052,31 @@ create table if not exists tb_relatorios(
 
 
 
-CREATE TABLE `tb_mensagens` (
-  `id_mensagem` int(11) NOT NULL,
-  `data_mensagem` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL COMMENT 'Data e hora da mensagem',
-  `emissor_mensagem` int(11) DEFAULT NULL COMMENT 'Quem enviou a mensagem',
-  `receptor_mensagem` int(11) DEFAULT NULL COMMENT 'Quem receberá a mensagem',
-  `assunto_mensagem` varchar(100) COLLATE utf8_general_mysql500_ci DEFAULT NULL COMMENT 'Assunto da mensagem',
-  `conteudo_mensagem` varchar(500) COLLATE utf8_general_mysql500_ci DEFAULT NULL COMMENT 'Conteúdo da mensagem',
-  `status_mensagem` int(11) DEFAULT '0' COMMENT 'Status: 0=Não Lida | 1: Lida | 2: Respondida',
-  `resposta_mensagem` varchar(500) COLLATE utf8_general_mysql500_ci DEFAULT NULL COMMENT 'Resposta da mensagem'
+CREATE TABLE tb_mensagens (
+  id_mensagem int(11) NOT NULL PRIMARY KEY auto_increment,
+  protocolo_relatorio varchar(50),
+  data_mensagem varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL COMMENT 'Data e hora da mensagem',
+  emissor_mensagem int(11) DEFAULT NULL COMMENT 'Quem enviou a mensagem',
+  receptor_mensagem int(11) DEFAULT NULL COMMENT 'Quem receberá a mensagem',
+  assunto_mensagem varchar(100) COLLATE utf8_general_mysql500_ci DEFAULT NULL COMMENT 'Assunto da mensagem',
+  conteudo_mensagem varchar(500) COLLATE utf8_general_mysql500_ci DEFAULT NULL COMMENT 'Conteúdo da mensagem',
+  status_mensagem int(11) DEFAULT '0' COMMENT 'Status: 0=Não Lida | 1: Lida | 2: Respondida',
+  resposta_mensagem varchar(500) COLLATE utf8_general_mysql500_ci DEFAULT NULL COMMENT 'Resposta da mensagem'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-ALTER TABLE `tb_mensagens`
-  ADD PRIMARY KEY (`id_mensagem`);
 
-INSERT INTO `tb_mensagens` (`id_mensagem`, `data_mensagem`, `emissor_mensagem`, `receptor_mensagem`, `assunto_mensagem`, `conteudo_mensagem`, `status_mensagem`, `resposta_mensagem`) VALUES
-(1, '2020-10-12 19:30', 1, 1, 'Novo relatorio recebido - Protocolo: 2020-1', 'O vídeo fornece uma maneira poderosa de ajudá-lo a provar seu argumento. Ao clicar em Vídeo Online, você pode colar o código de inserção do vídeo que deseja adicionar. Você também pode digitar uma palavra-chave para pesquisar online o vídeo mais adequado ao seu documento.', 0, 'O vídeo fornece uma maneira poderosa de ajudá-lo a provar seu argumento. Ao clicar em Vídeo Online, você pode colar o código de inserção do vídeo que deseja adicionar. Você também pode digitar uma palavra-chave para pesquisar online o vídeo mais adequado ao seu documento.');
+DROP TABLE IF EXISTS tb_updates;
+CREATE TABLE IF NOT EXISTS tb_updates(
+    id_update INT NOT NULL PRIMARY KEY auto_increment,
+    data_update varchar(50) default null comment 'Data da atualização',
+    horario_update varchar(50) default null comment 'Horário do cadastro da atualização',
+    titulo_update varchar(100) default null comment 'Título da atualização',
+    texto_update longtext default null comment 'Texto descritivo da atualização'
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+INSERT INTO `tb_updates` (`data_update`, `horario_update`, `titulo_update`, `texto_update`) VALUES
+('2020-10-30 01:03', NULL, 'CriaÃ§Ã£o do relatÃ³rio v0.0.3a', '<p style=\"text-indent: 10%\">A criaÃ§Ã£o do relatÃ³rio foi feita de forma modular, permitindo ao sindicante preencher qualquer parte da solicitaÃ§Ã£o conforme a necessidade.</p>'),
+('2020-10-30 01:30', NULL, 'Cadastros no sistema v0.0.3a', '<p style=\"text-indent: 10%\">Pode-se cadastrar o sindicante dentro do sistema para que o mesmo tenha acesso ao uso do sistema atravÃ©s de seu e-mail e senha.</p>\r\n<p style=\"text-indent: 10%\"> Ã‰ necessÃ¡rio que, ao ser cadastrado, o sindicante acesse o sistema pela primeira vez, fazendo assim a ativaÃ§Ã£o do usuÃ¡rio e aplicaÃ§Ã£o da senha individual.</p> \r\n<p style=\"text-indent: 10%\">ApÃ³s ativaÃ§Ã£o do usuÃ¡rio, os relatÃ³rios poderÃ£o ser solicitados para o sindicante.</p>'),
+('2020-11-13 23:47', NULL, 'CriaÃ§Ã£o do relatÃ³rio v0.0.3a', '<p style=\"text-indent: 10%\">\r\nAo criar um relatÃ³rio, o sindicante receberÃ¡ um e-mail informando que ele tem uma nova requisiÃ§Ã£o (desde que o e-mail tenha sido cadastrado corretamente no sistema).\r\n</p>\r\n\r\n<p style=\"text-indent: 10%\">\r\nIntegrado um sistema de notificaÃ§Ã£o dentro da aplicaÃ§Ã£o. A cada vez que um novo relatÃ³rio for adicionado, serÃ¡ possÃ­vel perceber uma notificaÃ§Ã£o no topo da plataforma. Na tela inicial serÃ¡ mostrado ainda o resumo individual por sindicante (conforme cada sindicante efetue login), mostrando a quantidade de relatÃ³rios criados para o usuÃ¡rio, bem como quantos relatÃ³rios ele entregou.\r\n</p>'),
+('2020-11-20 19:51', NULL, 'Cadastros no sistema v0.0.4a', '<p style=\"text-indent: 10%\">\r\nNova interface ajustada para versÃ£o Mobile, seguindo proporÃ§Ãµes adequadas para visualizaÃ§Ã£o na tela de qualquer dispositivo.\r\n</p>\r\n\r\n<p style=\"text-indent: 10%\">\r\nCriado o cadastro de estados do DETRAN. Ã‰ necessÃ¡rio ao administrador do sistema, cadastrar e/ou ajustar se o estado obriga fazer a vistoria periÃ³dica (conforme solicitado em reuniÃ£o).\r\n</p>'),
+('2020-11-22 10:50', NULL, 'Preenchimento do relatÃ³rio v0.0.4b', '<p style=\"text-indent: 10%\">\r\nPreenchimento do relatÃ³rio em fase de testes usando dados de exemplo.\r\n<ul>\r\n<li>Cadastro de Perfis (associado e condutor caso sejam diferentes) mostrando ainda a localizaÃ§Ã£o</li>\r\n<li>Cadastro de pesquisas de convÃ­vio (associado e condutor caso sejam diferentes)</li>\r\n<li>\r\nCadastro de informaÃ§Ãµes de procedÃªncia do veÃ­culo\r\n<ul>\r\n<li>ProcedÃªncia</li>\r\n<li>ProprietÃ¡rio Legal</li>\r\n<li>Apontamentos no DETRAN</li>\r\n<li>Financiamento atrelado</li>\r\n<li>Sistema antifurto</li>\r\n</ul>\r\n</li>\r\n<li>\r\nInformaÃ§Ãµes sobre o evento\r\n<ul>\r\n<li>DinÃ¢mica do evento</li>\r\n<li>Relatos sobre o evento (associado e condutor se forem diferentes)</li>\r\n</ul>\r\n</li>\r\n<li>\r\nInformaÃ§Ãµes sobre o local (com localizaÃ§Ã£o)\r\n<ul>\r\n<li>CaracterÃ­sticas tÃ©cnicas</li>\r\n<li>Pesquisas realizadas</li>\r\n</ul>\r\n</li>\r\n<li>InformaÃ§Ãµes sobre Ã³rgÃ£os pÃºblicos</li>\r\n<li>Aplicativo de mobilidade urbana</li>\r\n<li>Contexto Geral</li>\r\n</ul>\r\n</p>'),
+('2020-11-27 23:26', NULL, 'Cadastros no sistema v0.0.4a', '<p style=\"text-indent: 10%\">\r\nCadastro de exemplo do relatÃ³rio finalizado, agora Ã© possÃ­vel entregar o relatÃ³rio (pelo sindicante) e ao entregar, consegue-se visualizar a entrega via navegador.\r\n</p>\r\n<p style=\"text-indent: 10%\">\r\nDurante a visualizaÃ§Ã£o no navegador, Ã© possÃ­vel ver detalhadamente as imagens e dados cadastrados no relatÃ³rio, bem como alterar alguns dos textos inseridos pelo sindicante.\r\n</p>\r\n\r\n<p style=\"text-indent: 10%\">\r\nImpressÃ£o em fase de testes e formataÃ§Ã£o para ficar de forma adequada, podendo ser impresso ou transformar em PDF durante a impressÃ£o.\r\n</p>');

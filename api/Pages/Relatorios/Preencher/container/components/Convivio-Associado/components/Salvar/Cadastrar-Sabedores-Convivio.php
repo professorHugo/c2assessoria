@@ -59,7 +59,7 @@
           total_sabedores = '$QtdNova'
         WHERE
           protocolo_sabedores = '$Protocolo' &&
-          representante_sabedir - '1'
+          representante_sabedor = '1'
       ";
       echo "</pre>";
       if( $ExeQrUpdateSabedoresConvivio = mysqli_query($connection, $QueryUpdateSabedoresConvivio) ){
@@ -131,7 +131,7 @@
           total_sabedores = '$QtdNova'
         WHERE
           protocolo_sabedores = '$Protocolo' &&
-          representante_sabedir - '1'
+          representante_sabedor = '1'
       ";
       "</pre>";
       if( $ExeQrUpdateSabedoresConvivio = mysqli_query($connection, $QueryUpdateSabedoresConvivio) ){

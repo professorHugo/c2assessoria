@@ -4,30 +4,8 @@ if( $SysMode == 1 ){
   echo "<br>Permissão: " . $permissao = $_SESSION['LoginUsuario']['permissao_usuario'];
   echo "<br>Id Usuário: " . $IdUsuario = $_SESSION['LoginUsuario']['id_usuario'];
   echo "<br>Protocolo: " . $Protocolo = $_GET['Protocolo'];
-  if( $permissao == 1 || $permissao == 3 ){
-    echo "<br><pre>".
-    $QueryBuscarRelatorios = "
-      SELECT * FROM tb_relatorios relatorio
-      INNER JOIN tb_associados associado
-        ON relatorio.cpf_associado = associado.cpf_associado
-      INNER JOIN tb_condutores condutor
-        ON relatorio.protocolo_evento = condutor.protocolo_evento
-      WHERE relatorio.protocolo_evento = '$Protocolo'
-    ";
-    echo "</pre>";
-  }else{
-    echo "<br><pre>".
-    $QueryBuscarRelatorios = "
-      SELECT * FROM 
-        tb_relatorios relatorio
-      INNER JOIN tb_associados associado
-        ON relatorio.cpf_associado = associado.cpf_associado
-      INNER JOIN tb_condutores condutor
-        ON relatorio.protocolo_evento = condutor.protocolo_evento
-      WHERE sindicante_evento = '$IdUsuario' && relatorio.protocolo_evento = '$Protocolo'
-    ";
-    echo "</pre>";
-  }
+
+  include 'components/QueryBuscarRelatorioAssociado.php';
 
   $ExeQrBuscarRelatorios = mysqli_query($connection, $QueryBuscarRelatorios);
   $RowQrByscarRelatorios = mysqli_num_rows($ExeQrBuscarRelatorios);
@@ -39,45 +17,83 @@ if( $SysMode == 1 ){
     $Estado1 = $Endereco['estado_associado'];
     $Cep1 = $Endereco['cep_associado'];
 
-    $Endereco2 = $Endereco['endereco_condutor'];
-    $Bairro2 = $Endereco['bairro_condutor'];
-    $Cidade2 = $Endereco['cidade_condutor'];
-    $Estado2 = $Endereco['estado_condutor'];
-    $Cep2 = $Endereco['cep_condutor'];
-
     $CondutorEvento = $Endereco['condutor_veiculo'];
+
+    if( $CondutorEvento == 2 ){
+      //Buscar relatorio com Condutor Veículo diferente do associado
+      include 'components/QueryBuscarRelatorioCondutor.php';
+
+      
+
+      $ExeQrBuscarEndereco2 = mysqli_query($connection, $QueryBuscarRelatoriosCondutor);
+      $RowQrBuscarEndereco2 = mysqli_num_rows($ExeQrBuscarEndereco2);
+
+      while( $EnderecoCondutor = mysqli_fetch_assoc($ExeQrBuscarEndereco2) ){
+        $Endereco2 = $EnderecoCondutor['endereco_condutor'];
+        $Bairro2 = $EnderecoCondutor['bairro_condutor'];
+        $Cidade2 = $EnderecoCondutor['cidade_condutor'];
+        $Estado2 = $EnderecoCondutor['estado_condutor'];
+        $Cep2 = $EnderecoCondutor['cep_condutor'];
+      }
+
+      
+    }
+
+    
+
+    $CEPEvento = $Endereco['cep_evento'];
+    $EnderecoEvento = $Endereco['endereco_evento'];
+    $NumeroEvento = $Endereco['numero_evento'];
+    $BairroEvento = $Endereco['bairro_evento'];
+    $CidadeEvento = $Endereco['cidade_evento'];
+    $EstadoEvento = $Endereco['uf_evento'];
+
   }
   include "container/Dados-Relatorio.php";
+
+  if( $SysMode == 1 ){
+    //DEV
+    //MarcarMensagem como Lida e atualizar o assunto para continuar preenchendo o relatório
+    if( isset( $_GET['Abrir-Relatorio-Mensagem'] ) ){
+      echo "<br>Mensagem aberta";
+      echo "<br><pre>" . 
+      $QueryUpdateMensagem = "
+        UPDATE tb_mensagens
+        SET
+          status_mensagem = '1',
+          assunto_mensagem = 'Continuar preenchendo'
+        WHERE 
+          protocolo_relatorio = '$Protocolo'
+      ";
+      echo "</pre>";
+      $ExeQrUpdateMensagem = mysqli_query($connection, $QueryUpdateMensagem);
+      if( $ExeQrUpdateMensagem ){
+        echo "<br>Mensagem marcada como lida e atualizado o assunto";
+      }else{
+        echo "<br>Erro: " . mysqli_error($connection);
+      }
+
+      $QueryUpdateRelatorio = "
+        UPDATE tb_relatorios
+        SET
+          status_relatorio = 'Preenchendo'
+        WHERE protocolo_evento = '$Protocolo'
+      ";
+      $ExeQrUpdateRelatorio = mysqli_query($connection, $QueryUpdateRelatorio);
+      if( $ExeQrUpdateRelatorio ){
+        echo "<br>Relatório começou a ser preenchido...";
+      }else{
+        echo "<br>Erro: " . mysqli_error($connection);
+      }
+    }
+  }
   
 }else{
   //Prod
   "<br>Permissão: " . $permissao = $_SESSION['LoginUsuario']['permissao_usuario'];
   "<br>Id Usuário: " . $IdUsuario = $_SESSION['LoginUsuario']['id_usuario'];
   "<br>Protocolo: " . $Protocolo = $_GET['Protocolo'];
-  if( $permissao == 1 || $permissao == 3 ){
-    "<br><pre>".
-    $QueryBuscarRelatorios = "
-      SELECT * FROM tb_relatorios relatorio
-      INNER JOIN tb_associados associado
-        ON relatorio.cpf_associado = associado.cpf_associado
-      INNER JOIN tb_condutores condutor
-        ON relatorio.protocolo_evento = condutor.protocolo_evento
-      WHERE relatorio.protocolo_evento = '$Protocolo'
-    ";
-    "</pre>";
-  }else{
-    "<br><pre>".
-    $QueryBuscarRelatorios = "
-      SELECT * FROM 
-        tb_relatorios relatorio
-      INNER JOIN tb_associados associado
-        ON relatorio.cpf_associado = associado.cpf_associado
-      INNER JOIN tb_condutores condutor
-        ON relatorio.protocolo_evento = condutor.protocolo_evento
-      WHERE sindicante_evento = '$IdUsuario' && relatorio.protocolo_evento = '$Protocolo'
-    ";
-    "</pre>";
-  }
+  include 'components/QueryBuscarRelatorioAssociado.php';
 
   $ExeQrBuscarRelatorios = mysqli_query($connection, $QueryBuscarRelatorios);
   $RowQrByscarRelatorios = mysqli_num_rows($ExeQrBuscarRelatorios);
@@ -89,14 +105,74 @@ if( $SysMode == 1 ){
     $Estado1 = $Endereco['estado_associado'];
     $Cep1 = $Endereco['cep_associado'];
 
-    $Endereco2 = $Endereco['endereco_condutor'];
-    $Bairro2 = $Endereco['bairro_condutor'];
-    $Cidade2 = $Endereco['cidade_condutor'];
-    $Estado2 = $Endereco['estado_condutor'];
-    $Cep2 = $Endereco['cep_condutor'];
-
     $CondutorEvento = $Endereco['condutor_veiculo'];
+
+    if( $CondutorEvento == 2 ){
+      //Buscar relatorio com Condutor Veículo diferente do associado
+      include 'components/QueryBuscarRelatorioCondutor.php';
+
+      
+
+      $ExeQrBuscarEndereco2 = mysqli_query($connection, $QueryBuscarRelatoriosCondutor);
+      $RowQrBuscarEndereco2 = mysqli_num_rows($ExeQrBuscarEndereco2);
+
+      while( $EnderecoCondutor = mysqli_fetch_assoc($ExeQrBuscarEndereco2) ){
+        $Endereco2 = $EnderecoCondutor['endereco_condutor'];
+        $Bairro2 = $EnderecoCondutor['bairro_condutor'];
+        $Cidade2 = $EnderecoCondutor['cidade_condutor'];
+        $Estado2 = $EnderecoCondutor['estado_condutor'];
+        $Cep2 = $EnderecoCondutor['cep_condutor'];
+      }
+
+      
+    }
+
     
+
+    $CEPEvento = $Endereco['cep_evento'];
+    $EnderecoEvento = $Endereco['endereco_evento'];
+    $NumeroEvento = $Endereco['numero_evento'];
+    $BairroEvento = $Endereco['bairro_evento'];
+    $CidadeEvento = $Endereco['cidade_evento'];
+    $EstadoEvento = $Endereco['uf_evento'];
+
   }
   include "container/Dados-Relatorio.php";
+
+  if( $SysMode == 1 ){
+    //DEV
+    //MarcarMensagem como Lida e atualizar o assunto para continuar preenchendo o relatório
+    if( isset( $_GET['Abrir-Relatorio-Mensagem'] ) ){
+      echo "<br>Mensagem aberta";
+      echo "<br><pre>" . 
+      $QueryUpdateMensagem = "
+        UPDATE tb_mensagens
+        SET
+          status_mensagem = '1',
+          assunto_mensagem = 'Continuar preenchendo'
+        WHERE 
+          protocolo_relatorio = '$Protocolo'
+      ";
+      echo "</pre>";
+      $ExeQrUpdateMensagem = mysqli_query($connection, $QueryUpdateMensagem);
+      if( $ExeQrUpdateMensagem ){
+        echo "<br>Mensagem marcada como lida e atualizado o assunto";
+      }else{
+        echo "<br>Erro: " . mysqli_error($connection);
+      }
+
+      $QueryUpdateRelatorio = "
+        UPDATE tb_relatorios
+        SET
+          status_relatorio = 'Preenchendo'
+        WHERE protocolo_evento = '$Protocolo'
+      ";
+      $ExeQrUpdateRelatorio = mysqli_query($connection, $QueryUpdateRelatorio);
+      if( $ExeQrUpdateRelatorio ){
+        echo "<br>Relatório começou a ser preenchido...";
+      }else{
+        echo "<br>Erro: " . mysqli_error($connection);
+      }
+    }
+  }
 }

@@ -45,6 +45,11 @@
       include 'Uploads/Policia-Militar5.php';
       echo "<br>";
     }
+
+    if( !empty($_FILES['print_policia_militar_img6']['name']) ){
+      include 'Uploads/Policia-Militar6.php';
+      echo "<br>";
+    }
   
     include 'Update-Relatorio.php';
 

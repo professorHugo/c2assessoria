@@ -131,6 +131,8 @@
           }
         }
       }
+    }else{
+      echo "<br>Pasta do associado não encontrada";
     }
   }else{
     //PROD

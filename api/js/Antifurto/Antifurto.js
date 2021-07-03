@@ -11,6 +11,10 @@ function escolhaSistemaAntifurto(){
     img_comprovantes.setAttribute('style', 'display:none');
   }
 
+  if( sistema_antifurto == 4 ){
+    
+  }
+
   var xml_antifurto = new XMLHttpRequest();
 
   xml_antifurto.onreadystatechange = function(){
@@ -35,5 +39,20 @@ function selectComprovanteRastreador(){
     img_comprovantes.setAttribute('style', 'display:block; min-height: 180px; margin-bottom: 15px');
   }else{
     img_comprovantes.setAttribute('style', 'display:none');
+  }
+}
+
+function selectAntifurtoOutros(){
+  var sistema_antifurto = document.getElementById('sistema_antifurto').value,
+      telemetria_rastreador = document.getElementById('telemetria_rastreador'),
+      img_comprovantes = document.getElementById('img_comprovantes'),
+      outros_antifurtos = document.getElementById('outros-sistemas');
+
+  if( sistema_antifurto == 4 ){
+    outros_antifurtos.setAttribute('style', 'display:block; min-height: 50px;margin-bottom:15px;');
+  }else{
+    img_comprovantes.setAttribute('style', 'display: none');
+    telemetria_rastreador.setAttribute('style', 'display: none');
+    outros_antifurtos.setAttribute('style', 'display:none;');
   }
 }

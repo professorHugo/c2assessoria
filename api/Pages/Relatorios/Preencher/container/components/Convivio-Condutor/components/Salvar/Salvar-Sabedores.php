@@ -61,7 +61,8 @@
         confirmacao5_sabedores = '$Confirmacao5',
         confirmacao6_sabedores = '$Confirmacao6',
         confirmacao7_sabedores = '$Confirmacao7',
-        confirmacao8_sabedores = '$Confirmacao8'
+        confirmacao8_sabedores = '$Confirmacao8',
+        sabedores_salvo = 'Sim'
       WHERE
         protocolo_sabedores = '$Protocolo' &&
         representante_sabedor = 2
@@ -138,7 +139,8 @@
         confirmacao5_sabedores = '$Confirmacao5',
         confirmacao6_sabedores = '$Confirmacao6',
         confirmacao7_sabedores = '$Confirmacao7',
-        confirmacao8_sabedores = '$Confirmacao8'
+        confirmacao8_sabedores = '$Confirmacao8',
+        sabedores_salvo = 'Sim'
       WHERE
         protocolo_sabedores = '$Protocolo' &&
         representante_sabedor = 1

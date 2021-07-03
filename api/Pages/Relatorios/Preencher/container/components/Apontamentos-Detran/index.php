@@ -12,11 +12,11 @@
   <div class="form-group row">
     <label
       for="estado_detran"
-      class="col-xs-5 col-sm-5 col-md-3 col-form-label col-form-label-lg"
+      class="col-6 col-form-label col-form-label-lg"
       style="margin-top: 10px"
     >DETRAN:
     </label>
-    <div class="col-xs-7 col-sm-7 col-md-3" style="margin-top: 10px">
+    <div class="col-6" style="margin-top: 10px">
       <select
         name="estado_detran"
         id="estado_detran"
@@ -25,7 +25,7 @@
       >
         <option value="" disabled selected>Selecione</option>
         <?php
-          $QueryBuscarEstadosDetran = "SELECT * FROM tb_detran_estados WHERE ativacao = 1";
+          $QueryBuscarEstadosDetran = "SELECT * FROM tb_detran_estados WHERE ativacao = 1 ORDER BY estado_detran asc";
           $ExeQrBuscarEstadosDetran = mysqli_query($connection, $QueryBuscarEstadosDetran);
           $RowQrBuscarEstadosDetran = mysqli_num_rows($ExeQrBuscarEstadosDetran);
           if( $RowQrBuscarEstadosDetran >= 1 ){
@@ -46,15 +46,52 @@
         ?>
       </select>
     </div>
+  </div>
 
+  <div class="form-group row">
+    <label 
+      for="restricoes_financeiras" 
+      class="col-6 col-form-label col-form-label-lg"
+    >Restrições Financeiras: </label>
+    <div class="col-6">
+      <select 
+        name="restricoes_financeiras" 
+        id="restricoes_financeiras" 
+        class="form-control form-control-lg"
+      >
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+      </select>
+    </div>
+  </div>
 
+  <div class="form-group row">
+    <label 
+      for="queixa_roubo_furto" 
+      class="col-6 col-form-label col-form-label-lg"
+    >Queixa de roubo/furto: </label>
+    <div class="col-6">
+      <select 
+        name="queixa_roubo_furto" 
+        id="queixa_roubo_furto" 
+        class="form-control form-control-lg"
+      >
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="2">Não</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
     <label
       for="multas_evento"
-      class="col-xs-5 col-sm-5 col-md-3 col-form-label col-form-label-lg"
+      class="col-6 col-form-label col-form-label-lg"
       style="margin-top: 10px; font-size: 1rem"
     >Multa pertinente ao evento:
     </label>
-    <div class="col-xs-7 col-sm-7 col-md-3" style="margin-top: 10px">
+    <div class="col-6" style="margin-top: 10px">
       <select
         name="multas_evento"
         id="multas_evento"
@@ -76,11 +113,11 @@
   <div class="form-group row">
     <label
       for="restricoes_diversas"
-      class="col-xs-5 col-sm-5 col-md-3 col-form-label col-form-label-lg"
+      class="col-6 col-form-label col-form-label-lg"
       style="margin-top: 10px"
     >Restrições Diversas:
     </label>
-    <div class="col-xs-7 col-sm-7 col-md-3" style="margin-top: 10px">
+    <div class="col-6" style="margin-top: 10px">
       <select
         name="restricoes_diversas"
         id="restricoes_diversas"
@@ -102,11 +139,11 @@
   <div class="form-group row" id="return_vistoria_cautelar">
     <label
       for="vistoria_cautelar"
-      class="col-xs-5 col-sm-5 col-md-3 col-form-label col-form-label-lg"
+      class="col-6 col-form-label col-form-label-lg"
       style="margin-top: 10px"
     >Vistoria Cautelar:
     </label>
-    <div class="col-xs-7 col-sm-7 col-md-3" style="margin-top: 10px">
+    <div class="col-6" style="margin-top: 10px">
       <select
         name="vistoria_cautelar"
         id="vistoria_cautelar"
@@ -117,6 +154,7 @@
         <option value="" disabled selected>Selecione</option>
         <option value="1">Sim</option>
         <option value="2">Não</option>
+        <option value="3">Não Aplicável</option>
       </select>
     </div>
 

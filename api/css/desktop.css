@@ -1,0 +1,163 @@
+@media( min-width: 990px ){
+  .topbar .dropdown .dropdown-menu{
+    position: absolute!important;
+    right:0!important;
+    left: -75px!important;
+  }
+  .topbar .dropdown .dropdown-menu #Container{
+    width: 100%;
+  }
+
+  .icone-navegar::before{
+    content: '\f124  - Maps'!important;
+  }
+  .icone-ok::before{
+    content: '\f14a  - OK'!important;
+  }
+}
+
+
+.cabecalho-relatorio{
+  margin-bottom: 3.5rem;
+}
+.horario{
+  font-size: 1.2rem; padding-top: 1rem; padding-bottom:1rem
+}
+
+#Veiculos-Extras .veiculos-extra, #Veiculos-Proprios .veiculos-extra{
+  width: 33.3333%!important;
+  float: left;
+  margin-bottom: 25px
+}
+
+#Fotos-Prontuario .foto-prontuario, #Fotos-Prontuario-Condutor .foto-prontuario{
+  width: 50%;
+  max-height: 400px;
+  margin-bottom: 50px;
+}
+
+#Fotos-Documento .foto-documento{
+  width: 50%;
+}
+
+#Declaracao-Associado{
+  margin-top: 2rem;
+}
+.perfil-associado #Declaracao-Associado .texto-relato,
+.perfil-condutor #Declaracao-Condutor .texto-relato,
+.evento #Dinamica-Evento .texto-relato{
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 3rem;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: block;
+  z-index: 1000!important;
+}
+
+.perfil-associado #Declaracao-Associado .texto-relato textarea,
+.perfil-condutor #Declaracao-Condutor .texto-relato textarea,
+.procedencia #Declaracao-Proprietario-Legal .texto-relato textarea,
+.evento #Dinamica-Evento .texto-relato textarea{
+  background-color: transparent;
+}
+
+.Pagina-3{width: 100%!important}
+.perfil-associado #Fotos-Documento .foto-documento,
+.perfil-condutor #Fotos-Documento-Condutor .foto-documento,
+.procedencia #Sistema-Antifurto .foto-comprovante,
+.evento #Local-Evento #Testemunhas-Local .testemunha-local .documentos-testemunha .foto-documento,
+#Mostrar-Entrevistados-Convivio .documentos-entrevistado-convivio .foto-documento{
+  padding-top: 25px;
+  margin-bottom: 80px;
+  min-height: 300px;
+  max-height: 300px;
+  width: 50%;
+}
+.perfil-associado #Fotos-Documento .foto-documento img,
+.perfil-condutor #Fotos-Documento-Condutor .foto-documento img,
+.procedencia #Sistema-Antifurto .foto-comprovante img,
+#Mostrar-Entrevistados-Convivio .documentos-entrevistado-convivio .foto-documento img{
+  max-height: 300px;
+}
+
+.perfil-associado #Declaracao-Associado,
+.perfil-condutor #Declaracao-Condutor,
+.procedencia {
+  margin-bottom: 4rem;
+}
+.perfil-associado #Declaracao-Associado .texto-relato .text-aviso-pc,
+.perfil-condutor #Declaracao-Condutor .texto-relato .text-aviso-pc,
+.procedencia #Declaracao-Proprietario-Legal .texto-relato .text-aviso-pc,
+.evento #Dinamica-Evento .texto-relato .text-aviso-pc{
+  display: none;
+}
+
+/* Declaração do associado */
+.perfil-associado #Declaracao-Associado .foto-declaracao,
+.perfil-condutor #Declaracao-Condutor .foto-declaracao,
+.procedencia #Declaracao-Proprietario-Legal .foto-declaracao,
+.procedencia #Procedente-Veiculo .foto-declaracao,
+.procedencia #Declaracao-Proprietario-Anterior .foto-documento,
+.procedencia #Telemetria .foto-comprovante-telemetria,
+.procedencia #Apontamentos-Detran #Fotos-Multa-Detran .foto-multa-detran,
+.procedencia #Vistoria-Cautelar #Fotos-Vistoria .foto-vistoria,
+.procedencia #Financeiro #Fotos-Financeiro .foto-parcela,
+.evento #Local-Evento #Fotos-Local-Evento .foto-local-evento,
+.evento #Local-Evento #Testemunhas-Local .testemunha-local .foto-declaracao-testemunha .foto-declaracao,
+.orgaos-publicos #Orgaos-Publicos #Boletim-Ocorrencia #Fotos-Boletim-Ocorrencia .foto-boletim,
+.orgaos-publicos #Orgaos-Publicos #Policia-Civil #Fotos-Policia-Civil .foto-policia-civil,
+.orgaos-publicos #Orgaos-Publicos #Policia-Militar #Fotos-Policia-Militar .foto-policia-militar,
+.orgaos-publicos #Orgaos-Publicos #Copom #Fotos-Copom .foto-copom,
+.orgaos-publicos #Orgaos-Publicos #Mobilidade-Urbana #Fotos-Mobilidade-Urbana .foto-mobilidade-urbana,
+#Mostrar-Entrevistados-Convivio .declaracao-entrevistado-convivio .foto-declaracao{
+  z-index: 900!important;
+  max-width: 33.33%!important;
+  min-height: 350px!important;
+}
+
+.perfil-associado #Declaracao-Associado .foto-declaracao img,
+.perfil-condutor #Declaracao-Condutor .foto-declaracao img,
+.procedencia #Declaracao-Proprietario-Legal .foto-declaracao img,
+.procedencia #Procedente-Veiculo .foto-declaracao img,
+.procedencia #Declaracao-Proprietario-Anterior .foto-documento img,
+.procedencia #Telemetria .foto-comprovante-telemetria img,
+.procedencia #Apontamentos-Detran #Fotos-Multa-Detran .foto-multa-detran img,
+.procedencia #Vistoria-Cautelar #Fotos-Vistoria .foto-vistoria img,
+.procedencia #Financeiro #Fotos-Financeiro .foto-parcela img,
+.evento  #Local-Evento #Fotos-Local-Evento .foto-local-evento img,
+.orgaos-publicos #Orgaos-Publicos #Boletim-Ocorrencia #Fotos-Boletim-Ocorrencia .foto-boletim img,
+.orgaos-publicos #Orgaos-Publicos #Policia-Civil #Fotos-Policia-Civil .foto-policia-civil img,
+.orgaos-publicos #Orgaos-Publicos #Policia-Militar #Fotos-Policia-Militar .foto-policia-militar img,
+.orgaos-publicos #Orgaos-Publicos #Copom #Fotos-Copom .foto-copom img,
+.orgaos-publicos #Orgaos-Publicos #Mobilidade-Urbana #Fotos-Mobilidade-Urbana .foto-mobilidade-urbana img,
+#Mostrar-Entrevistados-Convivio .declaracao-entrevistado-convivio .foto-declaracao img{
+  max-height: 300px;
+  min-height: 220px;
+}
+
+/* Procedência */
+.procedencia #Proprietario-Legal {
+  width: 100%;
+}
+.procedencia #Proprietario-Legal .rotulos{
+  width: 100%;
+  padding-left: 25px;
+  margin-top: 15px;
+  font-size: 1.3rem;
+}
+.procedencia #Documentos-Proprietario .foto-documento,
+.procedencia #Proprietario-Anterior #Documentos-Proprietario-Anterior .foto-documento{
+  width: 50%;
+  float:left;
+  margin-top: 2rem;
+}
+.procedencia #Fotos-Documento-Veiculo .foto-documento{
+  width: 50%!important;
+  float:left;
+  margin-top: 2rem;
+}
+
+#Relatorio img{
+  cursor: pointer;
+}

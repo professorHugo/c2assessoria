@@ -4,9 +4,7 @@ session_start();
 // session_destroy();
 date_default_timezone_set('America/Sao_Paulo');
 if( isset($_GET['Logout']) ){
-    
   include "containers/Fazer-Logoff.php";
-
 }
 ?>
 
@@ -18,8 +16,8 @@ if( isset($_GET['Logout']) ){
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Agência N2Y - Sempre ao seu lado">
+  <meta name="description" content="<?php echo SITEDESC?>">
+  <meta name="author" content="<?php echo SITEAUTHOR?>">
 
   <title>
   Advisory <?php echo VERSION ?> - 
@@ -48,7 +46,7 @@ if( isset($_GET['Logout']) ){
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-  <script src="https://use.fontawesome.com/c42a50f139.js"></script>
+  <script src="https://use.fontawesome.com/949a17db3e.js"></script>
   <link rel="stylesheet" href="css/styles.css">
   <!-- Core jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -85,31 +83,58 @@ if( isset($_GET['Logout']) ){
           <!-- Page Heading -->
 
           <?php 
-          //Topo com botões de resumos
-          if( isset($_GET['Page']) ){
-              if ( 
-                $_GET['Page'] != "Relatorios" && 
-                $_GET['Page'] != "Sindicantes" &&
-                $_GET['Page'] != "Clientes" &&
-                $_GET['Page'] != "Settings"
-              ){
+            //Check isset( $_SESSION['LoginUsuario'] )
+            if( !empty( $_SESSION['LoginUsuario'] ) ){
+
+              if( $_SESSION['LoginUsuario']['usuario_status'] == 1 ){
+
+                if( $_SESSION['LoginUsuario']['usuario_ativo'] == ''){
+                  include 'containers/Usuarios/index.php';
+                }
+
+              }else{
+                
+              }
+
+              // echo "<br>Status: " .  $_SESSION['LoginUsuario']['usuario_status'];
+              // echo "<br>";
+              // echo "<br>Troca de status para: " . $_SESSION['LoginUsuario']['usuario_status'] = 2;
+              // echo "<br>";
+
+              include 'containers/Usuarios/index.php';
+              //Topo com botões de resumos
+              if( isset($_GET['Page']) ){
+                if ( 
+                  $_GET['Page'] != "Relatorios" && 
+                  $_GET['Page'] != "Sindicantes" &&
+                  $_GET['Page'] != "Clientes" &&
+                  $_GET['Page'] != "Settings" &&
+                  $_GET['Page'] != "Funcionarios" &&
+                  $_GET['Page'] != "Updates"
+                ){
+                  include_once "containers/Container-Top.php";
+                }
+              }else{
                 include_once "containers/Container-Top.php";
               }
-            }else{
-              include_once "containers/Container-Top.php";
-            }
-          
-            //Navegação do conteúdo
-            if(isset($_GET['Page'])){
-              $Pagina = $_GET['Page'];
+            
+              //Navegação do conteúdo
+              if(isset($_GET['Page']) && $_GET['Page'] !== "Print"){
+                $Pagina = $_GET['Page'];
 
-              switch( $Pagina ) {
-                case $Pagina : include_once "Pages/" . $Pagina . "/index.php";break;
-                default: include_once "Pages/Home/index.php";
+                switch( $Pagina ) {
+                  case $Pagina : include_once "Pages/" . $Pagina . "/index.php";break;
+                  default: include_once "Pages/Home/index.php";
+                }
+              }else{
+                include_once "Pages/Home/index.php";
               }
+
             }else{
-              include_once "Pages/Home/index.php";
+              include 'containers/Usuarios/index.php';
             }
+            
+
           ?>
 
         </div>
@@ -121,6 +146,7 @@ if( isset($_GET['Logout']) ){
       <!-- Footer -->
       <?php include_once "containers/Footer.php"?>
       <?php include "containers/Modal-Cadastro-Sindicante.php";?>
+      <?php include "containers/Modal-Cadastro-Update.php";?>
       <?php include "containers/Modal-Cadastro-Clientes.php";?>
       <?php include "containers/Modal-Cadastro-Naturezas.php";?>
       <?php include "containers/Modal-Cadastro-Civil.php";?>
@@ -154,6 +180,20 @@ if( isset($_GET['Logout']) ){
         $(".sidebar").addClass("toggled");
         $('.sidebar .collapse').collapse('hide');
       };
+    });
+
+    var elementPosition = $('.Menu-Relatorio').offset();
+    $(window).scroll(function(){
+      if( $(window).scrollTop() > elementPosition.top ){
+        $('.Menu-Relatorio').css({
+          position: 'fixed',
+          top: 10,
+          left: 5,
+          width: '215px'
+        })
+      }else{
+        $('.Menu-Relatorio').css('position', 'static');
+      }
     });
   </script>
 

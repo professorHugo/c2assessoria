@@ -15,6 +15,11 @@ if( $SysMode == 1 ){
     echo "<br>observacao: " . $observacao = $_GET['observacao'];
 
     echo "<br><pre>" . 
+    $QueryBuscarSabedoresLocal = "
+        SELECT 
+    ";
+    echo "</pre>";
+    echo "<br><pre>" . 
     $QueryCadastrarTestemunha = "
         INSERT INTO tb_entrevistados(
             protocolo_entrevistados,
@@ -122,6 +127,11 @@ if( $SysMode == 1 ){
     "<br>telefone: " . $telefone = $_GET['telefone'];
     "<br>observacao: " . $observacao = $_GET['observacao'];
 
+    echo "<br><pre>" . 
+    $QueryBuscarSabedoresLocal = "
+        SELECT 
+    ";
+    echo "</pre>";
     "<br><pre>" . 
     $QueryCadastrarTestemunha = "
         INSERT INTO tb_entrevistados(

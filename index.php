@@ -1,7 +1,7 @@
 <?php require_once "api/config/Config.php"?>
 <?php
-session_start();
-// session_destroy();
+  session_start();
+  // session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

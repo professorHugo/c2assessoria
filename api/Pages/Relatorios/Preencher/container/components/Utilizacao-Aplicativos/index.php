@@ -1,71 +1,64 @@
-<script src="js/Utilizacao-Aplicativos/File-Buttons.js"></script>
 <script src="js/Utilizacao-Aplicativos/index.js"></script>
+<script src="js/Utilizacao-Aplicativos/index-motorista-app.js"></script>
+<script src="js/Utilizacao-Aplicativos/File-Buttons-Uso-App.js"></script>
+<script src="js/Utilizacao-Aplicativos/File-Buttons-Motorista-App.js"></script>
+
 <form 
   action="?Page=Relatorios&Preencher&Protocolo=<?php echo $Protocolo?>&Content=Utilizacao-Aplicativos&Salvar"
   method="post"
   enctype="multipart/form-data"
-  style="width: 100%"
+  style="width:100%"
 >
-  <?php include 'components/Dados-Associado.php'?>
-  <h4 class="col-12"
-    style="
-      border-bottom: 2px solid #ddd; 
-      margin-bottom: 2.5rem;
-      float: left;
-    "
-  >Utilização de aplicativos de mobilidade urbana</h4>
+  <?php include 'components/Dados-Associado.php' ?>
 
-  <div class="form-group row">
+  <!-- Utilização de aplicativo de mobilidade urbana -->
+  <?php include 'components/Bloco-Utilizacao-App.php' ?>
+
+  <div class="form-group row" id="return_comprovante_apresentado">
+    <!-- Componente de Status dp App de Mobilidade Urbana  -->
+    <!-- <?php include 'components/containers/Status-Mobilidade-Urbana.php'?> -->
+  </div>
+
+  <!-- Componente de Img de Uso do App -->
+  <div class="form-group row" id="return_img_app" style="display:none">
+    <?php include 'components/containers/Img-Uso-App.php'?>
+  </div>
+
+
+  <div style="width: 100%; margin-top: 5rem"></div>
+
+
+
+
+  <!-- Motorista por aplicativo -->
+  <?php include 'components/Bloco-Motorista-App.php'?>
+
+  <div class="form-group row" id="return_motorista_aplicativo">
+    
+  </div>
+
+  <div class="form-group row" id="return_apresentou_comprovante" style="display: none">
+    <?php include 'components/containers/Img-Comprovantes-Motorista-App.php'?>
+  </div>
+
+
+
+
+  <div class="form-group row col-xs-12 col-sm-12">
     <label 
-      for="utilizacao_app_mobilidade" 
-      class="col-form-label col-form-label-lg col-xs-7 col-sm-7"
-    >Usado após o evento: </label>
-
-    <div class="col-xs-5 col-md-5">
-      <select 
-        name="utilizacao_app_mobilidade" 
-        id="utilizacao_app_mobilidade" 
-        class="form-control form-control-lg"
-        required onchange="EscolherUsoApp()"
-      >
-        <option value="">Selecione</option>
-        <option value="1">Sim</option>
-        <option value="2">Não</option>
-      </select>
+      for="descricao_apresentou_comprovante" 
+      class="col-form-label col-form-label-lg col-xs-12 col-sm-12"
+    >Observações gerais: </label>
+    <div class="col-xs-12 col-sm-12">
+      <textarea 
+        name="descricao_apresentou_comprovante" 
+        id="descricao_apresentou_comprovante" 
+        cols="30" rows="5" class="form-control form-control-lg"
+        placeholder="Digite o que julgar necessário sobre o comprovante apresentado"
+      ></textarea>
     </div>
-
-    <div style="margin-top:1rem" class="col-12"></div>
-    <div class="col-12" id="return_utilizacao_app_mobilidade" style="display:none">
-      <label 
-        for="comprovante_apresentado" 
-        class="col-form-label col-form-label-lg col-xs-7 col-sm-7 float-left"
-      >Compr. Apresentado:</label>
-
-      <div class="col-xs-5 col-sm-5 float-left">
-        <select 
-          name="comprovante_apresentado" 
-          id="comprovante_apresentado" 
-          class="form-control form-control-lg"
-          onchange="comprovanteApresentado();"
-        >
-          <option value="" selected disabled>Selecione</option>
-          <option value="1">Sim</option>
-          <option value="2">Não</option>
-        </select>
-      </div>
-    </div>
-
   </div>
 
-  <div class="form-group row" id="return_comprovante_apresentado" style="display:none">
-    <?php include 'components/containers/Status-App-Mobilidade-Urbana.php'?>
-  </div>
-
-  <div class="form-group row" id="return_img_app" style="display: none">
-    <?php include 'components/containers/Img-App-Mobilidade-Urbana.php'?>
-  </div>
-
-  
   <div class="clearfix" style="margin: 1rem 0"></div>
   <hr>
   
@@ -89,13 +82,13 @@
       </button>
     </div>
   </div>
-  
+
 </form>
 
 <?php
-  if( isset($_POST['Salvar']) && isset($_GET['Salvar']) ){
+  if( isset($_GET['Salvar']) ){
     include 'components/Salvar.php';
-    if( $SysMode == 2 ){
-      include 'components/Modal-Salvar.php';
-    }
+  }
+  if( $SysMode == 2 ){
+    include 'components/Modal-Salvar.php';
   }

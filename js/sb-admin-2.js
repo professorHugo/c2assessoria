@@ -55,5 +55,121 @@
     }, 1000, 'easeInOutExpo');
     e.preventDefault();
   });
-
+  
+  /*Show .Menu-Relatorio*/
+	$(document).on('scroll', function() {
+		if( $(window).width() > 900 ){
+			var scrollDistance2 = $(this).scrollTop();
+			if (scrollDistance2 > 500) {
+				$('.Menu-Relatorio.Preencher').fadeIn();
+				$('.Menu-Relatorio.Preencher').css({
+				position: 'fixed',
+				backgroundColor: '#fdfdfd'
+				});
+			} else {
+				$('.Menu-Relatorio.Preencher').fadeOut();
+			}
+		}
+	});
+  
+  // Smooth scrolling using jQuery easing to-Relatorio
+  $(document).on('click', 'a.scroll-to-Relatorio', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  
+  // Smooth scrolling using jQuery easing Perfil-Associado
+  $(document).on('click', 'a.scroll-to-Perfil-Associado', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  // Smooth scrolling using jQuery easing Perfil-Condutor
+  $(document).on('click', 'a.scroll-to-Perfil-Condutor', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  // Smooth scrolling using jQuery easing Procedencia-Veiculo
+  $(document).on('click', 'a.scroll-to-Procedencia-Veiculo', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  // Smooth scrolling using jQuery easing Sobre-Evento
+  $(document).on('click', 'a.scroll-to-Sobre-Evento', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  // Smooth scrolling using jQuery easing Boletim-Ocorrencia
+  $(document).on('click', 'a.scroll-to-Boletim-Ocorrencia', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  // Smooth scrolling using jQuery easing Policia-Civil
+  $(document).on('click', 'a.scroll-to-Policia-Civil', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  // Smooth scrolling using jQuery easing Policia-Militar
+  $(document).on('click', 'a.scroll-to-Policia-Militar', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  // Smooth scrolling using jQuery easing Copom
+  $(document).on('click', 'a.scroll-to-Copom', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  // Smooth scrolling using jQuery easing Mobilidade-Urbana
+  $(document).on('click', 'a.scroll-to-Mobilidade-Urbana', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  
+  // Smooth scrolling using jQuery easing Convivio-Associado
+  $(document).on('click', 'a.scroll-to-Convivio-Associado', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  
+  // Smooth scrolling using jQuery easing Convivio-Condutor
+  $(document).on('click', 'a.scroll-to-Convivio-Condutor', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+  
 })(jQuery); // End of use strict

@@ -1,5 +1,20 @@
 <?php
   if( !isset($_GET['Entrevistado']) ){
+    include 'components/Dados-Associado.php';
+    //Buscar registros de imagens do local do evento
+    "<br><pre>" . 
+    $QueryBuscarFotosLocalEvento = "
+      SELECT * FROM tb_fotos
+      WHERE protocolo_foto = '$Protocolo' &&
+        (categoria_foto = foto_evento1 || categoria_foto = foto_evento2 || categoria_foto = foto_evento3)
+    " ;
+    "</pre>";
+    $ExeQrBuscarFotosLocalEvento = mysqli_query($connection, $QueryBuscarFotosLocalEvento);
+
+    if( $RowQrBuscarFotosLocalEvento = 1 ){
+      echo "<br>Fotos do local do evento já cadastradas, Mostrar fotos";
+    }else{
+
     ?>
       <form 
         action="
@@ -9,7 +24,10 @@
         id="SalvarImagensEvento"
         >
 
-        <?php include 'components/Dados-Associado.php'?>
+        <?php 
+          include 'components/Dados-Associado.php';
+          
+        ?>
 
         <h4 class="col-12"
           style="
@@ -57,12 +75,13 @@
               name="Salvar"
               class="btn btn-outline-success btn-lg btn-block"
             >
-              Salvar
+              Salvar Imagens do Evento
             </button>
           </div>
         </div>
       </form>
     <?php
+    }
   }
 
 

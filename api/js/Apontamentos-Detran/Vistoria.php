@@ -5,7 +5,7 @@ if( isset($_GET['Vistoria']) ){
   if( $Vistoria == 1 ){
     ?>
       <div
-        class="col-sm-5 col-md-3 custom-control custom-switch float-left"
+        class="col-5 col-md-2 custom-control custom-switch float-left"
         style="padding-top: 20px"
       >
 
@@ -20,15 +20,15 @@ if( isset($_GET['Vistoria']) ){
       </div>
 
 
-      <div class="col-sm-7 col-md-3 float-left">
+      <div class="col-7 col-md-4 float-left">
 
         <label
           for="data_vistoria"
-          class="col-sm-2 col-md-3 col-form-label col-form-label-lg float-left"
+          class="col-3 col-form-label col-form-label-lg float-left"
           style="margin-top: 10px"
         >Data:
         </label>
-        <div class="col-sm-10 col-md-3 float-left" style="margin-top: 10px">
+        <div class="col-9 float-left" style="margin-top: 10px">
           <input
             type="date"
             name="data_vistoria"
@@ -43,11 +43,11 @@ if( isset($_GET['Vistoria']) ){
       <!-- Escolha Vistoria -->
       <label
         for="img_vistoria"
-        class="col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
+        class="col-6 col-md-3 col-form-label col-form-label-lg float-left"
         style="margin-top: 10px"
       >Imagens da Vistoria:
       </label>
-      <div class="col-sm-7 col-md-3 float-left" style="margin-top: 10px">
+      <div class="col-6 col-md-3 float-left" style="margin-top: 10px">
         <select
           name="img_vistoria"
           id="img_vistoria"

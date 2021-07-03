@@ -15,7 +15,7 @@
       echo "<br>";
   
       if( move_uploaded_file( $_FILES['print_foto_declaracao_proprietario1']['tmp_name'], $target_file ) ){
-        echo "<br>Foto 1 da declaração carregada, Atualizar cadastro do proprietario anterior";
+        echo "<br>Foto 1 da declaração carregada, Atualizar cadastro do proprietario legal";
   
         //BuscarCadastro da foto1 da declaração
         echo "<br><pre>" . 
@@ -71,9 +71,13 @@
   
             echo "<br><pre>" . 
             $QueryUpdateDeclaracao1 = "
-              UPDATE tb_proprietario_legal
-              SET foto_declaracao_proprietario1 = '$FotoDeclaracao'
-              WHERE protocolo_proprietario = '$Protocolo'
+              UPDATE 
+                tb_proprietario_legal
+              SET 
+                foto_declaracao_proprietario1 = '$FotoDeclaracao'
+              WHERE 
+                protocolo_proprietario = '$Protocolo' &&
+                nome_proprietario = '$NomeProprietario'
             ";
             echo "</pre>";
             $ExeQrUpdateDeclaracao1 = mysqli_query($connection, $QueryUpdateDeclaracao1);
@@ -104,7 +108,7 @@
       "<br>";
   
       if( move_uploaded_file( $_FILES['print_foto_declaracao_proprietario1']['tmp_name'], $target_file ) ){
-        "<br>Foto 1 da declaração carregada, Atualizar cadastro do proprietario anterior";
+        "<br>Foto 1 da declaração carregada, Atualizar cadastro do proprietario legal";
   
         //BuscarCadastro da foto1 da declaração
         "<br><pre>" . 
@@ -160,9 +164,13 @@
   
             "<br><pre>" . 
             $QueryUpdateDeclaracao1 = "
-              UPDATE tb_proprietario_legal
-              SET foto_declaracao_proprietario1 = '$FotoDeclaracao'
-              WHERE protocolo_proprietario = '$Protocolo'
+              UPDATE 
+                tb_proprietario_legal
+              SET 
+                foto_declaracao_proprietario1 = '$FotoDeclaracao'
+              WHERE 
+                protocolo_proprietario = '$Protocolo' &&
+                nome_proprietario = '$NomeProprietario'
             ";
             "</pre>";
             $ExeQrUpdateDeclaracao1 = mysqli_query($connection, $QueryUpdateDeclaracao1);

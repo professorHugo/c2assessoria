@@ -71,9 +71,13 @@
   
             echo "<br><pre>" . 
             $QueryUpdateDeclaracao2 = "
-              UPDATE tb_proprietario_legal
-              SET foto_declaracao_proprietario2 = '$FotoDeclaracao'
-              WHERE protocolo_proprietario = '$Protocolo'
+              UPDATE 
+                tb_proprietario_legal
+              SET 
+                foto_declaracao_proprietario2 = '$FotoDeclaracao'
+              WHERE 
+                protocolo_proprietario = '$Protocolo' &&
+                nome_proprietario = '$NomeProprietario'
             ";
             echo "</pre>";
             $ExeQrUpdateDeclaracao2 = mysqli_query($connection, $QueryUpdateDeclaracao2);
@@ -161,9 +165,13 @@
   
             "<br><pre>" . 
             $QueryUpdateDeclaracao2 = "
-              UPDATE tb_proprietario_legal
-              SET foto_declaracao_proprietario2 = '$FotoDeclaracao'
-              WHERE protocolo_proprietario = '$Protocolo'
+              UPDATE 
+                tb_proprietario_legal
+              SET 
+                foto_declaracao_proprietario2 = '$FotoDeclaracao'
+              WHERE 
+                protocolo_proprietario = '$Protocolo' &&
+                nome_proprietario = '$NomeProprietario'
             ";
             "</pre>";
             $ExeQrUpdateDeclaracao2 = mysqli_query($connection, $QueryUpdateDeclaracao2);

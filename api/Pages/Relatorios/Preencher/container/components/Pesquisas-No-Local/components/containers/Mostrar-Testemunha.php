@@ -73,7 +73,6 @@
                 id="telefone_entrevistado" 
                 class="form-control form-control-lg"
                 value="<?php echo $TelefoneEntrevistado?>"
-                required
               >
             </div>
 
@@ -81,7 +80,7 @@
             <label 
               for="relacionamento_entrevistado" 
               class="col-form-label col-form-label-lg col-12"
-            >Relação do Entrevistado: </label>
+            >Profissão/Vínculo: </label>
             <div class="col-12">
               <input type="text" 
                 name="relacionamento_entrevistado" 
@@ -89,7 +88,6 @@
                 class="form-control form-control-lg"
                 value="<?php echo $Relacionamento?>"
                 placeholder="Familiar, Vizinho, Conhecido, etc"
-                required
               >
             </div>
 
@@ -226,7 +224,6 @@
                 id="telefone_entrevistado" 
                 class="form-control form-control-lg"
                 value="<?php echo $TelefoneEntrevistado?>"
-                required
               >
             </div>
 
@@ -234,7 +231,7 @@
             <label 
               for="relacionamento_entrevistado" 
               class="col-form-label col-form-label-lg col-12"
-            >Relação do Entrevistado: </label>
+            >Profissão/Vínculo: </label>
             <div class="col-12">
               <input type="text" 
                 name="relacionamento_entrevistado" 
@@ -242,7 +239,6 @@
                 class="form-control form-control-lg"
                 value="<?php echo $Relacionamento?>"
                 placeholder="Familiar, Vizinho, Conhecido, etc"
-                required
               >
             </div>
 

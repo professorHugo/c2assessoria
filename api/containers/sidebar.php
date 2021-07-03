@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fa fa-tachometer" aria-hidden="true"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Advisory <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Advisory <sup><?php echo VERSION?></sup></div>
     </a>
 
     <!-- Divider -->
@@ -48,12 +48,6 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-    
-        
-    </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -138,6 +132,32 @@
             </div>
         </div>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Funcionarios" aria-expanded="true" aria-controls="Funcionarios">
+            <i class="fas fa-fw fa-users"></i>
+            <span>
+                Funcionários
+            </span>
+        </a>
+        <div id="Funcionarios" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="?Page=Funcionarios">Ver Cadastros</a>
+            <div class="collapse-divider"></div>
+                <h6 class="collapse-header">Relatorios:</h6>
+                <a class="collapse-item" href="?Page=Funcionarios&Relatorios">Por Funcionário</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="?Page=Updates" aria-expanded="true" aria-controls="Funcionarios">
+            <i class="fa fa-wrench" aria-hidden="true"></i>
+            <span>
+                Últimas atualizações
+            </span>
+        </a>
+    </li>
  
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -151,7 +171,7 @@
                 <a class="collapse-item" href="?Page=Settings&Civil">Estado Civil</a>
                 <a class="collapse-item" href="?Page=Settings&Procedentes">Procedentes</a>
                 <a class="collapse-item" href="?Page=Settings&Chaves">Apresentação de Chaves</a>
-                <a class="collapse-item" href="?Page=Settings&SistemasAntiFurto">Sistemas Anti-Furto</a>
+                <!-- <a class="collapse-item" href="?Page=Settings&SistemasAntiFurto">Sistemas Anti-Furto</a> -->
                 <a class="collapse-item" href="?Page=Settings&Detran">DETRAN</a>
                 <!-- <a class="collapse-item" href="?Page=Settings&Vistorias">Tipos de Vistorias</a> -->
             </div>
@@ -179,7 +199,15 @@
 ?>
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
-    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
+    <?php
+        if( isset($_GET['View']) ){
+            include 'Nav-Relatorio-Preenchido.php';
+        }
+        if( isset($_GET['Preencher']) ){
+            include 'Nav-Relatorio-Preencher.php';
+        }
+    ?>
 </ul>

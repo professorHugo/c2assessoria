@@ -5,13 +5,13 @@
 
   <label
     for="foto_telemetria_rastreador1"
-    class="col-xs-4 col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
+    class="col-4 col-form-label col-form-label-lg float-left"
     style="margin-top: 10px"
   >
-    Foto/Print 1:
+    Arquivo 1:
   </label>
 
-  <div class="col-xs-8 col-sm-7 com-md-3 float-left" style="margin-top: 10px">
+  <div class="col-8 float-left" style="margin-top: 10px">
     <input
       type="file"
       name="print_foto_telemetria_rastreador1"
@@ -38,13 +38,13 @@
 
   <label
     for="foto_telemetria_rastreador2"
-    class="col-xs-4 col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
+    class="col-4 col-form-label col-form-label-lg float-left"
     style="margin-top: 10px"
   >
-    Foto/Print 2:
+    Arquivo 2:
   </label>
 
-  <div class="col-xs-8 col-sm-7 com-md-3 float-left" style="margin-top: 10px">
+  <div class="col-8 float-left" style="margin-top: 10px">
     <input
       type="file"
       name="print_foto_telemetria_rastreador2"
@@ -71,13 +71,13 @@
 
   <label
     for="foto_telemetria_rastreador3"
-    class="col-xs-4 col-sm-5 col-md-3 col-form-label col-form-label-lg float-left"
+    class="col-4 col-form-label col-form-label-lg float-left"
     style="margin-top: 10px"
   >
-    Foto/Print 3:
+    Arquivo 3:
   </label>
 
-  <div class="col-xs-8 col-sm-7 com-md-3 float-left" style="margin-top: 10px">
+  <div class="col-8 float-left" style="margin-top: 10px">
     <input
       type="file"
       name="print_foto_telemetria_rastreador3"

@@ -20,9 +20,11 @@
       echo "<br><pre>" . 
       $QueryCadastrarLocalEvento = "
         INSERT INTO tb_local_evento(
-          protocolo_local_evento
+          protocolo_local_evento,
+          testemunha_entrevistado
         )VALUES(
-          '$Protocolo'
+          '$Protocolo',
+          '0'
         )
       ";
       echo "</pre>";
@@ -74,9 +76,11 @@
       "<br><pre>" . 
       $QueryCadastrarLocalEvento = "
         INSERT INTO tb_local_evento(
-          protocolo_local_evento
+          protocolo_local_evento,
+          testemunha_entrevistado
         )VALUES(
-          '$Protocolo'
+          '$Protocolo',
+          '0'
         )
       ";
       "</pre>";

@@ -1,50 +1,53 @@
 <?php
 if( $SysMode == 1 ){
   //Dev
-  echo "<br>Solicitante: " . $Solicitante = $_POST['solicitante'];
-  echo "<br>Sindicante: " . $Sindicante = $_POST['sindicante'];
-  echo "<br>Relatorio: " . $ProtocoloRelatorio = $_POST['protocolo_solicitacao'];
-  echo "<br>Natureza: " . $NaturezaEvento = $_POST['natureza_evento'];
+  echo "<br>Solicitante: " . $Solicitante = mysqli_real_escape_string($connection, $_POST['solicitante']);
+  echo "<br>Sindicante: " . $Sindicante = mysqli_real_escape_string($connection, $_POST['sindicante']);
+  echo "<br>Relatorio: " . $ProtocoloRelatorio = mysqli_real_escape_string($connection, $_POST['protocolo_solicitacao']);
+  echo "<br>Natureza: " . $NaturezaEvento = mysqli_real_escape_string($connection, $_POST['natureza_evento']);
   
-  echo "<br>Protocolo Solcitante: " . $ProtocoloSolicitante = $_POST['protocolo_solicitante'];
-  echo "<br>Data do Evento: " . $DataEvento = $_POST['data_evento'];
-  echo "<br>Horário Evento: " . $HorarioEvento = $_POST['horario_evento'];
+  echo "<br>Protocolo Solcitante: " . $ProtocoloSolicitante = mysqli_real_escape_string($connection, $_POST['protocolo_solicitante']);
+  echo "<br>Data do Evento: " . $DataEvento = mysqli_real_escape_string($connection, $_POST['data_evento']);
+  echo "<br>Horário Evento: " . $HorarioEvento = mysqli_real_escape_string($connection, $_POST['horario_evento']);
   
   echo "<br><br><b>Local</b>";
-  echo "<br>CEP Local: " . $CEPLocalEvento = $_POST['cep_local_evento'];
-  echo "<br>Endereço Evento: " . $EnderecoEvento = $_POST['endereco_local_evento'];
-  echo "<br>Número Evento: " . $NumeroEvento = $_POST['numero_local_evento'];
-  echo "<br>Bairro Evento: " . $BairroEvento = $_POST['bairro_local_evento'];
-  echo "<br>Cidade Evento: " . $CidadeEvento = $_POST['cidade_local_evento'];
-  echo "<br>Estado Evento: " . $EstadoEvento = $_POST['estado_local_evento'];
+  echo "<br>CEP Local: " . $CEPLocalEvento = mysqli_real_escape_string($connection, $_POST['cep_local_evento']);
+  echo "<br>Endereço Evento: " . $EnderecoEvento = mysqli_real_escape_string($connection, $_POST['endereco_local_evento']);
+  echo "<br>Número Evento: " . $NumeroEvento = mysqli_real_escape_string($connection, $_POST['numero_local_evento']);
+  echo "<br>Bairro Evento: " . $BairroEvento = mysqli_real_escape_string($connection, $_POST['bairro_local_evento']);
+  echo "<br>Cidade Evento: " . $CidadeEvento = mysqli_real_escape_string($connection, $_POST['cidade_local_evento']);
+  echo "<br>Estado Evento: " . $EstadoEvento = mysqli_real_escape_string($connection, $_POST['estado_local_evento']);
   
   echo "<br><br><b>Associado</b>";
-  echo "<br>CPF Associado: " . $CPFAssociado = $_POST['cpf_associado'];
-  echo "<br>Nome Associado: " . $NomeAssociado = $_POST['nome_associado'];
-  echo "<br>CEP Associado: " . $CEPAssociado = $_POST['cep_associado'];
-  echo "<br>Endereço: " . $EnderecoAssociado = $_POST['endereco_associado'];
-  echo "<br>Número Residência: " . $NumeroAssociado = $_POST['numero_associado'];
+  echo "<br>CPF Associado: " . $CPFAssociado = mysqli_real_escape_string(
+    $connection, 
+    str_pad($_POST['cpf_associado'], 11, 0, STR_PAD_LEFT)
+  );
+  echo "<br>Nome Associado: " . $NomeAssociado = mysqli_real_escape_string($connection, $_POST['nome_associado']);
+  echo "<br>CEP Associado: " . $CEPAssociado = mysqli_real_escape_string($connection, $_POST['cep_associado']);
+  echo "<br>Endereço: " . $EnderecoAssociado = mysqli_real_escape_string($connection, $_POST['endereco_associado']);
+  echo "<br>Número Residência: " . $NumeroAssociado = mysqli_real_escape_string($connection, $_POST['numero_associado']);
   echo "<br>Endereço completo: " . $EnderecoAssociado = $EnderecoAssociado.", ".$NumeroAssociado;
-  echo "<br>Bairro Associado: " . $BairroAssociado = $_POST['bairro_associado'];
-  echo "<br>Cidade Associado: " . $CidadeAssociado = $_POST['cidade_associado'];
-  echo "<br>Estado Associado: " . $EstadoAssociado = $_POST['estado_associado'];
+  echo "<br>Bairro Associado: " . $BairroAssociado = mysqli_real_escape_string($connection, $_POST['bairro_associado']);
+  echo "<br>Cidade Associado: " . $CidadeAssociado = mysqli_real_escape_string($connection, $_POST['cidade_associado']);
+  echo "<br>Estado Associado: " . $EstadoAssociado = mysqli_real_escape_string($connection, $_POST['estado_associado']);
   
-  echo "<br><br><b>Condutor</b>: " . $CondutorVeiculo = $_POST['condutor_veiculo'];
+  echo "<br><br><b>Condutor</b>: " . $CondutorVeiculo = mysqli_real_escape_string($connection, $_POST['condutor_veiculo']);
   if( $CondutorVeiculo != 1 ){
-    echo "<br>Nome Condutor: " . $NomeCondutor = $_POST['nome_condutor'];
-    echo "<br>CEP Condutor: " . $CEPCondutor = $_POST['cep_condutor'];
-    echo "<br>Endereço: " . $EnderecoCondutor = $_POST['endereco_condutor'];
-    echo "<br>Número Residência: "  . $NumeroCondutor = $_POST['numero_condutor'];
+    echo "<br>Nome Condutor: " . $NomeCondutor = mysqli_real_escape_string($connection, $_POST['nome_condutor']);
+    echo "<br>CEP Condutor: " . $CEPCondutor = mysqli_real_escape_string($connection, $_POST['cep_condutor']);
+    echo "<br>Endereço: " . $EnderecoCondutor = mysqli_real_escape_string($connection, $_POST['endereco_condutor']);
+    echo "<br>Número Residência: "  . $NumeroCondutor = mysqli_real_escape_string($connection, $_POST['numero_condutor']);
     echo "<br>Endereço Completo: " . $EnderecoCompletoCondutor = $EnderecoCondutor.", ".$NumeroCondutor;
-    echo "<br>Bairro Condutor: " . $BairroCondutor = $_POST['bairro_condutor'];
-    echo "<br>Cidade Condutor: " . $CidadeCondutor = $_POST['cidade_condutor'];
-    echo "<br>Estado Condutor: " . $EstadoCondutor = $_POST['estado_condutor'];
+    echo "<br>Bairro Condutor: " . $BairroCondutor = mysqli_real_escape_string($connection, $_POST['bairro_condutor']);
+    echo "<br>Cidade Condutor: " . $CidadeCondutor = mysqli_real_escape_string($connection, $_POST['cidade_condutor']);
+    echo "<br>Estado Condutor: " . $EstadoCondutor = mysqli_real_escape_string($connection, $_POST['estado_condutor']);
   }
   
   echo "<br><br><b>Veículo</b>";
-  echo "<br>Placa: " . $PlacaVeiculo = $_POST['placa_veiculo'];
-  echo "<br>Marca: " . $MarcaVeiculo = $_POST['marca_veiculo'];
-  echo "<br>Modelo: " . $ModeloVeiculo = $_POST['modelo_veiculo'];
+  echo "<br>Placa: " . $PlacaVeiculo = mysqli_real_escape_string($connection, $_POST['placa_veiculo']);
+  echo "<br>Marca: " . $MarcaVeiculo = mysqli_real_escape_string($connection, $_POST['marca_veiculo']);
+  echo "<br>Modelo: " . $ModeloVeiculo = mysqli_real_escape_string($connection, $_POST['modelo_veiculo']);
   
   echo "<br><br>";
   echo "<h3>Salvar os dados do cadastro de relatório</h3>";
@@ -60,7 +63,6 @@ if( $SysMode == 1 ){
     echo "<br>Cadastrar Relatorio: <pre>";
     echo $QueryCadastrarRelatorio = "
       INSERT INTO tb_relatorios(
-        id_relatorio,
         protocolo_evento,
         solicitante_evento,
         sindicante_evento,
@@ -78,7 +80,6 @@ if( $SysMode == 1 ){
         uf_evento,
         status_relatorio
       )VALUES(
-        '$ProtocoloRelatorio',
         '$ProtocoloSolicitante',
         '$Solicitante',
         '$Sindicante',
@@ -251,50 +252,54 @@ if( $SysMode == 1 ){
 }else{
 
   //Prod
-   "<br>Solicitante: " . $Solicitante = $_POST['solicitante'];
-   "<br>Sindicante: " . $Sindicante = $_POST['sindicante'];
-   "<br>Relatorio: " . $ProtocoloRelatorio = $_POST['protocolo_solicitacao'];
-   "<br>Natureza: " . $NaturezaEvento = $_POST['natureza_evento'];
+   "<br>Solicitante: " . $Solicitante = mysqli_real_escape_string($connection, $_POST['solicitante']);
+   "<br>Sindicante: " . $Sindicante = mysqli_real_escape_string($connection, $_POST['sindicante']);
+   "<br>Relatorio: " . $ProtocoloRelatorio = mysqli_real_escape_string($connection, $_POST['protocolo_solicitacao']);
+   "<br>Natureza: " . $NaturezaEvento = mysqli_real_escape_string($connection, $_POST['natureza_evento']);
   
-   "<br>Protocolo Solcitante: " . $ProtocoloSolicitante = $_POST['protocolo_solicitante'];
-   "<br>Data do Evento: " . $DataEvento = $_POST['data_evento'];
-   "<br>Horário Evento: " . $HorarioEvento = $_POST['horario_evento'];
+   "<br>Protocolo Solcitante: " . $ProtocoloSolicitante = mysqli_real_escape_string($connection, $_POST['protocolo_solicitante']);
+   "<br>Data do Evento: " . $DataEvento = mysqli_real_escape_string($connection, $_POST['data_evento']);
+   "<br>Horário Evento: " . $HorarioEvento = mysqli_real_escape_string($connection, $_POST['horario_evento']);
   
    "<br><br><b>Local</b>";
-   "<br>CEP Local: " . $CEPLocalEvento = $_POST['cep_local_evento'];
-   "<br>Endereço Evento: " . $EnderecoEvento = $_POST['endereco_local_evento'];
-   "<br>Número Evento: " . $NumeroEvento = $_POST['numero_local_evento'];
-   "<br>Bairro Evento: " . $BairroEvento = $_POST['bairro_local_evento'];
-   "<br>Cidade Evento: " . $CidadeEvento = $_POST['cidade_local_evento'];
-   "<br>Estado Evento: " . $EstadoEvento = $_POST['estado_local_evento'];
+   "<br>CEP Local: " . $CEPLocalEvento = mysqli_real_escape_string($connection, $_POST['cep_local_evento']);
+   "<br>Endereço Evento: " . $EnderecoEvento = mysqli_real_escape_string($connection, $_POST['endereco_local_evento']);
+   "<br>Número Evento: " . $NumeroEvento = mysqli_real_escape_string($connection, $_POST['numero_local_evento']);
+   "<br>Bairro Evento: " . $BairroEvento = mysqli_real_escape_string($connection, $_POST['bairro_local_evento']);
+   "<br>Cidade Evento: " . $CidadeEvento = mysqli_real_escape_string($connection, $_POST['cidade_local_evento']);
+   "<br>Estado Evento: " . $EstadoEvento = mysqli_real_escape_string($connection, $_POST['estado_local_evento']);
   
    "<br><br><b>Associado</b>";
-   "<br>CPF Associado: " . $CPFAssociado = $_POST['cpf_associado'];
-   "<br>Nome Associado: " . $NomeAssociado = $_POST['nome_associado'];
-   "<br>CEP Associado: " . $CEPAssociado = $_POST['cep_associado'];
-   "<br>Endereço: " . $EnderecoAssociado = $_POST['endereco_associado'];
-   "<br>Número Residência: " . $NumeroAssociado = $_POST['numero_associado'];
+   "<br>CPF Associado: " . $CPFAssociado = mysqli_real_escape_string(
+     $connection, 
+     str_pad($_POST['cpf_associado'], 11, 0, STR_PAD_LEFT)
+    );
+
+   "<br>Nome Associado: " . $NomeAssociado = mysqli_real_escape_string($connection, $_POST['nome_associado']);
+   "<br>CEP Associado: " . $CEPAssociado = mysqli_real_escape_string($connection, $_POST['cep_associado']);
+   "<br>Endereço: " . $EnderecoAssociado = mysqli_real_escape_string($connection, $_POST['endereco_associado']);
+   "<br>Número Residência: " . $NumeroAssociado = mysqli_real_escape_string($connection, $_POST['numero_associado']);
    "<br>Endereço completo: " . $EnderecoAssociado = $EnderecoAssociado.", ".$NumeroAssociado;
-   "<br>Bairro Associado: " . $BairroAssociado = $_POST['bairro_associado'];
-   "<br>Cidade Associado: " . $CidadeAssociado = $_POST['cidade_associado'];
-   "<br>Estado Associado: " . $EstadoAssociado = $_POST['estado_associado'];
+   "<br>Bairro Associado: " . $BairroAssociado = mysqli_real_escape_string($connection, $_POST['bairro_associado']);
+   "<br>Cidade Associado: " . $CidadeAssociado = mysqli_real_escape_string($connection, $_POST['cidade_associado']);
+   "<br>Estado Associado: " . $EstadoAssociado = mysqli_real_escape_string($connection, $_POST['estado_associado']);
   
-   "<br><br><b>Condutor</b>: " . $CondutorVeiculo = $_POST['condutor_veiculo'];
+   "<br><br><b>Condutor</b>: " . $CondutorVeiculo = mysqli_real_escape_string($connection, $_POST['condutor_veiculo']);
   if( $CondutorVeiculo != 1 ){
-     "<br>Nome Condutor: " . $NomeCondutor = $_POST['nome_condutor'];
-     "<br>CEP Condutor: " . $CEPCondutor = $_POST['cep_condutor'];
-     "<br>Endereço: " . $EnderecoCondutor = $_POST['endereco_condutor'];
-     "<br>Número Residência: "  . $NumeroCondutor = $_POST['numero_condutor'];
+     "<br>Nome Condutor: " . $NomeCondutor = mysqli_real_escape_string($connection, $_POST['nome_condutor']);
+     "<br>CEP Condutor: " . $CEPCondutor = mysqli_real_escape_string($connection, $_POST['cep_condutor']);
+     "<br>Endereço: " . $EnderecoCondutor = mysqli_real_escape_string($connection, $_POST['endereco_condutor']);
+     "<br>Número Residência: "  . $NumeroCondutor = mysqli_real_escape_string($connection, $_POST['numero_condutor']);
      "<br>Endereço Completo: " . $EnderecoCompletoCondutor = $EnderecoCondutor.", ".$NumeroCondutor;
-     "<br>Bairro Condutor: " . $BairroCondutor = $_POST['bairro_condutor'];
-     "<br>Cidade Condutor: " . $CidadeCondutor = $_POST['cidade_condutor'];
-     "<br>Estado Condutor: " . $EstadoCondutor = $_POST['estado_condutor'];
+     "<br>Bairro Condutor: " . $BairroCondutor = mysqli_real_escape_string($connection, $_POST['bairro_condutor']);
+     "<br>Cidade Condutor: " . $CidadeCondutor = mysqli_real_escape_string($connection, $_POST['cidade_condutor']);
+     "<br>Estado Condutor: " . $EstadoCondutor = mysqli_real_escape_string($connection, $_POST['estado_condutor']);
   }
   
    "<br><br><b>Veículo</b>";
-   "<br>Placa: " . $PlacaVeiculo = $_POST['placa_veiculo'];
-   "<br>Marca: " . $MarcaVeiculo = $_POST['marca_veiculo'];
-   "<br>Modelo: " . $ModeloVeiculo = $_POST['modelo_veiculo'];
+   "<br>Placa: " . $PlacaVeiculo = mysqli_real_escape_string($connection, $_POST['placa_veiculo']);
+   "<br>Marca: " . $MarcaVeiculo = mysqli_real_escape_string($connection, $_POST['marca_veiculo']);
+   "<br>Modelo: " . $ModeloVeiculo = mysqli_real_escape_string($connection, $_POST['modelo_veiculo']);
   
    "<br><br>";
    "<h3>Salvar os dados do cadastro de relatório</h3>";
@@ -310,7 +315,6 @@ if( $SysMode == 1 ){
      "<br>Cadastrar Relatorio: <pre>";
      $QueryCadastrarRelatorio = "
       INSERT INTO tb_relatorios(
-        id_relatorio,
         protocolo_evento,
         solicitante_evento,
         sindicante_evento,
@@ -328,7 +332,6 @@ if( $SysMode == 1 ){
         uf_evento,
         status_relatorio
       )VALUES(
-        '$ProtocoloRelatorio',
         '$ProtocoloSolicitante',
         '$Solicitante',
         '$Sindicante',
@@ -521,3 +524,6 @@ if( $SysMode == 2 ){
     echo "<br>Já existe o diretório";
   }
 }
+
+include 'Enviar-Email.php';
+include 'Inbox/Criar-Mensagem.php';

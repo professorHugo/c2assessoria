@@ -1,72 +1,37 @@
+/* CSS Print */
+@import "print.css" only print;
+/* Relatório na tela do PC */
+@import 'desktop.css' screen ;
+/* CSS Mobile */
+@import 'mobile.css' ;
 :root{
-  --background-transparent: rgba(78,115,223,.6);
-  --blue-color: rgba(78,115,223,.7);
-}
-/* Tela < 576 px */
-@media(max-width: 575px){
-	:root{
-		font-size: .8em!important;
-	}
-  .col-xs, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9,
-  .col-xs-10, .col-xs-11, .col-xs-12{
-    position: relative;
-    width: 100%;
-    padding-right: .75rem;
-    padding-left: .75rem;
-  }
-  .col-xs-1{
-    flex: 0 0 8.33333%;
-    max-width: 8.33333%;
-  }
-  .col-xs-2{
-    flex: 0 0 16.66667%;
-    max-width: 16.66667%;
-  }
-  .col-xs-3{
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-  .col-xs-4{
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%;
-  }
-  .col-xs-5{
-    flex: 0 0 41.66667%;
-    max-width: 41.66667%;
-  }
-  .col-xs-6{
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-  .col-xs-7{
-    flex: 0 0 58.33333%;
-    max-width: 58.33333%;
-  }
-  .col-xs-8{
-    flex: 0 0 66.66667%;
-    max-width: 66.66667%;
-  }
-  .col-xs-9{
-    flex: 0 0 75%;
-    max-width: 75%;
-  }
-  .col-xs-10{
-    flex: 0 0 83.33333%;
-    max-width: 83.33333%;
-  }
-  .col-xs-11{
-    flex: 0 0 91.66667%;
-    max-width: 91.66667%;
-  }
-  .col-xs-12{
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-
+  --background-transparent: rgba(78,115,223,0.6);
+  --blue-color: rgba(78,115,223,0.7);
+  --background-opacity: rgba(78,115,223,0.95) ;
 }
 .container-fluid{
   color: rgb(30,30,30);
 }
+
+.Menu-Relatorio{
+  left: 1rem;
+  top: 20rem;
+  display: none;
+  width: 80%;
+}
+.Menu-Relatorio li a{
+  color: var(--blue-color)!important;
+  margin-bottom: 1rem!important;
+  line-height: 1!important;
+  margin: 0!important;
+  padding: 5px!important;
+  font-size: 1rem;
+}
+.sticky{
+  position: fixed;
+  top: 1rem;
+}
+
 
 
 .entrevistados[data-toggle=collapse]::after{
@@ -85,14 +50,14 @@
   content: '\f0d7';
 }
 .icones {
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'FontAwesome';
   font-style: normal;
 }
 .icones::after{
   font-size: 1.1rem;
 }
 .icone-preencher::before{
-  content: '\f15c -Preencher';
+  content: '\f040 -Preencher';
 }
 .icone-entregar::before{
   content: '\f1d8 -Entregar';
@@ -106,78 +71,65 @@
   content: '\f1c6 -Compactar';
 }
 
+
 label.label-dados-relatorios{
   padding-top: 5px;
   font-size: 1.1rem;
 }
 
-@media (max-width: 575px){
-  .entrevistados[data-toggle=collapse].collapsed::after{
-    content: '\f0d7';
-  }
-  .icones {
-    font-family: 'Font Awesome 5 Free';
-    font-size: 1rem;
-    font-style: normal;
-    text-align: center;
-    float: left;
-    margin-left: 0;
-  }
-  .icones::after{
-    font-size: 0.8rem;
-  }
-  .icone-preencher::before{
-    content: '\f15c';
-  }
-  .icone-entregar::before{
-    content: '\f1d8';
-  }
-
-  .icone-ver::before{
-    content: '\f06e';
-  }
-
-  .icone-compress::before{
-    content: '\f1c6';
-  }
+p.numero-pagina, p.numero-pagina2, p.numero-pagina3{
+  display: none;
 }
 
+.space-1{
+  width: 100%;
+  margin-top: 1rem!important;
+}
+.space-2{
+  width: 100%;
+  margin-top: 2rem!important;
+}
+.space-3{
+  width: 100%;
+  margin-top: 3rem!important;
+}
 
-@media screen {
-  *{
-      background: transparent;
-  }
-  table tbody tr td a{
-      color: #fff!important;
-      text-decoration: none!important;
-      transition: .3s;
-  }
-  table tbody tr td a:hover{
-      color: var(--blue-color)!important;
-  }
-  .space-1{
-    margin-top: 1rem;
-  }
-  .space-2{
-    margin-top: 2rem;
-  }
-  .space-3{
-    margin-top: 3rem;
-  }
-  .cabecalho-relatorio{
-    margin-bottom: 3.5rem;
-  }
-  .horario{
-    font-size: 1.2rem; padding-top: 1rem; padding-bottom:1rem
-  }
-  .topo-solicitacao h3{
-    border-bottom: 1px solid #ddd
-  }
-  
-  .rotulos{
-    border-bottom: 1px solid #ddd;
-  }
-  .nomes-rotulos{
-    font-size: 1.5rem;
-  }
+.space-4{
+  width: 100%;
+  margin-top: 4rem!important;
+}
+.space-5{
+  width: 100%;
+  margin-top: 5rem!important;
+}
+
+.topo-relatorio {
+  border-bottom: 1px solid #999;
+  width: 100%
+}
+
+.rotulos{
+  width: 98%;
+  padding-left: 1%;
+  border-bottom: 1px solid #ddd;
+}
+.nomes-rotulos{
+  font-size: 1.5rem;
+}
+
+#Relatorio .pagina-solicitacao h3,
+#Relatorio .perfil-associado h3, 
+#Relatorio .perfil-condutor h3,
+#Relatorio .procedencia h3 {
+  width: 100%!important;
+  border-bottom: 1px solid #999!important;
+}
+#Relatorio .procedencia,
+#Relatorio .evento,
+#Relatorio .orgaos-publicos{
+  width: 100%!important;
+}
+
+#Relatorio .cabecalho-relatorio{
+  margin-bottom: 20px;
 }

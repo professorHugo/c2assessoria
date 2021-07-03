@@ -38,7 +38,10 @@
           SELECT * FROM tb_sindicantes sindicante
           INNER JOIN tb_usuarios usuario
             ON sindicante.id_usuario = usuario.id_usuario
-          WHERE sindicante.ativacao = 1
+          WHERE 
+            sindicante.ativacao = 1 &&
+            usuario.permissao_usuario != 3 &&
+            usuario.permissao_usuario != 1
         ";
         $ExeQrBuscarSindicantes = mysqli_query($connection, $QueryBuscarSindicantes);
         if( mysqli_num_rows($ExeQrBuscarSindicantes) >= 1 ){

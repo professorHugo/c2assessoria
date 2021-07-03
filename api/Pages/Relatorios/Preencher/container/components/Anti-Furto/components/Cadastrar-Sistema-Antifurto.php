@@ -16,10 +16,12 @@
       $QueryCadastrarSistema = "
         INSERT INTO tb_sistemas_anti_furto(
           protocolo_sistema,
-          tipo_sistema
+          tipo_sistema,
+          texto_outros
         )VALUES(
           '$Protocolo',
-          '$AntiFurto'
+          '$AntiFurto',
+          '$OutrosSistemas'
         )
       ";
       echo "</pre>";
@@ -48,10 +50,12 @@
       $QueryCadastrarSistema = "
         INSERT INTO tb_sistemas_anti_furto(
           protocolo_sistema,
-          tipo_sistema
+          tipo_sistema,
+          texto_outros
         )VALUES(
           '$Protocolo',
-          '$AntiFurto'
+          '$AntiFurto',
+          '$OutrosSistemas'
         )
       ";
       "</pre>";

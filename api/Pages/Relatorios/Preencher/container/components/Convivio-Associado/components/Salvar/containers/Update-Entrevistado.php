@@ -1,5 +1,6 @@
 <?php 
   if( $SysMode == 1 ){
+    //DEV
     echo "<br><pre>" . 
     $QueryUpdateEntrevistado = "
       UPDATE tb_entrevistados
@@ -19,7 +20,10 @@
       echo "<br>Erro: " . mysqli_error($connection);
     }
   }else{
-     "<br><pre>" . 
+
+    //PROD
+
+    "<br><pre>" . 
     $QueryUpdateEntrevistado = "
       UPDATE tb_entrevistados
       SET
@@ -29,10 +33,11 @@
       WHERE
         protocolo_entrevistados = '$Protocolo' &&
         id_entrevistado = '$Entrevistado'
+
     ";
-     "</pre>";
+    "</pre>";
     if( $ExeQrUpdateEntrevistado = mysqli_query($connection, $QueryUpdateEntrevistado) ){
-       "<br>Entrevistado $Entrevistado atualizado com sucesso";
+      "<br>Entrevistado $Entrevistado atualizado com sucesso";
     }else{
       echo "<br>Erro: " . mysqli_error($connection);
     }

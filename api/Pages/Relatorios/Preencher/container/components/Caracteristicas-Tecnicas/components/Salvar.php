@@ -4,12 +4,12 @@
     echo "<br>CPF Associado: " . $CPFAssociado = $_POST['cpf_associado'];
     echo "<br>Placa Veículo: " . $PlacaVeiculo = $_POST['placa_veiculo'];
     echo "<br>Protocolo: " . $Protocolo = $_GET['Protocolo'];
+    echo "<br>";
   
     echo "<br>Índice de Criminalidade: " . $IndiceCriminalidade = $_POST['indice_criminalidade'];
     echo "<br>Índice de Sinistralidade: " . $IndiceSinistralidade = $_POST['indice_sinistralidade'];
     echo "<br>Características Técnicas do local: " . $CaracteristicasLocal = $_POST['caracteristicas_local'];
     
-    echo "<br>";
     
     if(isset($_POST['rua_pavimentada'])){
       echo "<br>Rua Pavimentada: ".$RuaPavimentada = $_POST['rua_pavimentada'];
@@ -130,7 +130,10 @@
         }else{
           echo "<br>Erro: " . mysqli_error($connection);
         }
+      }else{
+        echo "<br>Erro: " . mysqli_error($connection);
       }
+
     }else{
       echo "<br>Características já cadastradas, update na tb_relatorios";
       echo "<br><pre>" . 

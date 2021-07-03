@@ -41,7 +41,7 @@
             </div>
         <div class="modal-footer">
             <a 
-                href="?Page=Relatorios&Preencher&Protocolo=<?php echo $Protocolo ?>&Content=Convivio-Associado" 
+                href="?Page=Relatorios&Preencher&Protocolo=<?php echo $Protocolo ?>" 
                 class="btn btn-form btn-form" 
                 style="background: var(--blue);color: #fff"
             >

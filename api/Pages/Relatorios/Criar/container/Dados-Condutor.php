@@ -42,7 +42,6 @@ style="border-bottom: 1px solid #bbb; margin-bottom: 1rem;float: left;margin-top
         name="cep_condutor" 
         id="cep_condutor" 
         class="float-left form-control form-control-lg" 
-        required
       >
     </div>
 

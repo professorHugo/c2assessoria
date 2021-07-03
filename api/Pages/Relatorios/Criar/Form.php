@@ -14,10 +14,10 @@
   <?php include "container/Dados-Solicitante-Sindicante.php"?>
 
   <!-- Protocolo e Natureza -->
-  <?php include "container/Dados-Relatorio-Natureza.php"?>
+  <?php include "container/Dados-Relatorio-Data-Criacao.php"?>
 
   <!-- Protocolo solicitante, data e hora do evento -->
-  <?php include "container/Dados-Data-Protocolo.php"?>
+  <!-- <?php include "container/Dados-Data-Protocolo.php"?> -->
 
   <!-- Dados do local do evento -->
   <?php include "container/Dados-Local-Evento.php"?>

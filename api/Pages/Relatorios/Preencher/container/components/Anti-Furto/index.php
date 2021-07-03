@@ -10,26 +10,37 @@
   <div class="form-group row">
     <label
       for="sistema_antifurto"
-      class="col-4 col-sm-5 col-md-3 col-form-label col-form-label-lg"
-      style="margin-top: 10px;"
+      class="col-12 col-md-4 col-form-label col-form-label-lg"
+      style="margin-top: 1.5rem;"
     >Sistema Antifurto:
     </label>
 
-    <div class="col-8 col-sm-7 col-md-3" style="margin-top: 25px">
+    <div class="col-12 col-sm-4" style="margin-top: 25px">
       <select
         name="sistema_antifurto"
         id="sistema_antifurto"
         class="form-control form-control-lg"
         required
-        onchange="escolhaSistemaAntifurto();"
+        onchange="escolhaSistemaAntifurto();selectAntifurtoOutros();"
       >
         <option value="" selected disabled>Selecione</option>
         <option value="1">Rastreador</option>
         <option value="2">Alarmes Padrão</option>
         <option value="3">Não há sistema</option>
+        <option value="4">Outro</option>
       </select>
     </div>
 
+    <div class="col-12 col-sm-4" id="outros-sistemas" style="display: none">
+      <div style="margin-top: 1.5rem"></div>
+      <input 
+        type="text" 
+        class="form-control form-control-lg" 
+        name="outros_sistemas" 
+        id="outros_sistemas"
+        placeholder="Digite o tipo de sistema"
+      >
+    </div>
 
     <div class="row col-12" id="comprovante_instalacao_return">
       <!-- Retorno para escolher comprovante de instalação -->

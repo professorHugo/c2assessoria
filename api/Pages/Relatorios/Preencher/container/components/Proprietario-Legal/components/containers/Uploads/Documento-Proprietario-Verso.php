@@ -76,7 +76,8 @@
               SET
                 foto_documento_proprietario_verso = '$IdFotoVerso'
               WHERE
-                protocolo_proprietario = '$Protocolo'
+                protocolo_proprietario = '$Protocolo' &&
+                nome_proprietario = '$NomeProprietario'
             ";
             echo "</pre>";
   
@@ -169,7 +170,8 @@
               SET
                 foto_documento_proprietario_verso = '$IdFotoVerso'
               WHERE
-                protocolo_proprietario = '$Protocolo'
+                protocolo_proprietario = '$Protocolo' &&
+                nome_proprietario = '$NomeProprietario'
             ";
             "</pre>";
   
